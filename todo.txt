@@ -1,0 +1,3 @@
+By Friday the 13th: (hopefully not fail the test) Create the super classes "SquishyChess" and "piece" to set the foundation for creating the different player/chess piece sub-classes. 
+Come up with a working mechanism to check if the King is checkmated or not. 
+By Monday the 16th: Complete the "Queen," "knight," and "Pawn" classes since their movement 
