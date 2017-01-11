@@ -1,3 +1,7 @@
 By Friday the 13th: (hopefully not fail the test) Create the super classes "SquishyChess" and "piece" to set the foundation for creating the different player/chess piece sub-classes. 
 Come up with a working mechanism to check if the King is checkmated or not. 
-By Monday the 16th: Complete the "Queen," "knight," and "Pawn" classes since their movement 
+By Monday the 16th: Complete the "Queen," "knight," and "Pawn" classes since their movement formulas are the hardest to write. 
+Create the sub-classes "player-one" and "player-two." 
+By Wendnesday the 18th: Finish all the subclasses of all six different pieces. 
+By Friday the 21st: There should be a fully functioning version of the program so that we can start debugging / adding functions that are less essential (such as allowing the players to name themselves, asking the player if he/she wishes to beign another game right after finishing a game)
+The weekend will be devoted to any last minute changes and possible revisions and fully testing the program many times. Also, adding special rules like au passant. 
