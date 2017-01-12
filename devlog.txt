@@ -1,0 +1,8 @@
+Squish Friends: Maria Acuna, Danie Ju, Pacy Yan
+
+Devlopment Log for final project Squishy Chess
+
+1/11:
+Pacy Yan created the outlines of the classes: Bishop, King, Knight, Pawn, Player, Queen, Rook, Squishies and SquishyChess and began work on King and SquishyChess (began planning out the instance variables and its methods and parameters).
+Daniel Ju created the outlines of the class board and began planning out the instance variables and its methods and parameters. 
+Maria Acuna came up with mathematical ways, through the slopes of lines, of depicting the movement of chess pieces within a 2D array.
