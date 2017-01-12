@@ -63,7 +63,6 @@ public class Board{
 
     public int[] getCoordinate(String type){
 	int[] ans = int[2];
-	
 	return ans;
     }
     public static void main(String[] args){

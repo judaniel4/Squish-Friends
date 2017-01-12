@@ -7,47 +7,25 @@ pd 3
 Squishy Chess
 
 
-Suggested usage: 
-* Replace all fields, angle brackets included, with specified info.
-  eg, pd <pd#> --> pd 3
-* Delete these instructions once all teammates understand usage.
-
-devlog--
-Use keyboard shortcut to jump to end,
- replicate entry template,
- modify appropriately.
-
-zone of reflection--
-Flesh out each category whenever necessary, appropriate.
- Need not be fully filled in until end of project,
- but best done as you go along.
-
-
-/////////// Zone of Reflection \\\\\\\\\\\
 ------------------------------------------
 OBSTACLES OVERCOME
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-wow we so BOSS bc...
+
 
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-blah blah pesky bug...
-maybe some of these will move into the Obs.Ovrcm section...
+
 
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-wow! oo!...
+
 
 MID-DEVELOPMENT DESIGN CHANGES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-we changed ___ to ___ bc...
+
 
 LESSONS LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-tales of wisdom gained...
-||||||||||||||||||||||||||||||||||||||||||
-
-
 
  ______   ______   __   __   __       ______   _______     
 /_____/\ /_____/\ /_/\ /_/\ /_/\     /_____/\ /______/\    
@@ -61,13 +39,13 @@ tales of wisdom gained...
 
 2017-01-11
 --------------------------------------------------------------
-<Member> 0:: came up with mathematical ways, through the slopes of lines, of depicting the movement of chess pieces within a 2D array. For example, the knight's destination and starting destinations must form a line with slope positive or negative 1/2 or 2, and for the bishop the slope must be positive or negative 1.
-<Member> 1:: created the outlines of the class board and began planning out the instance variables and its methods and parameters. 
-<Member> 2:: created the outlines of the classes: Bishop, King, Knight, Pawn, Player, Queen, Rook, Squishies and SquishyChess and began work on King and SquishyChess (began planning out the instance variables and its methods and parameters).
+Maria:: came up with mathematical ways, through the slopes of lines, of depicting the movement of chess pieces within a 2D array. For example, the knight's destination and starting destinations must form a line with slope positive or negative 1/2 or 2, and for the bishop the slope must be positive or negative 1.
+Daniel:: created the outlines of the class board and began planning out the instance variables and its methods and parameters. 
+Pacy:: created the outlines of the classes: Bishop, King, Knight, Pawn, Player, Queen, Rook, Squishies and SquishyChess and began work on King and SquishyChess (began planning out the instance variables and its methods and parameters).
 ==============================================================
 2017-01-12
 --------------------------------------------------------------
-<Member> 0:: 
-<Member> 1:: Created methods within Board.java that prints the board, initializes the pieces in their starting positions, and flips the board to the other player's perspective. 
-<Member> 2:: 
+Maria:: 
+Daniel:: Created methods within Board.java that prints the board, initializes the pieces in their starting positions, and flips the board to the other player's perspective. 
+Pacy:: 
 ==============================================================
