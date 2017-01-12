@@ -65,3 +65,9 @@ tales of wisdom gained...
 <Member> 1:: created the outlines of the class board and began planning out the instance variables and its methods and parameters. 
 <Member> 2:: created the outlines of the classes: Bishop, King, Knight, Pawn, Player, Queen, Rook, Squishies and SquishyChess and began work on King and SquishyChess (began planning out the instance variables and its methods and parameters).
 ==============================================================
+2017-01-12
+--------------------------------------------------------------
+<Member> 0:: 
+<Member> 1:: Created methods within Board.java that prints the board, initializes the pieces in their starting positions, and flips the board to the other player's perspective. 
+<Member> 2:: 
+==============================================================
