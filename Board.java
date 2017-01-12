@@ -60,6 +60,12 @@ public class Board{
     public void setPieceLocation(){
 	
     }
+
+    public int[] getCoordinate(String type){
+	int[] ans = int[2];
+	
+	return ans;
+    }
     public static void main(String[] args){
         Board test = new Board();
 	test.printBoard();
