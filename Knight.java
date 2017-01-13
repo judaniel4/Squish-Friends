@@ -38,9 +38,7 @@ public class Knight extends Squishies
 			return true;
 		    }
 	    }
-	else
-	    {
-		return false;
-	    }
+	return false;
+	    
     }
 }

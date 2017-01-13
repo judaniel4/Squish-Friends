@@ -24,17 +24,17 @@ public class SquishyChess{
 	}
     }
     public void afterFirst(Player a, Player b){
-	while(a.checkmate == false && b.checkmate == false){
-	    if(numSwitch == 1){
-		a.move();
-		numSwitch --;
-	    }
-	    else{
-		b.move();
-		numSwitch ++;
-	    }
+	
+	if(numSwitch == 1){
+	    a.move();
+	    numSwitch --;
+	}
+	else{
+	    b.move();
+	    numSwitch ++;
 	}
     }
+    
     public static void main(String[] args){
 
 	 Scanner scanner = new Scanner(System.in);
@@ -46,16 +46,34 @@ public class SquishyChess{
 
 	Player one = new Player(color.toLowerCase());
 
-	if (color.toLowerCase() == "white"){
-	    Player two = new Player("black");
-	}
-
 	Player two = new Player("white");
+
+	if (color.toLowerCase() == "white"){
+	    two.color = "black";
+	}
 
 	one.instantiatePieces();
 	two.instantiatePieces();
 
-        currentGame.firstMove(one, two);
+        Board currentBoard = new Board();
+
+	System.out.println("Here is the board:");
+	if (color == "white"){
+	    currentBoard.printBoard();
+	}
+	else {
+	    currentBoard.flipBoard();
+	    currentBoard.printBoard();
+	}
+	System.out.println("Please select the piece you would like to move.");
+	String firstMPiece = scanner.next();
+        System.out.println("Please select the destination. Please use the format: x,y");
+	String Destination = scanner.next();
+	one.move();
+	//	while(one.checkmate == false && two.checkmate == false){
+	    
+	//	}
+	    //currentGame.firstMove(one, two);
 
 	
     }
