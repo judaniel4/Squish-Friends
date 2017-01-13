@@ -16,21 +16,21 @@ public class SquishyChess{
     public void firstMove(Player a, Player b){
 	if (a.color == "white"){
 	    numSwitch = 0;
-	    a.move();
+	    //a.move();
 	}
 	else{
 	    numSwitch = 1;
-	    b.move();
+	    // b.move();
 	}
     }
     public void afterFirst(Player a, Player b){
 	
 	if(numSwitch == 1){
-	    a.move();
+	    //a.move();
 	    numSwitch --;
 	}
 	else{
-	    b.move();
+	    //b.move();
 	    numSwitch ++;
 	}
     }
@@ -52,9 +52,6 @@ public class SquishyChess{
 	    two.color = "black";
 	}
 
-	one.instantiatePieces();
-	two.instantiatePieces();
-
         Board currentBoard = new Board();
 
 	System.out.println("Here is the board:");
@@ -65,11 +62,13 @@ public class SquishyChess{
 	    currentBoard.flipBoard();
 	    currentBoard.printBoard();
 	}
-	System.out.println("Please select the piece you would like to move.");
+	System.out.println("It is the first turn! Please select the piece you would like to move.");
 	String firstMPiece = scanner.next();
         System.out.println("Please select the destination. Please use the format: x,y");
 	String Destination = scanner.next();
-	one.move();
+	int coordX = Integer.parseInt(Destination.substring(0,1));
+	int coordY = Integer.parseInt(Destination.substring(2,3));
+	one.move(firstMPiece.toLowerCase(), coordX, coordY);
 	//	while(one.checkmate == false && two.checkmate == false){
 	    
 	//	}

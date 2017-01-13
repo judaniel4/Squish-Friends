@@ -8,5 +8,7 @@ Includes the following methods:
 public abstract class Squishies{
     public Boolean isAlive;
     public String color;
+    public int xCoord;
+    public int yCoord;
     public abstract boolean canMove(int startX, int startY, int destinationX, int desinationY);
 }
