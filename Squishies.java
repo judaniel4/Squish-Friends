@@ -9,6 +9,6 @@ public abstract class Squishies{
     public Boolean isAlive;
     public String color;
     public abstract canMove(int startX, int startY, int destinationX, int desinationY){
-
+	
     }
 }

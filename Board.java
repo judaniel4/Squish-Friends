@@ -61,6 +61,10 @@ public class Board{
 	
     }
 
+    public String getLocation(int x, int y){
+	return board[x][y];
+    }
+
     public int[] getCoordinate(String type){
 	int[] ans = int[2];
 	return ans;
