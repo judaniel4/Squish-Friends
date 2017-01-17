@@ -26,18 +26,48 @@ public class Queen extends Squishies
 	yCoord = y;
 	color = C;
     }
-    public boolean canMove(int startX, int startY, int destinationX, int destinationY)
+    public boolean canMove(int startX, int startY, int destinationX, int destinationY, String[][] board)
     {
 	//checks to see if the position entered is a possible move for a queen
-	if((destinationY == startY) || (destinationX == startX))
-	    {
+	if(destinationY == startY){
 		//if the queen is moving horizontally or vertically in a straight line, it is a valid move.
-		return true;
+	    if(startX < destX){
+		for(int x = startX; x < destX; x ++){
+		    if(noPieceThere(x + 1, startY, String[][] board) == true){
+			return true;
+		    }
+		}
 	    }
-	if ((destinationX-startX) == (destinationY-startY))
-	    {
-		//if the queen is moving diagonally in a straight line, it is a valid move.
-		return true;
+	    else{
+		for(int y = startX; y > destY; y--){
+		    if(noPieceThere(y - 1, startY, String[][] board) == true){
+			return true;
+		    }
+		}
+	    }
+	}	
+	
+	 if(destinationX == startX){
+	     if(startY < destinationY){
+		 for(int x = startY; x < destY; x ++){
+		     if(noPieceThere(startX, x + 1, String[][] board) == true){
+			 return true;
+		     }
+		 }
+	     }
+	     if(startY > destinationY){
+		 for(int y = startY; y > destY; y --){
+		     if(noPieceThere(startX, y - 1, String[][] board) == true){
+			 return true;
+		     }
+		 }
+	     }
+	 }
+	if ((destinationX-startX) == (destinationY-startY)){
+	    if(((destinationX - startX) > 0) && ((destinationY - startY)) > 0){
+		for(
+		    
+
 	    }
 	if ((destinationX-startX) == ((destinationY-startY)* -1))
 	    {
