@@ -44,7 +44,7 @@ public class Pawn extends Squishies
 		//otherwise, the pawn cannot move.
 		retBoo = false;
 	    }
-	return retBoo && !(pieceThere(destinationX, destinationY));
+	return retBoo;
     }
 
 }
