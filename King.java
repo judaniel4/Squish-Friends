@@ -16,6 +16,11 @@ isCheck?: checks if the king is in check
 isCheckmate?: checks if the king is in checkmate and if true, releases end game message and declares who won. Asks if they want to reset
  */
 public class King extends Squishies{
+    public King(int x, int y, String C){
+	xCoord = x;
+	yCoord = y;
+	color = C;
+    }
     public boolean canMove(int startX, int startY, int destinationX, int desinationY){
 	return true;
     }

@@ -20,14 +20,15 @@ Methods:
 
 public class Pawn extends Squishies
 {
-    public Pawn(int x, int y){
+    public Pawn(int x, int y, String C){
 	xCoord = x;
 	yCoord = y;
+	color = C;
     }
     public boolean canMove(int startX, int startY, int destinationX, int destinationY)
     {
 	//checks to see if position entered is a valid move for a pawn
-	if((startY == 2) && (destinationY == 4))
+	if((startY == 1) && (destinationY == 3))
 	    {
 		return true;
 	    }

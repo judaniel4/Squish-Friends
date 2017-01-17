@@ -20,7 +20,11 @@ Limits(eating): in any direction, but the piece must be at the end of an L shape
 
 public class Knight extends Squishies
 {
-    
+    public Knight(int x, int y, String C){
+	xCoord = x;
+	yCoord = y;
+	color = C;
+    }
     public boolean canMove(int startX, int startY, int destinationX, int destinationY)
     {
 	//checks to see if the position entered is a possible move for a knight.

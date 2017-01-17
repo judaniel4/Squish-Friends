@@ -49,3 +49,9 @@ Maria::
 Daniel:: Created methods within Board.java that prints the board, initializes the pieces in their starting positions, and flips the board to the other player's perspective. 
 Pacy:: 
 ==============================================================
+2017-01-13-16 (weekend)
+--------------------------------------------------------------
+Maria:: 
+Daniel:: 
+Pacy:: 
+==============================================================

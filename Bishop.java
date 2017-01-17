@@ -19,7 +19,11 @@ Let k = an integer in the subset [1,7]
 
 public class Bishop extends Squishies
 {
-
+    public Bishop(int x, int y, String C){
+	xCoord = x;
+	yCoord = y;
+	color = C;
+    }
     public boolean canMove(int startX, int startY, int destinationX, int destinationY)
     {
 	//checks to see if the position entered is a possible move for a bishop.
