@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class Woo{
     public String currentPlayer;
-    public int numSwitch;
+    public static int numSwitch;
     public static Board currentBoard;
     public void afterFirst(Player a, Player b){
 	
@@ -54,19 +54,32 @@ public class Woo{
 	System.out.println("Here is the board:");
         printBoard(one);
 	if (one.color.equals("white")){
-		System.out.println("Player one will go first since he/she is white. It is the first turn! Please select the piece you would like to move. (Please use the first letter, use 'n' for knight)");
-		String firstMPiece = scanner.next();
-		System.out.println("Please select the destination. Please use the format: x,y");
-		String Destination = scanner.next();
-		int coordX = Integer.parseInt(Destination.substring(0,1));
-		int coordY = Integer.parseInt(Destination.substring(2,3));
-		currentBoard = (one.move(firstMPiece.toLowerCase(), coordX, coordY, currentBoard));
-		System.out.println("Board After Move:");
-		printBoard(one);
-		
+	    numSwitch = 0;
+	    System.out.println("Player one will go first since he/she is white. It is the first turn! Please select the piece you would like to move. (Please use the first letter, use 'n' for knight)");
+	    String firstMPiece = scanner.next();
+	    System.out.println("Please select the destination. Please use the format: x,y");
+	    String Destination = scanner.next();
+	    int coordX = Integer.parseInt(Destination.substring(0,1));
+	    int coordY = Integer.parseInt(Destination.substring(2,3));
+	    currentBoard = (one.move(firstMPiece.toLowerCase(), coordX, coordY, currentBoard));
+	    System.out.println("Board After Move:");
+	    printBoard(one);
+	    numSwitch = 1;
+	    System.out.println("It is Player two's (black) turn to move now!");
+	    printBoard(two);
+	    System.out.println("Please select a piece to move.");
+	    firstMPiece = scanner.next();
+	    System.out.println("Please select the destination. Please use the format: x,y");
+	    Destination = scanner.next();
+	    coordX = Integer.parseInt(Destination.substring(0,1));
+	    coordY = Integer.parseInt(Destination.substring(2,3));
+	    currentBoard = (two.move(firstMPiece.toLowerCase(), coordX, coordY, currentBoard));
+	    System.out.println("Board After Move:");
+	    printBoard(two);
 	}
 	    
 	else{
+	    numSwitch = 1;
 	    System.out.println("Player two will go first since he/she is white. It is the first turn! Please select the piece you would like to move. (Please use the first letter, use 'n' for knight)");
 	    String firstMPiece = scanner.next();
 	    System.out.println("Please select the destination. Please use the format: x,y");
@@ -77,7 +90,7 @@ public class Woo{
 	    System.out.println("Board After Move:");
 	    printBoard(two);
 	}
-
+	
 
 	
     }
