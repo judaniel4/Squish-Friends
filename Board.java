@@ -7,7 +7,7 @@ public class Board{
         this.newBoard();
     }
     public void newBoard(){
-		for (int i = 0; i < 8; i ++){
+	for (int i = 0; i < 8; i ++){
 	    board[1][i] = "P";
 	    board[6][i] = "P";
 	}
@@ -57,22 +57,30 @@ public class Board{
 	    board[4][a] = temp3;
 	}
     }
-    public void setPieceLocation(){
-	
+    public void setPieceLocation(String name, int destinationX, int destinationY){
+	board[destinationY][destinationX] = name;
     }
 
     public String getLocation(int x, int y){
-	return board[x][y];
+	return board[y][x];
     }
 
     public int[] getCoordinate(String type){
 	int[] ans = new int[2];
 	return ans;
     }
+
+    public void setBoard(int Oldx, int Oldy, int Newx ,int Newy){
+	String p = getLocation(Oldx, Oldy);
+	String a = getLocation(Newx, Newy);
+	setPieceLocation(p, Newx, Newy);
+	setPieceLocation(a, Oldx, Oldy);
+    }
     public static void main(String[] args){
         Board test = new Board();
-	test.printBoard();
+	/*test.printBoard();
 	test.flipBoard();
-	test.printBoard();
+	test.printBoard();*/
+	System.out.println(test.getLocation(0,1));
     }
 }

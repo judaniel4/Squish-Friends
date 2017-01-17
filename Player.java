@@ -76,11 +76,11 @@ public class Player{
 	    System.out.println(P1.yCoord);
 	    System.out.println(coordX);
 	    System.out.println(coordY);
-
+	    System.out.println(P1.canMove(P1.xCoord, P1.yCoord, coordX, coordY));
 	    if (P1.canMove(P1.xCoord, P1.yCoord, coordX, coordY)){
-	        P1.xCoord = coordX;
+		b.setBoard(P1.xCoord, P1.yCoord, coordX, coordY);
+		P1.xCoord = coordX;
 		P1.yCoord = coordY;
-
 	    }
 	}
 	return b;
