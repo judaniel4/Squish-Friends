@@ -42,19 +42,31 @@ public class Board{
 	}
     }
     public void flipBoard(){
+	String[][] ans = new String[8][8];
+	for (int i = 0; i < 8; i ++){
+	    for (int b = 0; b < 8; b ++){
+		ans[i][b] = board[i][b];
+	    }
+	}
 	for (int a = 0; a < 8; a ++){
-	    String temp0 = board[0][a];
-	    board[0][a] = board[7][a];
-	    board[7][a] = temp0;
-	    String temp1 = board[1][a];
-	    board[1][a] = board[6][a];
-	    board[6][a] = temp1;
-	    String temp2 = board[2][a];
-	    board[2][a] = board[5][a];
-	    board[5][a] = temp2;
-	    String temp3 = board[3][a];
-	    board[3][a] = board[4][a];
-	    board[4][a] = temp3;
+	    String temp0 = ans[0][a];
+	    ans[0][a] = ans[7][a];
+	    ans[7][a] = temp0;
+	    String temp1 = ans[1][a];
+	    ans[1][a] = ans[6][a];
+	    ans[6][a] = temp1;
+	    String temp2 = ans[2][a];
+	    ans[2][a] = ans[5][a];
+	    ans[5][a] = temp2;
+	    String temp3 = ans[3][a];
+	    ans[3][a] = ans[4][a];
+	    ans[4][a] = temp3;
+	}
+	for (int i = 0; i < 8; i ++){
+	    for (int a = 0; a < 8; a ++){
+		System.out.print(ans[i][a]);
+	    }
+	    System.out.println(" ");
 	}
     }
     public void setPieceLocation(String name, int destinationX, int destinationY){
@@ -78,9 +90,11 @@ public class Board{
     }
     public static void main(String[] args){
         Board test = new Board();
-	/*test.printBoard();
+	test.printBoard();
 	test.flipBoard();
-	test.printBoard();*/
-	System.out.println(test.getLocation(0,1));
+	test.board[4][3] = "I";
+	test.flipBoard();
+	//test.printBoard();
+	//System.out.println(test.getLocation(0,1));
     }
 }

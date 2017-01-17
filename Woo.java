@@ -28,7 +28,6 @@ public class Woo{
     public static void printBoard(Player p){
 	if (p.color.equals("white")){
 	    currentBoard.flipBoard();
-	    currentBoard.printBoard();
 	}
 	else {
 	    currentBoard.printBoard();
@@ -37,7 +36,7 @@ public class Woo{
     public static void main(String[] args){
 
 	Scanner scanner = new Scanner(System.in);
-	SquishyChess currentGame = new SquishyChess();
+	Woo currentGame = new Woo();
 	 
 	System.out.println("Hello, welcome to Squishy Chess! You will be player one and your opponent will be player 2. Please select a side, white or black. (White goes first).");
 	
@@ -47,7 +46,7 @@ public class Woo{
 
 	Player two = new Player("white");
 
-	if (color.toLowerCase() == "white"){
+	if (color.toLowerCase().equals("white")){
 	    two.color = "black";
 	}
         currentBoard = new Board();
@@ -89,6 +88,19 @@ public class Woo{
 	    currentBoard = (two.move(firstMPiece.toLowerCase(), coordX, coordY, currentBoard));
 	    System.out.println("Board After Move:");
 	    printBoard(two);
+	    numSwitch = 0;
+	    System.out.println("It is Player one's (black) turn to move now!");
+	    printBoard(one);
+	    System.out.println("Please select a piece to move.");
+	    firstMPiece = scanner.next();
+	    System.out.println("Please select the destination. Please use the format: x,y");
+	    Destination = scanner.next();
+	    coordX = Integer.parseInt(Destination.substring(0,1));
+	    coordY = Integer.parseInt(Destination.substring(2,3));
+	    currentBoard = (one.move(firstMPiece.toLowerCase(), coordX, coordY, currentBoard));
+	    System.out.println("Board After Move:");
+	    printBoard(one);
+	
 	}
 	
 
