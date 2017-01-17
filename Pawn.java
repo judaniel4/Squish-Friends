@@ -34,7 +34,7 @@ public class Pawn extends Squishies
 		//if the pawn has not moved yet and the player would like to move it two spaces forwards, it is a valid move.
 		retBoo = true;
 	    }
-	if((destinationY-startY) == 1)
+	if(((destinationY-startY) == 1) && (startX == destinationX))
 	    {
 		//if the player would like to move the pawn forward one space, then it is a valid move.
 		retBoo = true;
