@@ -14,7 +14,7 @@ public abstract class Squishies{
     public boolean noPieceThere(int x, int y, Board z)
     {
 	boolean retBol = false;
-	if(z.board[x][y] == "E") {
+	if(x.getLocation(x, y).equals("E")) {
 		retBol = true;
 	}
 	return retBol;
