@@ -21,7 +21,23 @@ public class King extends Squishies{
 	yCoord = y;
 	color = C;
     }
-    public boolean canMove(int startX, int startY, int destinationX, int desinationY){
-	return true;
+    public boolean canMove(int startX, int startY, int destinationX, int destinationY){
+	boolean retBoo = false;
+	if (startY==destinationY){
+	    if (startX-destinationX == 1 || destinationX-startX==1){
+		retBoo = true;
+	    }
+	}
+	if(startX==destinationX){
+	    if(startY-destinationY == 1 || destinationY-startY==1){
+		retBoo = true;
+	    }
+	}
+	if(startX-destinationX == 1 || destinationX-startX == 1){
+	     if(startY-destinationY == 1 || destinationY-startY==1){
+		 retBoo = true;
+	     }
+	}
+	return retBoo && noPieceThere(destinationX, destinationY, Woo.currentBoard);
     }
 }
