@@ -11,11 +11,9 @@ public abstract class Squishies{
     public int yCoord;
     public String color;
     public abstract boolean canMove(int startX, int startY, int destinationX, int desinationY);
-    public boolean noPieceThere(int x, int y, String[][] z)
+    public boolean noPieceThere(int x, int y, Board z)
     {
-	if(int[x][y] == "E")
-	    {
-		return true;
-	    }
+	return (z.getLocation(x,y).equals("E"));
+
     } 
 }
