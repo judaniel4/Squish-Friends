@@ -13,7 +13,7 @@ public abstract class Squishies{
     public abstract boolean canMove(int startX, int startY, int destinationX, int desinationY);
     public boolean noPieceThere(int x, int y, Board z)
     {
-	if(z[x][y] == "E")
+	if(z.board[x][y] == "E")
 	    {
 		return true;
 	    }
