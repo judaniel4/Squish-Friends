@@ -78,6 +78,8 @@ public class Woo{
 	    Destination = scanner.next();
 	    coordX = Integer.parseInt(Destination.substring(0,1));
 	    coordY = Integer.parseInt(Destination.substring(2,3));
+	    System.out.println(two.color);
+	    System.out.println(two.P1.xCoord);
 	    currentBoard = (two.move(firstMPiece.toLowerCase(), coordX, coordY, currentBoard));
 	    System.out.println("Board After Move:");
 	    printBoard(numSwitch);

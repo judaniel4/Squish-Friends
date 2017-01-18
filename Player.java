@@ -45,7 +45,7 @@ public class Player{
 	    N2 = new Knight(6,0,"white");
 	    B1 = new Bishop(2,0,"white");
 	    B2 = new Bishop(5,0,"white");
-	    R1  = new Rook(0,0,"white");
+	    R1 = new Rook(0,0,"white");
 	    R2 = new Rook(7,0,"white");
 	    Q = new Queen(4,0,"white");
 	    K = new King(3,0,"white");
