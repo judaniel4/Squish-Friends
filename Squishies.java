@@ -13,7 +13,9 @@ public abstract class Squishies{
     public abstract boolean canMove(int startX, int startY, int destinationX, int desinationY);
     public boolean noPieceThere(int x, int y, Board z)
     {
-	return (z.getLocation(x,y).equals("E"));
-
+	if(z[x][y] == "E")
+	    {
+		return true;
+	    }
     } 
 }
