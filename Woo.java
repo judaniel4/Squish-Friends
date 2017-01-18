@@ -102,7 +102,8 @@ public class Woo{
 	    printBoard(numSwitch);
 	}
 	while (one.checkmate == false && two.checkmate == false){
-	    if (numSwitch == 0){
+	    if (numSwitch == 1){
+		numSwitch = 0;
 		System.out.println("It is Player one's turn now!");
 		printBoard(numSwitch);
 		System.out.println("Please select the piece you would like to move. (Please use the first letter, use 'n' for knight)");
@@ -130,6 +131,7 @@ public class Woo{
 	    else{
 		System.out.println("It is Player two's turn now!");
 		numSwitch = 1;
+		printBoard(numSwitch);
 		System.out.println("Please select the piece you would like to move. (Please use the first letter, use 'n' for knight)");
 		String MPiece = scanner.next();
 		System.out.println("Please select the destination. Please use the format: x,y");

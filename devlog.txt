@@ -55,3 +55,9 @@ Maria::
 Daniel:: Finished the move method. 
 Pacy:: 
 ==============================================================
+2017-01-13-16 (weekend)
+--------------------------------------------------------------
+Maria:: 
+Daniel:: Finished the main method. The game can now go on until a player is checkmated. 
+Pacy:: 
+==============================================================
