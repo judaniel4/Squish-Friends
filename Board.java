@@ -38,7 +38,11 @@ public class Board{
 	    for (int a = 0; a < 8; a ++){
 		System.out.print(board[i][a]);
 	    }
+	    System.out.print(i);
 	    System.out.println(" ");
+	}
+	for (int i = 0; i < 8; i ++){
+	    System.out.print(i);
 	}
     }
     public void flipBoard(){
@@ -66,7 +70,11 @@ public class Board{
 	    for (int a = 0; a < 8; a ++){
 		System.out.print(ans[i][a]);
 	    }
+	    System.out.print(7-i);
 	    System.out.println(" ");
+	}
+	for (int i = 0; i < 8; i ++){
+	    System.out.print(i);
 	}
     }
     public void setPieceLocation(String name, int destinationX, int destinationY){
