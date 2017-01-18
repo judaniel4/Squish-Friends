@@ -27,22 +27,23 @@ public class Knight extends Squishies
     }
     public boolean canMove(int startX, int startY, int destinationX, int destinationY)
     {
+	boolean retBoo = false;
 	//checks to see if the position entered is a possible move for a knight.
 	if((startX-destinationX)==2 || (startX-destinationX)==-2)
 	    {
 		if ((startY-destinationY)==1 || (startY-destinationY)==-1)
 		    {
-			return true;
+			retBoo = true;
 		    }
 	    }
 	if((startX-destinationX)==1 || (startX-destinationX)==-1)
 	    {
 		if ((startY-destinationY)==2 || (startY-destinationY)==-2)
 		    {
-			return true;
+			retBoo = true;
 		    }
 	    }
-	return false;
+	return retBoo && noPieceThere(destinationX, destinationY, Woo.currentBoard);
 	    
     }
 }

@@ -31,15 +31,15 @@ public class Queen extends Squishies
 	//checks to see if the position entered is a possible move for a queen
 	if(destinationY == startY){
 		//if the queen is moving horizontally or vertically in a straight line, it is a valid move.
-	    if(startX < destX){
-		for(int x = startX; x < destX; x ++){
+	    if(startX < destinationX){
+		for(int x = startX; x < destinationX; x ++){
 		    if(noPieceThere(x + 1, startY, String[][] board) == true){
 			return true;
 		    }
 		}
 	    }
 	    else{
-		for(int y = startX; y > destY; y--){
+		for(int y = startX; y > destinationY; y--){
 		    if(noPieceThere(y - 1, startY, String[][] board) == true){
 			return true;
 		    }
@@ -49,14 +49,14 @@ public class Queen extends Squishies
 	
 	 if(destinationX == startX){
 	     if(startY < destinationY){
-		 for(int x = startY; x < destY; x ++){
+		 for(int x = startY; x < destinationY; x ++){
 		     if(noPieceThere(startX, x + 1, String[][] board) == true){
 			 return true;
 		     }
 		 }
 	     }
 	     if(startY > destinationY){
-		 for(int y = startY; y > destY; y --){
+		 for(int y = startY; y > destinationY; y --){
 		     if(noPieceThere(startX, y - 1, String[][] board) == true){
 			 return true;
 		     }
