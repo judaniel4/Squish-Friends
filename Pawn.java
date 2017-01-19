@@ -27,7 +27,7 @@ public class Pawn extends Squishies
     }
     public boolean canMove(int startX, int startY, int destinationX, int destinationY)
     {
-	boolean retBoo = true;
+	boolean retBoo = false;
 	//checks to see if position entered is a valid move for a pawn
 	if(((startY == 1) && (destinationY == 3) && (startX == destinationX)) || ( (startY == 6) && (destinationY == 4) && (startX == destinationX)))
 	    {
@@ -38,11 +38,6 @@ public class Pawn extends Squishies
 	    {
 		//if the player would like to move the pawn forward one space, then it is a valid move.
 		retBoo = true;
-	    }
-	else
-	    {
-		//otherwise, the pawn cannot move.
-		retBoo = false;
 	    }
 	return retBoo;
     }

@@ -87,10 +87,6 @@ public class Woo{
 	    System.out.println("Board After Move:");
 	    printBoard(numSwitch);
 	    System.out.println(" ");
-	    System.out.println(two.color);
-	    System.out.println(two.P1.xCoord);
-	    System.out.println(two.P1.yCoord);
-	    System.out.println(two.P1.color);
 	}
 	    
 	else{
