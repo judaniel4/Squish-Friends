@@ -43,7 +43,7 @@ public class Knight extends Squishies
 			retBoo = true;
 		    }
 	    }
-	return retBoo && noPieceThere(destinationX, destinationY, Woo.currentBoard);
+	return retBoo;
 	    
     }
 }

@@ -29,12 +29,12 @@ public class Pawn extends Squishies
     {
 	boolean retBoo = true;
 	//checks to see if position entered is a valid move for a pawn
-	if((startY == 1) && (destinationY == 3) && (startX == destinationX))
+	if(((startY == 1) && (destinationY == 3) && (startX == destinationX)) || ( (startY == 6) && (destinationY == 4) && (startX == destinationX)))
 	    {
 		//if the pawn has not moved yet and the player would like to move it two spaces forwards, it is a valid move.
 		retBoo = true;
 	    }
-	if(((destinationY-startY) == 1) && (startX == destinationX))
+	if((((destinationY-startY) == 1) && (startX == destinationX))|| ((destinationY-startY) == -1) && (startX == destinationX))
 	    {
 		//if the player would like to move the pawn forward one space, then it is a valid move.
 		retBoo = true;
@@ -44,7 +44,7 @@ public class Pawn extends Squishies
 		//otherwise, the pawn cannot move.
 		retBoo = false;
 	    }
-	return retBoo && noPieceThere(destinationX, destinationY, C);
+	return retBoo;
     }
 
 }

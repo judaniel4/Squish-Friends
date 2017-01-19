@@ -14,6 +14,8 @@ public class Woo{
     public static int numSwitch;
     public static Board currentBoard;
     public static int playerNum;
+    public static Player one;
+    public static Player two;
     public void afterFirst(Player a, Player b){
 	
 	if(numSwitch == 1){
@@ -43,12 +45,13 @@ public class Woo{
 	
 	String color = scanner.next();
 
-	Player one = new Player(color.toLowerCase());
-
-	Player two = new Player("white");
-
 	if (color.toLowerCase().equals("white")){
-	    two.color = "black";
+	    one = new Player("white");
+	    two = new Player("black");
+	}
+	else{
+	    one = new Player("black");
+	    two = new Player("white");
 	}
         currentBoard = new Board();
 	System.out.println("Here is the board:");
@@ -84,6 +87,10 @@ public class Woo{
 	    System.out.println("Board After Move:");
 	    printBoard(numSwitch);
 	    System.out.println(" ");
+	    System.out.println(two.color);
+	    System.out.println(two.P1.xCoord);
+	    System.out.println(two.P1.yCoord);
+	    System.out.println(two.P1.color);
 	}
 	    
 	else{
