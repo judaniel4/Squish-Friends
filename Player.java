@@ -181,7 +181,13 @@ public class Player{
 	
 	return retBol;
     }
-    public Board move(String piece, int coordX, int coordY, Board b){
+    public Board move(String piece, int coordX, int coordY, Board B){
+	Board b = new Board();
+	for (int i = 0; i < 8; i ++){
+	    for (int a = 0; a < 8; a ++){
+		b.setPieceLocation(B.getLocation(i,a))
+	    }
+	}
 	boolean presence = noPieceThere(coordX, coordY, b);
 	boolean ownPiece = ownPieceThere(coordX, coordY, b);
 	if (presence){

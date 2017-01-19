@@ -36,6 +36,25 @@ public class Woo{
 	    currentBoard.printBoard();
 	}
     }
+    public static boolean sameBoard(Board b){
+	//Returns true if the boards are identical
+	boolean retBol = true;
+	boolean helperBol;
+	for (int i = 0; i < 8; i ++){
+	    for (int a = 0; a < 8; a ++){
+		System.out.println(currentBoard.getLocation(i,a));
+		System.out.println(b.getLocation(i,a));
+		helperBol = currentBoard.getLocation(i,a).equals(b.getLocation(i,a));
+		System.out.println(helperBol);
+	        if (helperBol){
+		}
+		else{
+		    return false;
+		}
+	    }
+	}
+	return retBol;
+    }
     public static void main(String[] args){
 
 	Scanner scanner = new Scanner(System.in);
@@ -54,6 +73,7 @@ public class Woo{
 	    two = new Player("white");
 	}
         currentBoard = new Board();
+	Board newBoard = new Board();
 	System.out.println("Here is the board:");
         printBoard(numSwitch);
 	System.out.println(" ");
@@ -66,7 +86,22 @@ public class Woo{
 	    String Destination = scanner.next();
 	    int coordX = Integer.parseInt(Destination.substring(0,1));
 	    int coordY = Integer.parseInt(Destination.substring(2,3));
-	    currentBoard = (one.move(firstMPiece.toLowerCase(), coordX, coordY, currentBoard));
+	    newBoard = (one.move(firstMPiece.toLowerCase(), coordX, coordY, currentBoard));
+	    System.out.println("Printing new board");
+	    newBoard.printBoard();
+	    System.out.println("Printing old board");
+	    currentBoard.printBoard();
+	    System.out.println(sameBoard(newBoard));
+	    while (sameBoard(newBoard)){
+		System.out.println("Invalid move selected. Please select a piece to move.");
+		firstMPiece = scanner.next();
+		System.out.println("Please select the destination. Please use the format: x,y. Use the coordinate system on the side of the board.");
+		Destination = scanner.next();
+		coordX = Integer.parseInt(Destination.substring(0,1));
+		coordY = Integer.parseInt(Destination.substring(2,3));
+		newBoard = (one.move(firstMPiece.toLowerCase(), coordX, coordY, currentBoard));
+	    }
+	    currentBoard = newBoard;
 	    System.out.println("Board After Move:");
 	    printBoard(numSwitch);
 	    System.out.println(" ");
@@ -81,9 +116,17 @@ public class Woo{
 	    Destination = scanner.next();
 	    coordX = Integer.parseInt(Destination.substring(0,1));
 	    coordY = Integer.parseInt(Destination.substring(2,3));
-	    System.out.println(two.color);
-	    System.out.println(two.P1.xCoord);
-	    currentBoard = (two.move(firstMPiece.toLowerCase(), coordX, coordY, currentBoard));
+	    newBoard = (one.move(firstMPiece.toLowerCase(), coordX, coordY, currentBoard));
+	    while (sameBoard(newBoard)){
+		System.out.println("Invalid move selected. Please select a piece to move.");
+		firstMPiece = scanner.next();
+		System.out.println("Please select the destination. Please use the format: x,y. Use the coordinate system on the side of the board.");
+		Destination = scanner.next();
+		coordX = Integer.parseInt(Destination.substring(0,1));
+		coordY = Integer.parseInt(Destination.substring(2,3));
+		newBoard = (one.move(firstMPiece.toLowerCase(), coordX, coordY, currentBoard));
+	    }
+	    currentBoard = newBoard;
 	    System.out.println("Board After Move:");
 	    printBoard(numSwitch);
 	    System.out.println(" ");
