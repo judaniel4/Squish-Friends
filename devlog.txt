@@ -55,9 +55,15 @@ Maria::
 Daniel:: Finished the move method. 
 Pacy:: 
 ==============================================================
-2017-01-13-16 (weekend)
+2017-01-17-16
 --------------------------------------------------------------
 Maria:: 
 Daniel:: Finished the main method. The game can now go on until a player is checkmated. 
+Pacy:: 
+==============================================================
+2017-01-18-16 (weekend)
+--------------------------------------------------------------
+Maria:: 
+Daniel:: Finished move algorithms for pawn. Finished algorithm to check if the space a piece is moving to is occupied, and if so, if that piece is a friendly or enemy piece.
 Pacy:: 
 ==============================================================

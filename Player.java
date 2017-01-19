@@ -70,109 +70,132 @@ public class Player{
 	}
     }
     public boolean noPieceThere(int x, int y, Board z){
+	//Returns true if the space moving to is empty
 	boolean retBol = false;
 	if(z.getLocation(x, y).equals("E")) {
 		retBol = true;
 	}
 	return retBol;
-    } 
+    }
+    public boolean ownPieceThere(int x, int y, Board z){
+	//Returns true if the piece which occupies the space is NOT of the player's own color
+	boolean retBol = true;
+	if (noPieceThere(x, y, z)){
+
+	}
+	else{
+	    String p = z.getLocation(x,y);
+	    if (z.equals("P")){
+		int coordX = P1.xCord;
+		int coordY = p1.yCord;
+		if (coordX == x && coordY == y){
+		    retBol = false;
+		}
+	    }
+	}
+	
+	return retBol;
+    }
     public Board move(String piece, int coordX, int coordY, Board b){
 	boolean presence = noPieceThere(coordX, coordY, b);
+	boolean ownPiece = ownPieceThere(coordX, coordY, b);
 	if (presence){
-	    if (piece.equals("p")){
-		if (P1.canMove(P1.xCoord, P1.yCoord, coordX, coordY)){
-		    b.setBoard(P1.xCoord, P1.yCoord, coordX, coordY);
-		    P1.xCoord = coordX;
-		    P1.yCoord = coordY;
+	    if (ownPiece){
+		if (piece.equals("p")){
+		    if (P1.canMove(P1.xCoord, P1.yCoord, coordX, coordY)){
+			b.setBoard(P1.xCoord, P1.yCoord, coordX, coordY);
+			P1.xCoord = coordX;
+			P1.yCoord = coordY;
+		    }
+		    if (P2.canMove(P2.xCoord, P2.yCoord, coordX, coordY)){
+			b.setBoard(P2.xCoord, P2.yCoord, coordX, coordY);
+			P2.xCoord = coordX;
+			P2.yCoord = coordY;
+		    }
+		    if (P3.canMove(P3.xCoord, P3.yCoord, coordX, coordY)){
+			b.setBoard(P3.xCoord, P3.yCoord, coordX, coordY);
+			P3.xCoord = coordX;
+			P3.yCoord = coordY;
+		    }
+		    if (P4.canMove(P4.xCoord, P4.yCoord, coordX, coordY)){
+			b.setBoard(P4.xCoord, P4.yCoord, coordX, coordY);
+			P4.xCoord = coordX;
+			P4.yCoord = coordY;
+		    }
+		    if (P5.canMove(P5.xCoord, P5.yCoord, coordX, coordY)){
+			b.setBoard(P5.xCoord, P5.yCoord, coordX, coordY);
+			P5.xCoord = coordX;
+			P5.yCoord = coordY;
+		    }
+		    if (P6.canMove(P6.xCoord, P6.yCoord, coordX, coordY)){
+			b.setBoard(P6.xCoord, P6.yCoord, coordX, coordY);
+			P6.xCoord = coordX;
+			P6.yCoord = coordY;
+		    }
+		    if (P7.canMove(P7.xCoord, P7.yCoord, coordX, coordY)){
+			b.setBoard(P7.xCoord, P7.yCoord, coordX, coordY);
+			P7.xCoord = coordX;
+			P7.yCoord = coordY;
+		    }
+		    if (P8.canMove(P8.xCoord, P8.yCoord, coordX, coordY)){
+			b.setBoard(P8.xCoord, P8.yCoord, coordX, coordY);
+			P8.xCoord = coordX;
+			P8.yCoord = coordY;
+		    }
 		}
-		if (P2.canMove(P2.xCoord, P2.yCoord, coordX, coordY)){
-		    b.setBoard(P2.xCoord, P2.yCoord, coordX, coordY);
-		    P2.xCoord = coordX;
-		    P2.yCoord = coordY;
+		else if (piece.equals("r")){
+		    if (R1.canMove(R1.xCoord, R1.yCoord, coordX, coordY)){
+			b.setBoard(R1.xCoord, R1.yCoord, coordX, coordY);
+			R1.xCoord = coordX;
+			R1.yCoord = coordY;
+		    }
+		    if (R2.canMove(R2.xCoord, R2.yCoord, coordX, coordY)){
+			b.setBoard(R2.xCoord, R2.yCoord, coordX, coordY);
+			R2.xCoord = coordX;
+			R2.yCoord = coordY;
+		    }
 		}
-		if (P3.canMove(P3.xCoord, P3.yCoord, coordX, coordY)){
-		    b.setBoard(P3.xCoord, P3.yCoord, coordX, coordY);
-		    P3.xCoord = coordX;
-		    P3.yCoord = coordY;
+		else if (piece.equals("n")){
+		    if (N1.canMove(N1.xCoord, N1.yCoord, coordX, coordY)){
+			b.setBoard(N1.xCoord, N1.yCoord, coordX, coordY);
+			N1.xCoord = coordX;
+			N1.yCoord = coordY;
+		    }
+		    if (N2.canMove(N2.xCoord, N2.yCoord, coordX, coordY)){
+			b.setBoard(N2.xCoord, N2.yCoord, coordX, coordY);
+			N2.xCoord = coordX;
+			N2.yCoord = coordY;
+		    }
 		}
-		if (P4.canMove(P4.xCoord, P4.yCoord, coordX, coordY)){
-		    b.setBoard(P4.xCoord, P4.yCoord, coordX, coordY);
-		    P4.xCoord = coordX;
-		    P4.yCoord = coordY;
+		else if (piece.equals("b")){
+		    if (B1.canMove(B1.xCoord, B1.yCoord, coordX, coordY)){
+			b.setBoard(B1.xCoord, B1.yCoord, coordX, coordY);
+			B1.xCoord = coordX;
+			B1.yCoord = coordY;
+		    }
+		    if (B2.canMove(B2.xCoord, B2.yCoord, coordX, coordY)){
+			b.setBoard(B2.xCoord, B2.yCoord, coordX, coordY);
+			B2.xCoord = coordX;
+			B2.yCoord = coordY;
+		    }
 		}
-		if (P5.canMove(P5.xCoord, P5.yCoord, coordX, coordY)){
-		    b.setBoard(P5.xCoord, P5.yCoord, coordX, coordY);
-		    P5.xCoord = coordX;
-		    P5.yCoord = coordY;
+		else if (piece.equals("q")){
+		    if (Q.canMove(Q.xCoord, Q.yCoord, coordX, coordY)){
+			b.setBoard(Q.xCoord, Q.yCoord, coordX, coordY);
+			Q.xCoord = coordX;
+			Q.yCoord = coordY;
+		    }
 		}
-		if (P6.canMove(P6.xCoord, P6.yCoord, coordX, coordY)){
-		    b.setBoard(P6.xCoord, P6.yCoord, coordX, coordY);
-		    P6.xCoord = coordX;
-		    P6.yCoord = coordY;
+		else if (piece.equals("k")){
+		    if (K.canMove(K.xCoord, K.yCoord, coordX, coordY)){
+			b.setBoard(K.xCoord, K.yCoord, coordX, coordY);
+			K.xCoord = coordX;
+			K.yCoord = coordY;
+		    }
 		}
-		if (P7.canMove(P7.xCoord, P7.yCoord, coordX, coordY)){
-		    b.setBoard(P7.xCoord, P7.yCoord, coordX, coordY);
-		    P7.xCoord = coordX;
-		    P7.yCoord = coordY;
+		else{
+		    System.out.println("You have selected an illegal move. Please select again.");
 		}
-		if (P8.canMove(P8.xCoord, P8.yCoord, coordX, coordY)){
-		    b.setBoard(P8.xCoord, P8.yCoord, coordX, coordY);
-		    P8.xCoord = coordX;
-		    P8.yCoord = coordY;
-		}
-	    }
-	    else if (piece.equals("r")){
-		if (R1.canMove(R1.xCoord, R1.yCoord, coordX, coordY)){
-		    b.setBoard(R1.xCoord, R1.yCoord, coordX, coordY);
-		    R1.xCoord = coordX;
-		    R1.yCoord = coordY;
-		}
-		if (R2.canMove(R2.xCoord, R2.yCoord, coordX, coordY)){
-		    b.setBoard(R2.xCoord, R2.yCoord, coordX, coordY);
-		    R2.xCoord = coordX;
-		    R2.yCoord = coordY;
-		}
-	    }
-	    else if (piece.equals("n")){
-		if (N1.canMove(N1.xCoord, N1.yCoord, coordX, coordY)){
-		    b.setBoard(N1.xCoord, N1.yCoord, coordX, coordY);
-		    N1.xCoord = coordX;
-		    N1.yCoord = coordY;
-		}
-		if (N2.canMove(N2.xCoord, N2.yCoord, coordX, coordY)){
-		    b.setBoard(N2.xCoord, N2.yCoord, coordX, coordY);
-		    N2.xCoord = coordX;
-		    N2.yCoord = coordY;
-		}
-	    }
-	    else if (piece.equals("b")){
-		if (B1.canMove(B1.xCoord, B1.yCoord, coordX, coordY)){
-		    b.setBoard(B1.xCoord, B1.yCoord, coordX, coordY);
-		    B1.xCoord = coordX;
-		    B1.yCoord = coordY;
-		}
-		if (B2.canMove(B2.xCoord, B2.yCoord, coordX, coordY)){
-		    b.setBoard(B2.xCoord, B2.yCoord, coordX, coordY);
-		    B2.xCoord = coordX;
-		    B2.yCoord = coordY;
-		}
-	    }
-	    else if (piece.equals("q")){
-		if (Q.canMove(Q.xCoord, Q.yCoord, coordX, coordY)){
-		    b.setBoard(Q.xCoord, Q.yCoord, coordX, coordY);
-		    Q.xCoord = coordX;
-		    Q.yCoord = coordY;
-		}
-	    }
-	    else if (piece.equals("k")){
-		if (K.canMove(K.xCoord, K.yCoord, coordX, coordY)){
-		    b.setBoard(K.xCoord, K.yCoord, coordX, coordY);
-		    K.xCoord = coordX;
-		    K.yCoord = coordY;
-		}
-	    }
-	    else{
-		System.out.println("You have selected an illegal move. Please select again.");
 	    }
 	}
 	else{
