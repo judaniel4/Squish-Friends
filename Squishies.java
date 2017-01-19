@@ -11,5 +11,20 @@ public abstract class Squishies{
     public int yCoord;
     public String color;
     public abstract boolean canMove(int startX, int startY, int destinationX, int desinationY);
-
+    public boolean canEat(Squishies piece){
+	if(canMove(xCoord, yCoord, piece.xCoord, piece.YCoord)){
+	    return true;
+	}
+	else{
+	    return false;
+	}
+    }
+    public boolean isCheck(King Henry){
+	if(canEat (Henry)){
+	    return true;
+	}
+	else{
+	    return false;
+	}
+    }
 }
