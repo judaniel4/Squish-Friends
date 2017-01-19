@@ -29,58 +29,17 @@ public class Queen extends Squishies
     public boolean canMove(int startX, int startY, int destinationX, int destinationY)
     {
 	//checks to see if the position entered is a possible move for a queen
-	if(destinationY == startY){
-		//if the queen is moving horizontally or vertically in a straight line, it is a valid move.
-	    if(startX < destinationX){
-		for(int x = startX; x < destinationX; x ++){
-		    if(noPieceThere(x + 1, startY, Woo.currentBoard)){
-			return true;
-		    }
-		}
+	if(destinationY == startY || destinationX == startX){
+	    //if the queen is moving horizontally or vertically in a straight line, it is a valid move.
+	    return true;
 	    }
-	    else{
-		for(int y = startX; y > destinationY; y--){
-		    if(noPieceThere(y - 1, startY, Woo.currentBoard)){
-			return true;
-		    }
-		}
-	    }
-	}	
-	
-	 if(destinationX == startX){
-	     if(startY < destinationY){
-		 for(int x = startY; x < destinationY; x ++){
-		     if(noPieceThere(startX, x + 1, Woo.currentBoard)){
-			 return true;
-		     }
-		 }
-	     }
-	     if(startY > destinationY){
-		 for(int y = startY; y > destinationY; y --){
-		     if(noPieceThere(startX, y - 1, Woo.currentBoard)){
-			 return true;
-		     }
-		 }
-	     }
-	 }
 
-	 /*
-	if ((destinationX-startX) == (destinationY-startY)){
-	    if(((destinationX - startX) > 0) && ((destinationY - startY)) > 0){
-		for(
-		    
-
-	    }
-	 */
-	if ((destinationX-startX) == ((destinationY-startY)* -1))
-	    {
-		//if the queen is moving diagonally in a straight line, it is a valid move.
-		return true;
-	    }
-	else
-	    {
-		return false;
-	    }
+	if(destinationY-startY == destinationX-startX || destinationY-startY == startX-destinationX){
+	    //if the queen is moving diagonally, it is a valid move.
+	    return true;
+	}
+	else{
+	    return false;
+	}
     }
-    
 }
