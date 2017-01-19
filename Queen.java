@@ -33,14 +33,14 @@ public class Queen extends Squishies
 		//if the queen is moving horizontally or vertically in a straight line, it is a valid move.
 	    if(startX < destinationX){
 		for(int x = startX; x < destinationX; x ++){
-		    if(noPieceThere(x + 1, startY, Woo.currentBoard) == true){
+		    if(noPieceThere(x + 1, startY, Woo.currentBoard)){
 			return true;
 		    }
 		}
 	    }
 	    else{
 		for(int y = startX; y > destinationY; y--){
-		    if(noPieceThere(y - 1, startY, Woo.currentBoard) == true){
+		    if(noPieceThere(y - 1, startY, Woo.currentBoard)){
 			return true;
 		    }
 		}
@@ -50,14 +50,14 @@ public class Queen extends Squishies
 	 if(destinationX == startX){
 	     if(startY < destinationY){
 		 for(int x = startY; x < destinationY; x ++){
-		     if(noPieceThere(startX, x + 1, Woo.currentBoard) == true){
+		     if(noPieceThere(startX, x + 1, Woo.currentBoard)){
 			 return true;
 		     }
 		 }
 	     }
 	     if(startY > destinationY){
 		 for(int y = startY; y > destinationY; y --){
-		     if(noPieceThere(startX, y - 1, Woo.currentBoard) == true){
+		     if(noPieceThere(startX, y - 1, Woo.currentBoard)){
 			 return true;
 		     }
 		 }

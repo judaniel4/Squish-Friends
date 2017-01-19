@@ -22,18 +22,41 @@ public class Rook extends Squishies
 	yCoord = y;
 	color = C;
     }
-    public boolean canMove(int startX, int startY, int destinationX, int destinationY)
-    {
-	//checks to see if the position entered is a possible move for a rook
-	if((destinationY == startY) || (destinationX == startX))
-	    {
-		//if the rook is moving horizontally or vertically in a straight line, it is a valid move.
-		return true;
+    public boolean canMove(int startX, int startY, int destinationX, int destinationY){
+	//checks to see if the position entered is a possible move for a queen
+	if(destinationY == startY){
+		//if the queen is moving horizontally or vertically in a straight line, it is a valid move.
+	    if(startX < destinationX){
+		for(int x = startX; x < destinationX; x ++){
+		    if(noPieceThere(x + 1, startY, Woo.currentBoard) == true){
+			return true;
+		    }
+		}
 	    }
-	else
-	    {
-		return false;
+	    else{
+		for(int y = startX; y > destinationY; y--){
+		    if(noPieceThere(y - 1, startY, Woo.currentBoard) == true){
+			return true;
+		    }
+		}
 	    }
+	}	
+	
+	 if(destinationX == startX){
+	     if(startY < destinationY){
+		 for(int x = startY; x < destinationY; x ++){
+		     if(noPieceThere(startX, x + 1, Woo.currentBoard) == true){
+			 return true;
+		     }
+		 }
+	     }
+	     if(startY > destinationY){
+		 for(int y = startY; y > destinationY; y --){
+		     if(noPieceThere(startX, y - 1, Woo.currentBoard) == true){
+			 return true;
+		     }
+		 }
+	     }
+	 }
     }
-    
 }
