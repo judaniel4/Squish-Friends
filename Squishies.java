@@ -18,4 +18,7 @@ public abstract class Squishies{
 	return canEat(Henry);
 	
     }
+    public boolean checkMate(King Louis){
+	if(isCheck(Louis)){
+	    if((canMove(Louis.xCoord, Louis.yCoord, Louis.xCoord + 1, Louis.yCoord) && (canEat(Louis))) || 
 }
