@@ -86,8 +86,93 @@ public class Player{
 	else{
 	    String p = z.getLocation(x,y);
 	    if (z.equals("P")){
-		int coordX = P1.xCord;
-		int coordY = p1.yCord;
+		int coordX = P1.xCoord;
+		int coordY = P1.yCoord;
+		if (coordX == x && coordY == y){
+		    retBol = false;
+		}
+		coordX = P2.xCoord;
+		coordY = P2.yCoord;
+		if (coordX == x && coordY == y){
+		    retBol = false;
+		}
+		coordX = P3.xCoord;
+		coordY = P3.yCoord;
+		if (coordX == x && coordY == y){
+		    retBol = false;
+		}
+		coordX = P4.xCoord;
+		coordY = P4.yCoord;
+		if (coordX == x && coordY == y){
+		    retBol = false;
+		}
+		coordX = P5.xCoord;
+		coordY = P5.yCoord;
+		if (coordX == x && coordY == y){
+		    retBol = false;
+		}
+		coordX = P6.xCoord;
+		coordY = P6.yCoord;
+		if (coordX == x && coordY == y){
+		    retBol = false;
+		}
+		coordX = P7.xCoord;
+		coordY = P7.yCoord;
+		if (coordX == x && coordY == y){
+		    retBol = false;
+		}
+		coordX = P8.xCoord;
+		coordY = P8.yCoord;
+		if (coordX == x && coordY == y){
+		    retBol = false;
+		}
+	    }
+	    else if (z.equals("N")){
+		int coordX = N1.xCoord;
+		int coordY = N1.yCoord;
+		if (coordX == x && coordY == y){
+		    retBol = false;
+		}
+		coordX = N2.xCoord;
+		coordY = N2.yCoord;
+		if (coordX == x && coordY == y){
+		    retBol = false;
+		}
+	    }
+	    else if (z.equals("B")){
+		int coordX = B1.xCoord;
+		int coordY = B1.yCoord;
+		if (coordX == x && coordY == y){
+		    retBol = false;
+		}
+		coordX = B2.xCoord;
+		coordY = B2.yCoord;
+		if (coordX == x && coordY == y){
+		    retBol = false;
+		}
+	    }
+	    else if (z.equals("R")){
+		int coordX = R1.xCoord;
+		int coordY = R1.yCoord;
+		if (coordX == x && coordY == y){
+		    retBol = false;
+		}
+		coordX = R2.xCoord;
+		coordY = R2.yCoord;
+		if (coordX == x && coordY == y){
+		    retBol = false;
+		}
+	    }
+	    else if (z.equals("K")){
+		int coordX = K.xCoord;
+		int coordY = K.yCoord;
+		if (coordX == x && coordY == y){
+		    retBol = false;
+		}
+	    }
+	    else if (z.equals("Q")){
+		int coordX = Q.xCoord;
+		int coordY = Q.yCoord;
 		if (coordX == x && coordY == y){
 		    retBol = false;
 		}
