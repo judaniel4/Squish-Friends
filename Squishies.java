@@ -10,6 +10,6 @@ public abstract class Squishies{
     public int xCoord;
     public int yCoord;
     public String color;
-    //    public abstract boolean canMove(int startX, int startY, int destinationX, int desinationY);
+    public abstract boolean canMove(int startX, int startY, int destinationX, int desinationY);
 
 }
