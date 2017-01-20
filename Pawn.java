@@ -24,6 +24,7 @@ public class Pawn extends Squishies
 	xCoord = x;
 	yCoord = y;
 	color = C;
+	pieceType = "Pawn";
     }
     public boolean canMove(int startX, int startY, int destinationX, int destinationY)
     {
@@ -39,7 +40,7 @@ public class Pawn extends Squishies
 		//if the player would like to move the pawn forward one space, then it is a valid move.
 		retBoo = true;
 	    }
-	return retBoo;
+	return retBoo && isAlive;
     }
 
 }
