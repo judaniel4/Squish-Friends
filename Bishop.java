@@ -3,7 +3,7 @@ Bishop
 
 Attributes:
 
-pieceType is Queen
+pieceType is QueenBishop
 
 Limits(moving): can move diagonally in a straight line.  Cannot jump over other pieces.
 
@@ -23,6 +23,7 @@ public class Bishop extends Squishies
 	xCoord = x;
 	yCoord = y;
 	color = C;
+	pieceType = "Bishop";
     }
     public boolean canMove(int startX, int startY, int destinationX, int destinationY)
     {
@@ -30,12 +31,12 @@ public class Bishop extends Squishies
 	if ((destinationX-startX) == (destinationY-startY))
 	    {
 		//if the bishop is moving diagonally in a straight line, it is a valid move.
-		return true;
+		return true && isAlive;
 	    }
 	if ((destinationX-startX) == ((destinationY-startY)* -1))
 	    {
 		//if the bishop is moving diagonally in a straight line, it is a valid move.
-		return true;
+		return true && isAlive;
 	    }
 	else
 	    {
@@ -43,13 +44,6 @@ public class Bishop extends Squishies
 	    }
 
     }
-    public boolean isCheck(King piece){ 
-	if(canMove(this.xCoord, this.yCoord, piece.xCoord, piece.yCoord)){
-	    return true;
-	}
-	else{
-	    return false;
-	}
-    }
+    
 }    
 

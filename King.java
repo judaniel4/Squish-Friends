@@ -20,6 +20,7 @@ public class King extends Squishies{
 	xCoord = x;
 	yCoord = y;
 	color = C;
+	pieceType = "King";
     }
     public boolean canMove(int startX, int startY, int destinationX, int destinationY){
 	boolean retBoo = false;
