@@ -185,7 +185,7 @@ public class Player{
 	Board b = new Board();
 	for (int i = 0; i < 8; i ++){
 	    for (int a = 0; a < 8; a ++){
-		b.setPieceLocation(B.getLocation(i,a))
+		b.setPieceLocation(B.getLocation(i,a), i, a);
 	    }
 	}
 	boolean presence = noPieceThere(coordX, coordY, b);

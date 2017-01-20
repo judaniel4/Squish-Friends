@@ -42,10 +42,7 @@ public class Woo{
 	boolean helperBol;
 	for (int i = 0; i < 8; i ++){
 	    for (int a = 0; a < 8; a ++){
-		System.out.println(currentBoard.getLocation(i,a));
-		System.out.println(b.getLocation(i,a));
 		helperBol = currentBoard.getLocation(i,a).equals(b.getLocation(i,a));
-		System.out.println(helperBol);
 	        if (helperBol){
 		}
 		else{
