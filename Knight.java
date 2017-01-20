@@ -24,6 +24,7 @@ public class Knight extends Squishies
 	xCoord = x;
 	yCoord = y;
 	color = C;
+	pieceType = "Knight";
     }
     public boolean canMove(int startX, int startY, int destinationX, int destinationY)
     {
@@ -43,7 +44,7 @@ public class Knight extends Squishies
 			retBoo = true;
 		    }
 	    }
-	return retBoo;
+	return retBoo && isAlive;
 	    
     }
 }
