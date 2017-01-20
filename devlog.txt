@@ -70,6 +70,6 @@ Pacy::
 2017-01-19-16
 --------------------------------------------------------------
 Maria:: 
-Daniel:: 
+Daniel:: Finished algorithm for if a player makes an invalid move, they are forced to make a different choice of piece and where to move. 
 Pacy:: 
 ==============================================================

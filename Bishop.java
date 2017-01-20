@@ -44,7 +44,7 @@ public class Bishop extends Squishies
 
     }
     public boolean isCheck(King piece){ 
-	if(canMove(this.xCoord, this.yCoord, piece.xCoord, piece.Ycoord)){
+	if(canMove(this.xCoord, this.yCoord, piece.xCoord, piece.yCoord)){
 	    return true;
 	}
 	else{
