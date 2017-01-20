@@ -8,7 +8,12 @@ Limits(moving): in any direction but only one space as long as that does not put
 - (x,y) --> (x+1,y)
 - (x,y) --> (x,y+1)
 - (x,y) --> (x-1,y)
-- (x,y) --> (x, y-1)
+- (x,y) --> (x,y-1)
+
+- (x,y) --> (x+1,y+1)
+- (x,y) --> (x-1,y-1)
+- (x,y) --> (x+1,y-1)
+- (x,y) --> (x-1,y+1)
 Limits(eating): in any direction, but only one space as long as that does no put the piece in danger
 
 Methods:
