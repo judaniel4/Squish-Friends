@@ -25,18 +25,19 @@ public class Queen extends Squishies
 	xCoord = x;
 	yCoord = y;
 	color = C;
+	pieceType = "Queen";
     }
     public boolean canMove(int startX, int startY, int destinationX, int destinationY)
     {
 	//checks to see if the position entered is a possible move for a queen
 	if(destinationY == startY || destinationX == startX){
 	    //if the queen is moving horizontally or vertically in a straight line, it is a valid move.
-	    return true;
+	    return true && isAlive;
 	    }
 
 	if(destinationY-startY == destinationX-startX || destinationY-startY == startX-destinationX){
 	    //if the queen is moving diagonally, it is a valid move.
-	    return true;
+	    return true && isAlive;
 	}
 	else{
 	    return false;
