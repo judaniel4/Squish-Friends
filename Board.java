@@ -6,6 +6,9 @@ public class Board{
     public Board(){
         this.newBoard();
     }
+    public String[][] getBoard(){
+	return board;
+    }
     public void newBoard(){
 	for (int i = 0; i < 8; i ++){
 	    board[1][i] = "P";
