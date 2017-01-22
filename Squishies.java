@@ -250,6 +250,60 @@ public abstract class Squishies{
 		     }
 		}
 	    }
+	    if(piece.equals("P")){
+		if(!Woo.one.color.equals(Louis.color)){
+		    if(canMove(Woo.one.P1.xCoord, Woo.one.P1.yCoord, Louis.xCoord, Louis.yCoord)){
+			canEated = canEated && dangerCheck(Woo.one.color, Woo.one.P1.xCoord, Woo.one.P1.yCoord);
+		    }
+		    if(canMove(Woo.one.P2.xCoord, Woo.one.P2.yCoord, Louis.xCoord, Louis.yCoord)){
+			canEated = canEated && dangerCheck(Woo.one.color, Woo.one.P2.xCoord, Woo.one.P2.yCoord);
+		    }
+		    if(canMove(Woo.one.P3.xCoord, Woo.one.P3.yCoord, Louis.xCoord, Louis.yCoord)){
+			canEated = canEated && dangerCheck(Woo.one.color, Woo.one.P3.xCoord, Woo.one.P3.yCoord);
+		    }
+		    if(canMove(Woo.one.P4.xCoord, Woo.one.P4.yCoord, Louis.xCoord, Louis.yCoord)){
+			canEated = canEated && dangerCheck(Woo.one.color, Woo.one.P4.xCoord, Woo.one.P4.yCoord);
+		    }
+		    if(canMove(Woo.one.P5.xCoord, Woo.one.P5.yCoord, Louis.xCoord, Louis.yCoord)){
+			canEated = canEated && dangerCheck(Woo.one.color, Woo.one.P5.xCoord, Woo.one.P5.yCoord);
+		    }
+		    if(canMove(Woo.one.P6.xCoord, Woo.one.P6.yCoord, Louis.xCoord, Louis.yCoord)){
+			canEated = canEated && dangerCheck(Woo.one.color, Woo.one.P6.xCoord, Woo.one.P6.yCoord);
+		    }
+		    if(canMove(Woo.one.P7.xCoord, Woo.one.P7.yCoord, Louis.xCoord, Louis.yCoord)){
+			canEated = canEated && dangerCheck(Woo.one.color, Woo.one.P7.xCoord, Woo.one.P7.yCoord);
+		    }
+		    if(canMove(Woo.one.P8.xCoord, Woo.one.P8.yCoord, Louis.xCoord, Louis.yCoord)){
+			canEated = canEated && dangerCheck(Woo.one.color, Woo.one.P8.xCoord, Woo.one.P8.yCoord);
+		    }
+		}
+		if(!Woo.two.color.equals(Louis.color)){
+		    if(canMove(Woo.two.P1.xCoord, Woo.two.P1.yCoord, Louis.xCoord, Louis.yCoord)){
+			canEated = canEated && dangerCheck(Woo.two.color, Woo.two.P1.xCoord, Woo.two.P1.yCoord);
+		    }
+		    if(canMove(Woo.two.P2.xCoord, Woo.two.P2.yCoord, Louis.xCoord, Louis.yCoord)){
+			canEated = canEated && dangerCheck(Woo.two.color, Woo.two.P2.xCoord, Woo.two.P2.yCoord);
+		    }
+		    if(canMove(Woo.two.P3.xCoord, Woo.two.P3.yCoord, Louis.xCoord, Louis.yCoord)){
+			canEated = canEated && dangerCheck(Woo.two.color, Woo.two.P3.xCoord, Woo.two.P3.yCoord);
+		    }
+		    if(canMove(Woo.two.P4.xCoord, Woo.two.P4.yCoord, Louis.xCoord, Louis.yCoord)){
+			canEated = canEated && dangerCheck(Woo.two.color, Woo.two.P4.xCoord, Woo.two.P4.yCoord);
+		    }
+		    if(canMove(Woo.two.P5.xCoord, Woo.two.P5.yCoord, Louis.xCoord, Louis.yCoord)){
+			canEated = canEated && dangerCheck(Woo.two.color, Woo.two.P5.xCoord, Woo.two.P5.yCoord);
+		    }
+		    if(canMove(Woo.two.P6.xCoord, Woo.two.P6.yCoord, Louis.xCoord, Louis.yCoord)){
+			canEated = canEated && dangerCheck(Woo.two.color, Woo.two.P6.xCoord, Woo.two.P6.yCoord);
+		    }
+		    if(canMove(Woo.two.P7.xCoord, Woo.two.P7.yCoord, Louis.xCoord, Louis.yCoord)){
+			canEated = canEated && dangerCheck(Woo.two.color, Woo.two.P7.xCoord, Woo.two.P7.yCoord);
+		    }
+		    if(canMove(Woo.two.P8.xCoord, Woo.two.P8.yCoord, Louis.xCoord, Louis.yCoord)){
+			canEated = canEated && dangerCheck(Woo.two.color, Woo.two.P8.xCoord, Woo.two.P8.yCoord);
+		    }
+		}
+	    }
 	}
 	return inCheck || canEated || kingMove;
     }
