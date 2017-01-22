@@ -104,7 +104,154 @@ public abstract class Squishies{
 	boolean canEated = true;
 	for(String piece: Louis.checkKing()){
 	    if (piece.equals("Q")){
-		//ur fucked mate
+		if(!Woo.one.color.equals(Louis.color)){		    
+			if(Woo.one.Q.xCoord == Louis.xCoord){
+			    if(Louis.yCoord < Woo.one.Q.yCoord){
+				for(int y = Louis.yCoord; y <= Woo.one.Q.yCoord; y++){
+				    //Checks to see if the piece can be eaten or blocked.
+				    canEated = canEated && dangerCheck(Woo.one.color, Louis.xCoord, y);
+				}
+			    }
+			    if(Louis.yCoord > Woo.one.Q.yCoord){
+				for(int y = Woo.one.Q.yCoord; y <= Louis.yCoord; y++){
+				    //Checks to see if the piece can be eaten or blocked.
+				    canEated = canEated && dangerCheck(Woo.one.color, Louis.xCoord, y);
+				}
+			    }
+			}
+			if(Woo.one.Q.yCoord == Louis.yCoord){
+			    if(Louis.xCoord < Woo.one.Q.xCoord){
+				for(int x = Louis.xCoord; x <= Woo.one.Q.xCoord; x++){
+				    //Checks to see if the piece can be eaten or blocked.
+				    canEated = canEated && dangerCheck(Woo.one.color, x, Louis.yCoord);
+				}
+			    }
+			    if(Louis.yCoord > Woo.one.Q.yCoord){
+				for(int x = Woo.one.Q.xCoord; x <= Louis.xCoord; x++){
+				    //Checks to see if the piece can be eaten or blocked.
+				    canEated = canEated && dangerCheck(Woo.one.color, x, Louis.yCoord);
+				}
+			    }
+			}
+			if (Louis.xCoord > Woo.one.Q.xCoord && Louis.yCoord >  Woo.one.Q.yCoord){
+			    int kingX = Louis.xCoord;
+			    int qX = Woo.one.Q.xCoord;
+			    int kingY = Louis.yCoord;
+			    int qY = Woo.one.Q.yCoord;
+			    while(kingX>qX && kingY>qY){
+				canEated = canEated && dangerCheck(Woo.one.color, qX, qY); 
+				qX++;
+				qY++;
+			    }
+			}
+			if (Louis.xCoord < Woo.one.Q.xCoord && Louis.yCoord < Woo.one.Q.yCoord){
+			    int kingX = Louis.xCoord;
+			    int qX = Woo.one.Q.xCoord;
+			    int kingY = Louis.yCoord;
+			    int qY = Woo.one.Q.yCoord;
+			    while(kingX<qX && kingY<qY){
+				canEated = canEated && dangerCheck(Woo.one.color, kingX, kingY); 
+				kingX++;
+				kingY++;
+			    }
+			}
+			if (Louis.xCoord < Woo.one.Q.xCoord && Louis.yCoord > Woo.one.Q.yCoord){
+			    int kingX = Louis.xCoord;
+			    int qX = Woo.one.Q.xCoord;
+			    int kingY = Louis.yCoord;
+			    int qY = Woo.one.Q.yCoord;
+			    while(kingX<qX && kingY>qY){
+				canEated = canEated && dangerCheck(Woo.one.color, kingX, qY); 
+				kingX++;
+				qY++;
+			    }
+			}
+			if (Louis.xCoord > Woo.one.Q.xCoord && Louis.yCoord < Woo.one.Q.yCoord){
+			    int kingX = Louis.xCoord;
+			    int qX = Woo.one.Q.xCoord;
+			    int kingY = Louis.yCoord;
+			    int qY = Woo.one.Q.yCoord;
+			    while(kingX>qX && kingY<qY){
+				canEated = canEated && dangerCheck(Woo.one.color, qX, kingY); 
+				qX++;
+				kingY++;
+			    }
+			}
+		    }
+		if(!Woo.two.color.equals(Louis.color)){		    
+			if(Woo.two.Q.xCoord == Louis.xCoord){
+			    if(Louis.yCoord < Woo.two.Q.yCoord){
+				for(int y = Louis.yCoord; y <= Woo.two.Q.yCoord; y++){
+				    //Checks to see if the piece can be eaten or blocked.
+				    canEated = canEated && dangerCheck(Woo.two.color, Louis.xCoord, y);
+				}
+			    }
+			    if(Louis.yCoord > Woo.two.Q.yCoord){
+				for(int y = Woo.two.Q.yCoord; y <= Louis.yCoord; y++){
+				    //Checks to see if the piece can be eaten or blocked.
+				    canEated = canEated && dangerCheck(Woo.two.color, Louis.xCoord, y);
+				}
+			    }
+			}
+			if(Woo.two.Q.yCoord == Louis.yCoord){
+			    if(Louis.xCoord < Woo.two.Q.xCoord){
+				for(int x = Louis.xCoord; x <= Woo.two.Q.xCoord; x++){
+				    //Checks to see if the piece can be eaten or blocked.
+				    canEated = canEated && dangerCheck(Woo.two.color, x, Louis.yCoord);
+				}
+			    }
+			    if(Louis.yCoord > Woo.two.Q.yCoord){
+				for(int x = Woo.two.Q.xCoord; x <= Louis.xCoord; x++){
+				    //Checks to see if the piece can be eaten or blocked.
+				    canEated = canEated && dangerCheck(Woo.two.color, x, Louis.yCoord);
+				}
+			    }
+			}
+			if (Louis.xCoord > Woo.two.Q.xCoord && Louis.yCoord >  Woo.two.Q.yCoord){
+			    int kingX = Louis.xCoord;
+			    int qX = Woo.two.Q.xCoord;
+			    int kingY = Louis.yCoord;
+			    int qY = Woo.two.Q.yCoord;
+			    while(kingX>qX && kingY>qY){
+				canEated = canEated && dangerCheck(Woo.two.color, qX, qY); 
+				qX++;
+				qY++;
+			    }
+			}
+			if (Louis.xCoord < Woo.two.Q.xCoord && Louis.yCoord < Woo.two.Q.yCoord){
+			    int kingX = Louis.xCoord;
+			    int qX = Woo.two.Q.xCoord;
+			    int kingY = Louis.yCoord;
+			    int qY = Woo.two.Q.yCoord;
+			    while(kingX<qX && kingY<qY){
+				canEated = canEated && dangerCheck(Woo.two.color, kingX, kingY); 
+				kingX++;
+				kingY++;
+			    }
+			}
+			if (Louis.xCoord < Woo.two.Q.xCoord && Louis.yCoord > Woo.two.Q.yCoord){
+			    int kingX = Louis.xCoord;
+			    int qX = Woo.two.Q.xCoord;
+			    int kingY = Louis.yCoord;
+			    int qY = Woo.two.Q.yCoord;
+			    while(kingX<qX && kingY>qY){
+				canEated = canEated && dangerCheck(Woo.two.color, kingX, qY); 
+				kingX++;
+				qY++;
+			    }
+			}
+			if (Louis.xCoord > Woo.two.Q.xCoord && Louis.yCoord < Woo.two.Q.yCoord){
+			    int kingX = Louis.xCoord;
+			    int qX = Woo.two.Q.xCoord;
+			    int kingY = Louis.yCoord;
+			    int qY = Woo.two.Q.yCoord;
+			    while(kingX>qX && kingY<qY){
+				canEated = canEated && dangerCheck(Woo.two.color, qX, kingY); 
+				qX++;
+				kingY++;
+			    }
+			}
+		    }
 	    }
 	    if (piece.equals("N")){
 		if(!Woo.one.color.equals(Louis.color)){
@@ -304,7 +451,198 @@ public abstract class Squishies{
 		    }
 		}
 	    }
+	    if (piece.equals("B")){
+		if(!Woo.one.color.equals(Louis.color)){
+		    if(canMove(Woo.one.B1.xCoord, Woo.one.B1.yCoord, Louis.xCoord, Louis.yCoord)){
+			if (Louis.xCoord + Louis.yCoord > Woo.one.B1.xCoord + Woo.one.B1.yCoord){
+			    int kingX = Louis.xCoord;
+			    int b1X = Woo.one.B1.xCoord;
+			    int kingY = Louis.yCoord;
+			    int b1Y = Woo.one.B1.yCoord;
+			    while(kingX>b1X && kingY>b1Y){
+				canEated = canEated && dangerCheck(Woo.one.color, b1X, b1Y); 
+				b1X++;
+				b1Y++;
+			    }
+			}
+			if (Louis.xCoord + Louis.yCoord < Woo.one.B1.xCoord + Woo.one.B1.yCoord){
+			    int kingX = Louis.xCoord;
+			    int b1X = Woo.one.B1.xCoord;
+			    int kingY = Louis.yCoord;
+			    int b1Y = Woo.one.B1.yCoord;
+			    while(kingX<b1X && kingY<b1Y){
+				canEated = canEated && dangerCheck(Woo.one.color, kingX, kingY); 
+				kingX++;
+				kingY++;
+			    }
+			}
+			if (Louis.xCoord < Woo.one.B1.xCoord && Louis.yCoord > Woo.one.B1.yCoord){
+			    int kingX = Louis.xCoord;
+			    int b1X = Woo.one.B1.xCoord;
+			    int kingY = Louis.yCoord;
+			    int b1Y = Woo.one.B1.yCoord;
+			    while(kingX<b1X && kingY>b1Y){
+				canEated = canEated && dangerCheck(Woo.one.color, kingX, b1Y); 
+				kingX++;
+				b1Y++;
+			    }
+			}
+			if (Louis.xCoord > Woo.one.B1.xCoord && Louis.yCoord < Woo.one.B1.yCoord){
+			    int kingX = Louis.xCoord;
+			    int b1X = Woo.one.B1.xCoord;
+			    int kingY = Louis.yCoord;
+			    int b1Y = Woo.one.B1.yCoord;
+			    while(kingX>b1X && kingY<b1Y){
+				canEated = canEated && dangerCheck(Woo.one.color, b1X, kingY); 
+				b1X++;
+				kingY++;
+			    }
+			}
+		    }
+		    if(canMove(Woo.one.B2.xCoord, Woo.one.B2.yCoord, Louis.xCoord, Louis.yCoord)){
+			if (Louis.xCoord + Louis.yCoord > Woo.one.B2.xCoord + Woo.one.B2.yCoord){
+			    int kingX = Louis.xCoord;
+			    int b2X = Woo.one.B2.xCoord;
+			    int kingY = Louis.yCoord;
+			    int b2Y = Woo.one.B2.yCoord;
+			    while(kingX>b2X && kingY>b2Y){
+				canEated = canEated && dangerCheck(Woo.one.color, b2X, b2Y); 
+				b2X++;
+				b2Y++;
+			    }
+			}
+			if (Louis.xCoord + Louis.yCoord < Woo.one.B2.xCoord + Woo.one.B2.yCoord){
+			    int kingX = Louis.xCoord;
+			    int b2X = Woo.one.B2.xCoord;
+			    int kingY = Louis.yCoord;
+			    int b2Y = Woo.one.B2.yCoord;
+			    while(kingX<b2X && kingY<b2Y){
+				canEated = canEated && dangerCheck(Woo.one.color, kingX, kingY); 
+				kingX++;
+				kingY++;
+			    }
+			}
+			if (Louis.xCoord < Woo.one.B2.xCoord && Louis.yCoord > Woo.one.B2.yCoord){
+			    int kingX = Louis.xCoord;
+			    int b2X = Woo.one.B2.xCoord;
+			    int kingY = Louis.yCoord;
+			    int b2Y = Woo.one.B2.yCoord;
+			    while(kingX<b2X && kingY>b2Y){
+				canEated = canEated && dangerCheck(Woo.one.color, kingX, b2Y); 
+				kingX++;
+				b2Y++;
+			    }
+			}
+			if (Louis.xCoord > Woo.one.B2.xCoord && Louis.yCoord < Woo.one.B2.yCoord){
+			    int kingX = Louis.xCoord;
+			    int b2X = Woo.one.B2.xCoord;
+			    int kingY = Louis.yCoord;
+			    int b2Y = Woo.one.B2.yCoord;
+			    while(kingX>b2X && kingY<b2Y){
+				canEated = canEated && dangerCheck(Woo.one.color, b2X, kingY); 
+				b2X++;
+				kingY++;
+			    }
+			}
+		    }
+		}
+	    }
+	    if(!Woo.two.color.equals(Louis.color)){
+		if(canMove(Woo.two.B1.xCoord, Woo.two.B1.yCoord, Louis.xCoord, Louis.yCoord)){
+		    if (Louis.xCoord + Louis.yCoord > Woo.two.B1.xCoord + Woo.two.B1.yCoord){
+			int kingX = Louis.xCoord;
+			int b1X = Woo.two.B1.xCoord;
+			int kingY = Louis.yCoord;
+			int b1Y = Woo.two.B1.yCoord;
+			while(kingX>b1X && kingY>b1Y){
+			    canEated = canEated && dangerCheck(Woo.two.color, b1X, b1Y); 
+			    b1X++;
+			    b1Y++;
+			}
+		    }
+		    if (Louis.xCoord + Louis.yCoord < Woo.two.B1.xCoord + Woo.two.B1.yCoord){
+			int kingX = Louis.xCoord;
+			int b1X = Woo.two.B1.xCoord;
+			int kingY = Louis.yCoord;
+			int b1Y = Woo.two.B1.yCoord;
+			while(kingX<b1X && kingY<b1Y){
+			    canEated = canEated && dangerCheck(Woo.two.color, kingX, kingY); 
+			    kingX++;
+			    kingY++;
+			}
+		    }
+		    if (Louis.xCoord < Woo.two.B1.xCoord && Louis.yCoord > Woo.two.B1.yCoord){
+			int kingX = Louis.xCoord;
+			int b1X = Woo.two.B1.xCoord;
+			int kingY = Louis.yCoord;
+			int b1Y = Woo.two.B1.yCoord;
+			while(kingX<b1X && kingY>b1Y){
+			    canEated = canEated && dangerCheck(Woo.two.color, kingX, b1Y); 
+			    kingX++;
+			    b1Y++;
+			}
+		    }
+		    if (Louis.xCoord > Woo.two.B1.xCoord && Louis.yCoord < Woo.two.B1.yCoord){
+			int kingX = Louis.xCoord;
+			int b1X = Woo.two.B1.xCoord;
+			int kingY = Louis.yCoord;
+			int b1Y = Woo.two.B1.yCoord;
+			while(kingX>b1X && kingY<b1Y){
+			    canEated = canEated && dangerCheck(Woo.two.color, b1X, kingY); 
+			    b1X++;
+			    kingY++;
+			}
+		    }
+		}
+		if(canMove(Woo.two.B2.xCoord, Woo.two.B2.yCoord, Louis.xCoord, Louis.yCoord)){
+		    if (Louis.xCoord + Louis.yCoord > Woo.two.B2.xCoord + Woo.two.B2.yCoord){
+			int kingX = Louis.xCoord;
+			int b2X = Woo.two.B2.xCoord;
+			int kingY = Louis.yCoord;
+			int b2Y = Woo.two.B2.yCoord;
+			while(kingX>b2X && kingY>b2Y){
+			    canEated = canEated && dangerCheck(Woo.two.color, b2X, b2Y); 
+			    b2X++;
+			    b2Y++;
+			}
+		    }
+		    if (Louis.xCoord + Louis.yCoord < Woo.two.B2.xCoord + Woo.two.B2.yCoord){
+			int kingX = Louis.xCoord;
+			int b2X = Woo.two.B2.xCoord;
+			int kingY = Louis.yCoord;
+			int b2Y = Woo.two.B2.yCoord;
+			while(kingX<b2X && kingY<b2Y){
+			    canEated = canEated && dangerCheck(Woo.two.color, kingX, kingY); 
+			    kingX++;
+			    kingY++;
+			}
+		    }
+		    if (Louis.xCoord < Woo.two.B2.xCoord && Louis.yCoord > Woo.two.B2.yCoord){
+			int kingX = Louis.xCoord;
+			int b2X = Woo.two.B2.xCoord;
+			int kingY = Louis.yCoord;
+			int b2Y = Woo.two.B2.yCoord;
+			while(kingX<b2X && kingY>b2Y){
+			    canEated = canEated && dangerCheck(Woo.two.color, kingX, b2Y); 
+			    kingX++;
+			    b2Y++;
+			}
+		    }
+		    if (Louis.xCoord > Woo.two.B2.xCoord && Louis.yCoord < Woo.two.B2.yCoord){
+			int kingX = Louis.xCoord;
+			int b2X = Woo.two.B2.xCoord;
+			int kingY = Louis.yCoord;
+			int b2Y = Woo.two.B2.yCoord;
+			while(kingX>b2X && kingY<b2Y){
+			    canEated = canEated && dangerCheck(Woo.two.color, b2X, kingY); 
+			    b2X++;
+			    kingY++;
+			}
+		    }
+		}
+	    }
 	}
-	return inCheck || canEated || kingMove;
+    return inCheck || !canEated || !kingMove;
     }
 }
+
