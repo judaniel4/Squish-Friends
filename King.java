@@ -54,6 +54,56 @@ public class King extends Squishies{
 	ArrayList<String> retArr = new ArrayList<String>(); 
 	for(String[] row: Woo.currentBoard.getBoard()){
 	    for(String piece: row){
+		if (Woo.one.color.equals(this.color)){
+		    if (!piece.equals("E")){
+			if(piece.equals("Q"))
+			    {
+				if(canMove(Woo.one.Q.xCoord, Woo.one.Q.yCoord, this.xCoord, this.yCoord))
+			       {
+				    retArr.add("Q");
+			       }
+			    }
+			if(piece.equals("P")){
+			    if(canMove(Woo.one.P1.xCoord, Woo.one.P1.yCoord, this.xCoord, this.yCoord)
+			       || canMove(Woo.one.P2.xCoord, Woo.one.P2.yCoord, this.xCoord, this.yCoord)
+			       || canMove(Woo.one.P3.xCoord, Woo.one.P3.yCoord, this.xCoord, this.yCoord)
+			       || canMove(Woo.one.P4.xCoord, Woo.one.P4.yCoord, this.xCoord, this.yCoord)
+			       || canMove(Woo.one.P5.xCoord, Woo.one.P5.yCoord, this.xCoord, this.yCoord)
+			       || canMove(Woo.one.P6.xCoord, Woo.one.P6.yCoord, this.xCoord, this.yCoord)
+			       || canMove(Woo.one.P7.xCoord, Woo.one.P7.yCoord, this.xCoord, this.yCoord)
+			       || canMove(Woo.one.P8.xCoord, Woo.one.P8.yCoord, this.xCoord, this.yCoord))
+				{
+				    retArr.add("P");
+				}
+			}
+			if(piece.equals("N")){
+			    if(canMove(Woo.one.N1.xCoord, Woo.one.N1.yCoord, this.xCoord, this.yCoord)
+			       || canMove(Woo.one.N2.xCoord, Woo.one.N2.yCoord, this.xCoord, this.yCoord))
+				{
+				    retArr.add("N");
+				}
+			}
+			if(piece.equals("B")){
+			    if (canMove(Woo.one.B1.xCoord, Woo.one.B1.yCoord, this.xCoord, this.yCoord)
+				|| canMove(Woo.one.B2.xCoord, Woo.one.B2.yCoord, this.xCoord, this.yCoord))
+				{
+				    retArr.add("B");	    
+				}
+			}
+			if(piece.equals("R")){
+			    if(canMove(Woo.one.R1.xCoord, Woo.one.R1.yCoord, this.xCoord, this.yCoord)
+			       || canMove(Woo.one.R2.xCoord, Woo.one.R2.yCoord, this.xCoord, this.yCoord))
+				{
+				    retArr.add("R");
+				}
+			}
+			if(piece.equals("K")){
+			    if (canMove(Woo.one.K.xCoord, Woo.one.K.yCoord, this.xCoord, this.yCoord)){
+				retArr.add("K");
+			    }
+			}
+		    }
+		}
 		if (Woo.two.color.equals(this.color)){
 		    if (!piece.equals("E")){
 			if(piece.equals("Q"))
@@ -64,7 +114,7 @@ public class King extends Squishies{
 			       }
 			    }
 			if(piece.equals("P")){
-			    if(canMove(Woo.one.P1.xCoord, Woo.one.P1.yCoord, this.xCoord, this.yCoord)
+			    if(canMove(Woo.two.P1.xCoord, Woo.two.P1.yCoord, this.xCoord, this.yCoord)
 			       || canMove(Woo.two.P2.xCoord, Woo.two.P2.yCoord, this.xCoord, this.yCoord)
 			       || canMove(Woo.two.P3.xCoord, Woo.two.P3.yCoord, this.xCoord, this.yCoord)
 			       || canMove(Woo.two.P4.xCoord, Woo.two.P4.yCoord, this.xCoord, this.yCoord)
@@ -84,21 +134,21 @@ public class King extends Squishies{
 				}
 			}
 			if(piece.equals("B")){
-			    if (canMove(Woo.one.B1.xCoord, Woo.one.B1.yCoord, this.xCoord, this.yCoord)
+			    if (canMove(Woo.two.B1.xCoord, Woo.two.B1.yCoord, this.xCoord, this.yCoord)
 				|| canMove(Woo.two.B2.xCoord, Woo.two.B2.yCoord, this.xCoord, this.yCoord))
 				{
 				    retArr.add("B");	    
 				}
 			}
 			if(piece.equals("R")){
-			    if(canMove(Woo.one.R1.xCoord, Woo.one.R1.yCoord, this.xCoord, this.yCoord)
+			    if(canMove(Woo.two.R1.xCoord, Woo.two.R1.yCoord, this.xCoord, this.yCoord)
 			       || canMove(Woo.two.R2.xCoord, Woo.two.R2.yCoord, this.xCoord, this.yCoord))
 				{
 				    retArr.add("R");
 				}
 			}
 			if(piece.equals("K")){
-			    if (canMove(Woo.one.K.xCoord, Woo.one.K.yCoord, this.xCoord, this.yCoord)){
+			    if (canMove(Woo.two.K.xCoord, Woo.two.K.yCoord, this.xCoord, this.yCoord)){
 				retArr.add("K");
 			    }
 			}
