@@ -29,6 +29,7 @@ public class King extends Squishies{
     }
     public boolean canMove(int startX, int startY, int destinationX, int destinationY){
 	boolean retBoo = false;
+	//checks to see if position entered is a valid move for a king
 	if (startY==destinationY){
 	    if (startX-destinationX == 1 || destinationX-startX==1){
 		retBoo = true;
@@ -44,6 +45,7 @@ public class King extends Squishies{
 		 retBoo = true;
 	     }
 	}
-	return retBoo;
+	//checks to see if the king will be in check if it moves to the position entered
+	return retBoo && dangerCheck(this.color, destinationX, destinationY);
     }
 }
