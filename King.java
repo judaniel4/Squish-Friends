@@ -50,7 +50,7 @@ public class King extends Squishies{
 	return retBoo && dangerCheck(this.color, destinationX, destinationY);
     }
     //Should return an Arraylist of which pieces are checking the King
-    public ArrayList checkKing(){
+    public ArrayList<String> checkKing(){
 	ArrayList<String> retArr = new ArrayList<String>(); 
 	for(String[] row: Woo.currentBoard.getBoard()){
 	    for(String piece: row){
