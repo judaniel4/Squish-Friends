@@ -86,13 +86,6 @@ public class Woo{
 	    boolean spaceEmpty = one.noPieceThere(coordX, coordY, currentBoard);
 	    boolean repeat = false;
 	    String canMove = one.CanMove(firstMPiece, coordX, coordY, currentBoard);
-	    /*  while(canMove.length() > 2){
-		System.out.println("Two different pieces of the chosen type can move to the desired destination. Please specify the x,y coordinate of the piece you desire to move.");
-		startLocation = scanner.next();
-		startX = Integer.parseInt(startLocation.substring(0,1));
-		startY = Integer.parseInt(startLocation.substring(2,3));
-	        one.forceMove(startX, startY, 
-		}*/
 	    while (canMove.length() == 0){
 		System.out.println("Invalid move selected. Please select a piece to move.");
 		firstMPiece = scanner.next();
@@ -140,22 +133,54 @@ public class Woo{
 	    Destination = scanner.next();
 	    coordX = Integer.parseInt(Destination.substring(0,1));
 	    coordY = Integer.parseInt(Destination.substring(2,3));
-	    newBoard = (two.move(firstMPiece.toLowerCase(), coordX, coordY, currentBoard));
-	    while (sameBoard(newBoard)){
+	    spaceEmpty = two.noPieceThere(coordX, coordY, currentBoard);
+	    repeat = false;
+	    canMove = two.CanMove(firstMPiece, coordX, coordY, currentBoard);
+	    while (canMove.length() == 0){
 		System.out.println("Invalid move selected. Please select a piece to move.");
 		firstMPiece = scanner.next();
 		System.out.println("Please select the destination. Please use the format: x,y. Use the coordinate system on the side of the board.");
 		Destination = scanner.next();
 		coordX = Integer.parseInt(Destination.substring(0,1));
 		coordY = Integer.parseInt(Destination.substring(2,3));
-		newBoard = (two.move(firstMPiece.toLowerCase(), coordX, coordY, currentBoard));
+	        canMove = two.CanMove(firstMPiece, coordX, coordY, currentBoard);
+	    }
+	    if(spaceEmpty){
+	        two.move(canMove, coordX, coordY, currentBoard);
+	    }
+	    else{
+		boolean ownPiece = two.ownPieceThere(coordX, coordY, currentBoard);
+		if (ownPiece){
+		    String toKill = two.killPiece(coordX, coordY, currentBoard);
+		    one.pieceDeath(toKill, coordX, coordY);
+		    two.move(canMove, coordX, coordY, currentBoard);
+		}
+		else{
+		    System.out.println("Cannot move to a space occupied by your piece.");
+		    repeat = true;
+		}
+	    }
+	    while (repeat){
+		System.out.println("Invalid move selected. Please select a piece to move.");
+		firstMPiece = scanner.next();
+		System.out.println("Please select the destination. Please use the format: x,y. Use the coordinate system on the side of the board.");
+		Destination = scanner.next();
+		coordX = Integer.parseInt(Destination.substring(0,1));
+		coordY = Integer.parseInt(Destination.substring(2,3));
 	    }
 	    currentBoard = newBoard;
 	    System.out.println("Board After Move:");
 	    printBoard(numSwitch);
 	    System.out.println(" ");
 	}
-		    
+
+
+
+
+
+
+
+	
 	else{
 	    numSwitch = 0;
 	    playerNum = 1;
@@ -165,15 +190,40 @@ public class Woo{
 	    String Destination = scanner.next();
 	    int coordX = Integer.parseInt(Destination.substring(0,1));
 	    int coordY = Integer.parseInt(Destination.substring(2,3));
-	    newBoard = (two.move(firstMPiece.toLowerCase(), coordX, coordY, currentBoard));
-	    while (sameBoard(newBoard)){
+	    boolean spaceEmpty = one.noPieceThere(coordX, coordY, currentBoard);
+	    boolean repeat = false;
+	    String canMove = two.CanMove(firstMPiece, coordX, coordY, currentBoard);
+	    while (canMove.length() == 0){
 		System.out.println("Invalid move selected. Please select a piece to move.");
 		firstMPiece = scanner.next();
 		System.out.println("Please select the destination. Please use the format: x,y. Use the coordinate system on the side of the board.");
 		Destination = scanner.next();
 		coordX = Integer.parseInt(Destination.substring(0,1));
 		coordY = Integer.parseInt(Destination.substring(2,3));
-		newBoard = (two.move(firstMPiece.toLowerCase(), coordX, coordY, currentBoard));
+	        canMove = two.CanMove(firstMPiece, coordX, coordY, currentBoard);
+	    }
+	    if(spaceEmpty){
+	        two.move(canMove, coordX, coordY, currentBoard);
+	    }
+	    else{
+		boolean ownPiece = two.ownPieceThere(coordX, coordY, currentBoard);
+		if (ownPiece){
+		    String toKill = two.killPiece(coordX, coordY, currentBoard);
+		    one.pieceDeath(toKill, coordX, coordY);
+		    two.move(canMove, coordX, coordY, currentBoard);
+		}
+		else{
+		    System.out.println("Cannot move to a space occupied by your piece.");
+		    repeat = true;
+		}
+	    }
+	    while (repeat){
+		System.out.println("Invalid move selected. Please select a piece to move.");
+		firstMPiece = scanner.next();
+		System.out.println("Please select the destination. Please use the format: x,y. Use the coordinate system on the side of the board.");
+		Destination = scanner.next();
+		coordX = Integer.parseInt(Destination.substring(0,1));
+		coordY = Integer.parseInt(Destination.substring(2,3));
 	    }
 	    currentBoard = newBoard;
 	    System.out.println("Board After Move:");
@@ -190,21 +240,52 @@ public class Woo{
 	    Destination = scanner.next();
 	    coordX = Integer.parseInt(Destination.substring(0,1));
 	    coordY = Integer.parseInt(Destination.substring(2,3));
-	    newBoard = (one.move(firstMPiece.toLowerCase(), coordX, coordY, currentBoard));
-	    while (sameBoard(newBoard)){
+	    spaceEmpty = one.noPieceThere(coordX, coordY, currentBoard);
+	    repeat = false;
+	    canMove = one.CanMove(firstMPiece, coordX, coordY, currentBoard);
+	    while (canMove.length() == 0){
 		System.out.println("Invalid move selected. Please select a piece to move.");
 		firstMPiece = scanner.next();
 		System.out.println("Please select the destination. Please use the format: x,y. Use the coordinate system on the side of the board.");
 		Destination = scanner.next();
 		coordX = Integer.parseInt(Destination.substring(0,1));
 		coordY = Integer.parseInt(Destination.substring(2,3));
-		newBoard = (one.move(firstMPiece.toLowerCase(), coordX, coordY, currentBoard));
+	        canMove = one.CanMove(firstMPiece, coordX, coordY, currentBoard);
+	    }
+	    if(spaceEmpty){
+	        one.move(canMove, coordX, coordY, currentBoard);
+	    }
+	    else{
+		boolean ownPiece = one.ownPieceThere(coordX, coordY, currentBoard);
+		if (ownPiece){
+		    String toKill = one.killPiece(coordX, coordY, currentBoard);
+		    two.pieceDeath(toKill, coordX, coordY);
+		    one.move(canMove, coordX, coordY, currentBoard);
+		}
+		else{
+		    System.out.println("Cannot move to a space occupied by your piece.");
+		    repeat = true;
+		}
+	    }
+	    while (repeat){
+		System.out.println("Invalid move selected. Please select a piece to move.");
+		firstMPiece = scanner.next();
+		System.out.println("Please select the destination. Please use the format: x,y. Use the coordinate system on the side of the board.");
+		Destination = scanner.next();
+		coordX = Integer.parseInt(Destination.substring(0,1));
+		coordY = Integer.parseInt(Destination.substring(2,3));
 	    }
 	    currentBoard = newBoard;
 	    System.out.println("Board After Move:");
 	    printBoard(numSwitch);
 	    System.out.println(" ");
 	}
+
+
+
+
+
+	
 	while (one.checkmate == false && two.checkmate == false){
 	    if (playerNum == 1){
 		numSwitch = 0;
@@ -218,15 +299,40 @@ public class Woo{
 		String destination = scanner.next();
 		int CoordX = Integer.parseInt(destination.substring(0,1));
 		int CoordY = Integer.parseInt(destination.substring(2,3));
-		newBoard = (one.move(MPiece.toLowerCase(), CoordX, CoordY, currentBoard));
-		while (sameBoard(newBoard)){
+		boolean spaceEmpty = one.noPieceThere(CoordX, CoordY, currentBoard);
+		boolean repeat = false;
+		String canMove = one.CanMove(MPiece, CoordX, CoordY, currentBoard);
+		while (canMove.length() == 0){
 		    System.out.println("Invalid move selected. Please select a piece to move.");
 		    MPiece = scanner.next();
 		    System.out.println("Please select the destination. Please use the format: x,y. Use the coordinate system on the side of the board.");
 		    destination = scanner.next();
 		    CoordX = Integer.parseInt(destination.substring(0,1));
 		    CoordY = Integer.parseInt(destination.substring(2,3));
-		    newBoard = (one.move(MPiece.toLowerCase(), CoordX, CoordY, currentBoard));
+		    canMove = one.CanMove(MPiece, CoordX, CoordY, currentBoard);
+		}
+		if(spaceEmpty){
+		    one.move(canMove, CoordX, CoordY, currentBoard);
+		}
+		else{
+		    boolean ownPiece = one.ownPieceThere(CoordX, CoordY, currentBoard);
+		    if (ownPiece){
+			String toKill = one.killPiece(CoordX, CoordY, currentBoard);
+			two.pieceDeath(toKill, CoordX, CoordY);
+			one.move(canMove, CoordX, CoordY, currentBoard);
+		    }
+		    else{
+			System.out.println("Cannot move to a space occupied by your piece.");
+			repeat = true;
+		    }
+		}
+		while (repeat){
+		    System.out.println("Invalid move selected. Please select a piece to move.");
+		    MPiece = scanner.next();
+		    System.out.println("Please select the destination. Please use the format: x,y. Use the coordinate system on the side of the board.");
+		    destination = scanner.next();
+		    CoordX = Integer.parseInt(destination.substring(0,1));
+		    CoordY = Integer.parseInt(destination.substring(2,3));
 		}
 		currentBoard = newBoard;
 		System.out.println("Board After Move:");
@@ -243,21 +349,52 @@ public class Woo{
 		destination = scanner.next();
 		CoordX = Integer.parseInt(destination.substring(0,1));
 		CoordY = Integer.parseInt(destination.substring(2,3));
-		newBoard = (two.move(MPiece.toLowerCase(), CoordX, CoordY, currentBoard));
-		while (sameBoard(newBoard)){
+		spaceEmpty = two.noPieceThere(CoordX, CoordY, currentBoard);
+		repeat = false;
+		canMove = two.CanMove(MPiece, CoordX, CoordY, currentBoard);
+		while (canMove.length() == 0){
 		    System.out.println("Invalid move selected. Please select a piece to move.");
 		    MPiece = scanner.next();
 		    System.out.println("Please select the destination. Please use the format: x,y. Use the coordinate system on the side of the board.");
 		    destination = scanner.next();
 		    CoordX = Integer.parseInt(destination.substring(0,1));
 		    CoordY = Integer.parseInt(destination.substring(2,3));
-		    newBoard = (two.move(MPiece.toLowerCase(), CoordX, CoordY, currentBoard));
+		    canMove = two.CanMove(MPiece, CoordX, CoordY, currentBoard);
+		}
+		if(spaceEmpty){
+		    two.move(canMove, CoordX, CoordY, currentBoard);
+		}
+		else{
+		    boolean ownPiece = two.ownPieceThere(CoordX, CoordY, currentBoard);
+		    if (ownPiece){
+			String toKill = two.killPiece(CoordX, CoordY, currentBoard);
+			one.pieceDeath(toKill, CoordX, CoordY);
+			two.move(canMove, CoordX, CoordY, currentBoard);
+		    }
+		    else{
+			System.out.println("Cannot move to a space occupied by your piece.");
+			repeat = true;
+		    }
+		}
+		while (repeat){
+		    System.out.println("Invalid move selected. Please select a piece to move.");
+		    MPiece = scanner.next();
+		    System.out.println("Please select the destination. Please use the format: x,y. Use the coordinate system on the side of the board.");
+		    destination = scanner.next();
+		    CoordX = Integer.parseInt(destination.substring(0,1));
+		    CoordY = Integer.parseInt(destination.substring(2,3));
 		}
 		currentBoard = newBoard;
 		System.out.println("Board After Move:");
 		printBoard(numSwitch);
 		System.out.println(" ");
 	    }
+
+
+
+
+
+	    
 	    else{
 		System.out.println("It is Player two's turn now!");
 		numSwitch = 0;
@@ -270,15 +407,40 @@ public class Woo{
 		String destination = scanner.next();
 		int CoordX = Integer.parseInt(destination.substring(0,1));
 		int CoordY = Integer.parseInt(destination.substring(2,3));
-		newBoard = (two.move(MPiece.toLowerCase(), CoordX, CoordY, currentBoard));
-		while (sameBoard(newBoard)){
+		boolean spaceEmpty = two.noPieceThere(CoordX, CoordY, currentBoard);
+		boolean repeat = false;
+		String canMove = two.CanMove(MPiece, CoordX, CoordY, currentBoard);
+		while (canMove.length() == 0){
 		    System.out.println("Invalid move selected. Please select a piece to move.");
 		    MPiece = scanner.next();
 		    System.out.println("Please select the destination. Please use the format: x,y. Use the coordinate system on the side of the board.");
 		    destination = scanner.next();
 		    CoordX = Integer.parseInt(destination.substring(0,1));
 		    CoordY = Integer.parseInt(destination.substring(2,3));
-		    newBoard = (two.move(MPiece.toLowerCase(), CoordX, CoordY, currentBoard));
+		    canMove = two.CanMove(MPiece, CoordX, CoordY, currentBoard);
+		}
+		if(spaceEmpty){
+		    two.move(canMove, CoordX, CoordY, currentBoard);
+		}
+		else{
+		    boolean ownPiece = two.ownPieceThere(CoordX, CoordY, currentBoard);
+		    if (ownPiece){
+			String toKill = two.killPiece(CoordX, CoordY, currentBoard);
+			one.pieceDeath(toKill, CoordX, CoordY);
+			two.move(canMove, CoordX, CoordY, currentBoard);
+		    }
+		    else{
+			System.out.println("Cannot move to a space occupied by your piece.");
+			repeat = true;
+		    }
+		}
+		while (repeat){
+		    System.out.println("Invalid move selected. Please select a piece to move.");
+		    MPiece = scanner.next();
+		    System.out.println("Please select the destination. Please use the format: x,y. Use the coordinate system on the side of the board.");
+		    destination = scanner.next();
+		    CoordX = Integer.parseInt(destination.substring(0,1));
+		    CoordY = Integer.parseInt(destination.substring(2,3));
 		}
 		currentBoard = newBoard;
 		System.out.println("Board After Move:");
@@ -295,15 +457,40 @@ public class Woo{
 		destination = scanner.next();
 		CoordX = Integer.parseInt(destination.substring(0,1));
 		CoordY = Integer.parseInt(destination.substring(2,3));
-		newBoard = (one.move(MPiece.toLowerCase(), CoordX, CoordY, currentBoard));
-		while (sameBoard(newBoard)){
+		spaceEmpty = one.noPieceThere(CoordX, CoordY, currentBoard);
+		repeat = false;
+		canMove = one.CanMove(MPiece, CoordX, CoordY, currentBoard);
+		while (canMove.length() == 0){
 		    System.out.println("Invalid move selected. Please select a piece to move.");
 		    MPiece = scanner.next();
 		    System.out.println("Please select the destination. Please use the format: x,y. Use the coordinate system on the side of the board.");
 		    destination = scanner.next();
 		    CoordX = Integer.parseInt(destination.substring(0,1));
 		    CoordY = Integer.parseInt(destination.substring(2,3));
-		    newBoard = (one.move(MPiece.toLowerCase(), CoordX, CoordY, currentBoard));
+		    canMove = one.CanMove(MPiece, CoordX, CoordY, currentBoard);
+		}
+		if(spaceEmpty){
+		    one.move(canMove, CoordX, CoordY, currentBoard);
+		}
+		else{
+		    boolean ownPiece = one.ownPieceThere(CoordX, CoordY, currentBoard);
+		    if (ownPiece){
+			String toKill = one.killPiece(CoordX, CoordY, currentBoard);
+			two.pieceDeath(toKill, CoordX, CoordY);
+			one.move(canMove, CoordX, CoordY, currentBoard);
+		    }
+		    else{
+			System.out.println("Cannot move to a space occupied by your piece.");
+			repeat = true;
+		    }
+		}
+		while (repeat){
+		    System.out.println("Invalid move selected. Please select a piece to move.");
+		    MPiece = scanner.next();
+		    System.out.println("Please select the destination. Please use the format: x,y. Use the coordinate system on the side of the board.");
+		    destination = scanner.next();
+		    CoordX = Integer.parseInt(destination.substring(0,1));
+		    CoordY = Integer.parseInt(destination.substring(2,3));
 		}
 		currentBoard = newBoard;
 		System.out.println("Board After Move:");
@@ -313,3 +500,11 @@ public class Woo{
 	}	
     }
 }
+
+ /*  while(canMove.length() > 2){
+		System.out.println("Two different pieces of the chosen type can move to the desired destination. Please specify the x,y coordinate of the piece you desire to move.");
+		startLocation = scanner.next();
+		startX = Integer.parseInt(startLocation.substring(0,1));
+		startY = Integer.parseInt(startLocation.substring(2,3));
+	        one.forceMove(startX, startY, 
+		}*/

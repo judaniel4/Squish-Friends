@@ -184,7 +184,7 @@ public class Player{
     public String killPiece(int coordX, int coordY, Board b){
 	String pieceToKill = b.getLocation(coordX, coordY);
 	b.setPieceLocation("E", coordX, coordY);
-	return PieceToKill;
+	return pieceToKill;
     }
     public void pieceDeath(String p, int coordX, int coordY){
 	if (p.equals("P")){
@@ -307,84 +307,84 @@ public class Player{
     }
     public void move(String piece, int coordX, int coordY, Board B){
 	if (piece.equals("P1")){
-	    b.setBoard(P1.xCoord, P1.yCoord, coordX, coordY);
+	    B.setBoard(P1.xCoord, P1.yCoord, coordX, coordY);
 	    P1.xCoord = coordX;
 	    P1.yCoord = coordY;
 	}
 	else if (piece.equals("P2")){
-	    b.setBoard(P2.xCoord, P2.yCoord, coordX, coordY);
+	    B.setBoard(P2.xCoord, P2.yCoord, coordX, coordY);
 	    P2.xCoord = coordX;
 	    P2.yCoord = coordY;
 	    }
 	else if (piece.equals("P3")){
-	    b.setBoard(P3.xCoord, P3.yCoord, coordX, coordY);
+	    B.setBoard(P3.xCoord, P3.yCoord, coordX, coordY);
 	    P3.xCoord = coordX;
 	    P3.yCoord = coordY;
 	}
 	else if (piece.equals("P4")){
-	    b.setBoard(P4.xCoord, P4.yCoord, coordX, coordY);
+	    B.setBoard(P4.xCoord, P4.yCoord, coordX, coordY);
 	    P4.xCoord = coordX;
 	    P4.yCoord = coordY;
 	}
 	else if (piece.equals("P5")){
-	    b.setBoard(P5.xCoord, P5.yCoord, coordX, coordY);
+	    B.setBoard(P5.xCoord, P5.yCoord, coordX, coordY);
 	    P5.xCoord = coordX;
 	    P5.yCoord = coordY;
 	}
 	else if (piece.equals("P6")){
-	    b.setBoard(P6.xCoord, P6.yCoord, coordX, coordY);
+	    B.setBoard(P6.xCoord, P6.yCoord, coordX, coordY);
 	    P6.xCoord = coordX;
 	    P6.yCoord = coordY;
 	}
 	else if (piece.equals("P7")){
-	    b.setBoard(P7.xCoord, P7.yCoord, coordX, coordY);
+	    B.setBoard(P7.xCoord, P7.yCoord, coordX, coordY);
 	    P7.xCoord = coordX;
 	    P7.yCoord = coordY;
 	}
 	else if (piece.equals("P8")){
-	    b.setBoard(P8.xCoord, P8.yCoord, coordX, coordY);
+	    B.setBoard(P8.xCoord, P8.yCoord, coordX, coordY);
 	    P8.xCoord = coordX;
 	    P8.yCoord = coordY;
 	}
 	else if (piece.equals("R1")){
-	    b.setBoard(R1.xCoord, R1.yCoord, coordX, coordY);
+	    B.setBoard(R1.xCoord, R1.yCoord, coordX, coordY);
 	    R1.xCoord = coordX;
 	    R1.yCoord = coordY;
 	}
 	if (piece.equals("R2")){
-		b.setBoard(R2.xCoord, R2.yCoord, coordX, coordY);
+		B.setBoard(R2.xCoord, R2.yCoord, coordX, coordY);
 		R2.xCoord = coordX;
 		R2.yCoord = coordY;
 	}
 	else if (piece.equals("N1")){
-	    b.setBoard(N1.xCoord, N1.yCoord, coordX, coordY);
+	    B.setBoard(N1.xCoord, N1.yCoord, coordX, coordY);
 	    N1.xCoord = coordX;
 	    N1.yCoord = coordY;
 	}
 	else if (piece.equals("N2")){
-	    b.setBoard(N2.xCoord, N2.yCoord, coordX, coordY);
+	    B.setBoard(N2.xCoord, N2.yCoord, coordX, coordY);
 	    N2.xCoord = coordX;
 	    N2.yCoord = coordY;
 	}
 	else if (piece.equals("B1")){
-	    b.setBoard(B1.xCoord, B1.yCoord, coordX, coordY);
+	    B.setBoard(B1.xCoord, B1.yCoord, coordX, coordY);
 	    B1.xCoord = coordX;
 	    B1.yCoord = coordY;
 	}
 	else if (piece.equals("B2")){
-	    b.setBoard(B2.xCoord, B2.yCoord, coordX, coordY);
+	    B.setBoard(B2.xCoord, B2.yCoord, coordX, coordY);
 	    B2.xCoord = coordX;
 	    B2.yCoord = coordY;
 	}
 	
 	else if (piece.equals("Q")){
-	    b.setBoard(Q.xCoord, Q.yCoord, coordX, coordY);
+	    B.setBoard(Q.xCoord, Q.yCoord, coordX, coordY);
 	    Q.xCoord = coordX;
 	    Q.yCoord = coordY;
 	}
 	
 	else if (piece.equals("K")){
-	    b.setBoard(K.xCoord, K.yCoord, coordX, coordY);
+	    B.setBoard(K.xCoord, K.yCoord, coordX, coordY);
 	    K.xCoord = coordX;
 	    K.yCoord = coordY;
 	}
