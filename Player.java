@@ -1151,5 +1151,12 @@ public class Player{
 	}
 	return inCheck && !canEated && !kingMove;
     }
+
+    public void promote(Pawn transformer, Squishies thing, Board b){
+	if((transformer.color == "white") && (transformer.xCoord == 7)){
+	    killPiece(transformer.xCoord, transformer.yCoord, b);
+	    //places this piece there
+	}
+    }
 }
 
