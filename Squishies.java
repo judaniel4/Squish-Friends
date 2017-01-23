@@ -16,6 +16,7 @@ public abstract class Squishies{
     public boolean canEat(Squishies food, Squishies eater){
 	return canMove(eater.xCoord, eater.yCoord, food.xCoord, food.yCoord);
     }
+    /*
     public boolean dangerCheck(String colour, int x, int y){
 	boolean retBoo = false;
 	for(String[] row: Woo.currentBoard.getBoard()){
@@ -643,6 +644,6 @@ public abstract class Squishies{
 	    }
 	}
     return inCheck || !canEated || !kingMove;
-    }
+    }*/
 }
 

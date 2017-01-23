@@ -28,7 +28,7 @@ public class Woo{
 	}
     }
 
-    public static void printBoard(int p){
+    public static void printBoard(int p){ //Depending on which color the current player is, the board needs to be flipped to their perspective without actually changing the board. 
 	if (p == 0){
 	    currentBoard.flipBoard();
 	}
@@ -36,22 +36,7 @@ public class Woo{
 	    currentBoard.printBoard();
 	}
     }
-    public static boolean sameBoard(Board b){
-	//Returns true if the boards are identical
-	boolean retBol = true;
-	boolean helperBol;
-	for (int i = 0; i < 8; i ++){
-	    for (int a = 0; a < 8; a ++){
-		helperBol = currentBoard.getLocation(i,a).equals(b.getLocation(i,a));
-	        if (helperBol){
-		}
-		else{
-		    return false;
-		}
-	    }
-	}
-	return retBol;
-    }
+ 
     public static void main(String[] args){
 
 	Scanner scanner = new Scanner(System.in);
@@ -61,7 +46,7 @@ public class Woo{
 	
 	String color = scanner.next();
 
-	if (color.toLowerCase().equals("white")){
+	if (color.toLowerCase().equals("white")){ //Initializing players' colors
 	    one = new Player("white");
 	    two = new Player("black");
 	}
@@ -70,11 +55,10 @@ public class Woo{
 	    two = new Player("white");
 	}
         currentBoard = new Board();
-	Board newBoard = new Board();
 	System.out.println("Here is the board:");
         printBoard(numSwitch);
 	System.out.println(" ");
-	if (one.color.equals("white")){
+	if (one.color.equals("white")){ //This is the code for the first move of the 2 players
 	    numSwitch = 0;
 	    playerNum = 0;
 	    System.out.println("Player one will go first since he/she is white. It is the first turn! Please select the piece you would like to move. (Please use the first letter, use 'n' for knight)");
@@ -86,7 +70,7 @@ public class Woo{
 	    boolean spaceEmpty = one.noPieceThere(coordX, coordY, currentBoard);
 	    boolean repeat = false;
 	    String canMove = one.CanMove(firstMPiece, coordX, coordY, currentBoard);
-	    while (canMove.length() == 0){
+	    while (canMove.length() == 0){ //If the list of pieces that can move to the destination is empty, then returns error that the move is invalid.
 		System.out.println("Invalid move selected. Please select a piece to move.");
 		firstMPiece = scanner.next();
 		System.out.println("Please select the destination. Please use the format: x,y. Use the coordinate system on the side of the board.");
@@ -95,22 +79,22 @@ public class Woo{
 		coordY = Integer.parseInt(Destination.substring(2,3));
 	        canMove = one.CanMove(firstMPiece, coordX, coordY, currentBoard);
 	    }
-	    if(spaceEmpty){
+	    if(spaceEmpty){ //If a piece can move to destination and destination is empyy, the piece moves there
 	        currentBoard = one.move(canMove, coordX, coordY, currentBoard);
 	    }
 	    else{
-		boolean ownPiece = one.ownPieceThere(coordX, coordY, currentBoard);
+		boolean ownPiece = one.ownPieceThere(coordX, coordY, currentBoard); //If the destination is occupied by an enemy piece, it takes the piece if possible
 		if (ownPiece){
 		    String toKill = one.killPiece(coordX, coordY, currentBoard);
 		    two.pieceDeath(toKill, coordX, coordY);
 		    currentBoard = one.move(canMove, coordX, coordY, currentBoard);
 		}
-		else{
+		else{ //If the piece occupying the destination is occupied by a friendly piece, return an error, invalid move
 		    System.out.println("Cannot move to a space occupied by your piece.");
 		    repeat = true;
 		}
 	    }
-	    while (repeat){
+	    while (repeat){ //If an error occurs, this repeats the turn
 		System.out.println("Invalid move selected. Please select a piece to move.");
 		firstMPiece = scanner.next();
 		System.out.println("Please select the destination. Please use the format: x,y. Use the coordinate system on the side of the board.");
@@ -154,7 +138,7 @@ public class Woo{
 		if (ownPiece){
 		    String toKill = two.killPiece(coordX, coordY, currentBoard);
 		    one.pieceDeath(toKill, coordX, coordY);
-		     currentBoard = two.move(canMove, coordX, coordY, currentBoard);
+		    currentBoard = two.move(canMove, coordX, coordY, currentBoard);
 		}
 		else{
 		    System.out.println("Cannot move to a space occupied by your piece.");
@@ -210,7 +194,7 @@ public class Woo{
 		if (ownPiece){
 		    String toKill = two.killPiece(coordX, coordY, currentBoard);
 		    one.pieceDeath(toKill, coordX, coordY);
-		     currentBoard = two.move(canMove, coordX, coordY, currentBoard);
+		    currentBoard = two.move(canMove, coordX, coordY, currentBoard);
 		}
 		else{
 		    System.out.println("Cannot move to a space occupied by your piece.");
@@ -280,9 +264,9 @@ public class Woo{
 	}
 
 
-
-
-
+	boolean check = false;
+	boolean mate = false;
+	Board copy = new Board();
 	
 	while (one.checkmate == false && two.checkmate == false){
 	    if (playerNum == 1){
@@ -291,6 +275,15 @@ public class Woo{
 		System.out.println("It is Player one's turn now!");
 		printBoard(numSwitch);
 		System.out.println(" ");
+		check = one.isCheck(one.K);
+		mate = one.checkMate(one.K);
+		if (check){
+		    if (mate){
+			System.out.println("You have been defeated.");
+			break;
+		    }
+		    System.out.println("Your king is in check. You must either move him out of the way or block the check");
+		}
 		System.out.println("Please select the piece you would like to move. (Please use the first letter, use 'n' for knight)");
 		String MPiece = scanner.next();
 		System.out.println("Please select the destination. Please use the format: x,y");
@@ -310,14 +303,29 @@ public class Woo{
 		    canMove = one.CanMove(MPiece, CoordX, CoordY, currentBoard);
 		}
 		if(spaceEmpty){
-		     currentBoard = one.move(canMove, CoordX, CoordY, currentBoard);
+		    copy = currentBoard;
+		    currentBoard = one.move(canMove, CoordX, CoordY, currentBoard);
+		    check = one.isCheck(one.K);
+		    if (check){
+			System.out.println("Still in check, invalid move.");
+			repeat = true;
+			currentBoard = copy;
+		    }
 		}
 		else{
 		    boolean ownPiece = one.ownPieceThere(CoordX, CoordY, currentBoard);
 		    if (ownPiece){
+			copy = currentBoard;
 			String toKill = one.killPiece(CoordX, CoordY, currentBoard);
 			two.pieceDeath(toKill, CoordX, CoordY);
-			 currentBoard = one.move(canMove, CoordX, CoordY, currentBoard);
+			currentBoard = one.move(canMove, CoordX, CoordY, currentBoard);
+			check = one.isCheck(one.K);
+			if (check){
+			    System.out.println("Still in check, invalid move.");
+			    repeat = true;
+			    currentBoard = copy;
+			    two.pieceRevive(toKill, CoordX, CoordY);
+			}
 		    }
 		    else{
 			System.out.println("Cannot move to a space occupied by your piece.");
@@ -338,6 +346,15 @@ public class Woo{
 		numSwitch = 1;
 		playerNum = 1;
 		System.out.println("It is Player two's (black) turn to move now!");
+		check = two.isCheck(two.K);
+		mate = two.checkMate(two.K);
+		if (check){
+		    if (mate){
+			System.out.println("You have been defeated.");
+			break;
+		    }
+		    System.out.println("Your king is in check. You must either move him out of the way or block the check");
+		}
 		printBoard(numSwitch);
 		System.out.println(" ");
 		System.out.println("Please select a piece to move.");
@@ -359,14 +376,29 @@ public class Woo{
 		    canMove = two.CanMove(MPiece, CoordX, CoordY, currentBoard);
 		}
 		if(spaceEmpty){
-		     currentBoard = two.move(canMove, CoordX, CoordY, currentBoard);
+		    copy = currentBoard;
+		    currentBoard = one.move(canMove, CoordX, CoordY, currentBoard);
+		    check = one.isCheck(one.K);
+		    if (check){
+			System.out.println("Still in check, invalid move.");
+			repeat = true;
+			currentBoard = copy;
+		    }
 		}
 		else{
-		    boolean ownPiece = two.ownPieceThere(CoordX, CoordY, currentBoard);
+		    boolean ownPiece = one.ownPieceThere(CoordX, CoordY, currentBoard);
 		    if (ownPiece){
-			String toKill = two.killPiece(CoordX, CoordY, currentBoard);
-			one.pieceDeath(toKill, CoordX, CoordY);
-			 currentBoard = two.move(canMove, CoordX, CoordY, currentBoard);
+			copy = currentBoard;
+			String toKill = one.killPiece(CoordX, CoordY, currentBoard);
+			two.pieceDeath(toKill, CoordX, CoordY);
+			currentBoard = one.move(canMove, CoordX, CoordY, currentBoard);
+			check = one.isCheck(one.K);
+			if (check){
+			    System.out.println("Still in check, invalid move.");
+			    repeat = true;
+			    currentBoard = copy;
+			    two.pieceRevive(toKill, CoordX, CoordY);
+			}
 		    }
 		    else{
 			System.out.println("Cannot move to a space occupied by your piece.");
@@ -397,6 +429,15 @@ public class Woo{
 		playerNum = 1;
 		printBoard(numSwitch);
 		System.out.println(" ");
+		check = two.isCheck(two.K);
+		mate = two.checkMate(two.K);
+		if (check){
+		    if (mate){
+			System.out.println("You have been defeated.");
+			break;
+		    }
+		    System.out.println("Your king is in check. You must either move him out of the way or block the check");
+		}
 		System.out.println("Please select the piece you would like to move. (Please use the first letter, use 'n' for knight)");
 		String MPiece = scanner.next();
 		System.out.println("Please select the destination. Please use the format: x,y");
@@ -416,15 +457,30 @@ public class Woo{
 		    canMove = two.CanMove(MPiece, CoordX, CoordY, currentBoard);
 		}
 		if(spaceEmpty){
-		     currentBoard = two.move(canMove, CoordX, CoordY, currentBoard);
+		    copy = currentBoard;
+		    currentBoard = one.move(canMove, CoordX, CoordY, currentBoard);
+		    check = one.isCheck(one.K);
+		    if (check){
+			System.out.println("Still in check, invalid move.");
+			repeat = true;
+			currentBoard = copy;
+		    }
 		}
 		else{
-		    boolean ownPiece = two.ownPieceThere(CoordX, CoordY, currentBoard);
-		    if (ownPiece){
-			String toKill = two.killPiece(CoordX, CoordY, currentBoard);
-			one.pieceDeath(toKill, CoordX, CoordY);
-			 currentBoard = two.move(canMove, CoordX, CoordY, currentBoard);
-		    }
+		   boolean ownPiece = one.ownPieceThere(CoordX, CoordY, currentBoard);
+		   if (ownPiece){
+		       copy = currentBoard;
+		       String toKill = one.killPiece(CoordX, CoordY, currentBoard);
+		       two.pieceDeath(toKill, CoordX, CoordY);
+		       currentBoard = one.move(canMove, CoordX, CoordY, currentBoard);
+		       check = one.isCheck(one.K);
+		       if (check){
+			   System.out.println("Still in check, invalid move.");
+			   repeat = true;
+			   currentBoard = copy;
+			   two.pieceRevive(toKill, CoordX, CoordY);
+		       }
+		   }
 		    else{
 			System.out.println("Cannot move to a space occupied by your piece.");
 			repeat = true;
@@ -446,6 +502,15 @@ public class Woo{
 		System.out.println("It is Player one's (black) turn to move now!");
 		printBoard(numSwitch);
 		System.out.println(" ");
+		check = one.isCheck(one.K);
+		mate = one.checkMate(one.K);
+		if (check){
+		    if (mate){
+			System.out.println("You have been defeated.");
+			break;
+		    }
+		    System.out.println("Your king is in check. You must either move him out of the way or block the check");
+		}
 		System.out.println("Please select a piece to move.");
 		MPiece = scanner.next();
 		System.out.println("Please select the destination. Please use the format: x,y");
@@ -465,14 +530,29 @@ public class Woo{
 		    canMove = one.CanMove(MPiece, CoordX, CoordY, currentBoard);
 		}
 		if(spaceEmpty){
-		     currentBoard = one.move(canMove, CoordX, CoordY, currentBoard);
+		    copy = currentBoard;
+		    currentBoard = one.move(canMove, CoordX, CoordY, currentBoard);
+		    check = one.isCheck(one.K);
+		    if (check){
+			System.out.println("Still in check, invalid move.");
+			repeat = true;
+			currentBoard = copy;
+		    }
 		}
 		else{
 		    boolean ownPiece = one.ownPieceThere(CoordX, CoordY, currentBoard);
 		    if (ownPiece){
+			copy = currentBoard;
 			String toKill = one.killPiece(CoordX, CoordY, currentBoard);
 			two.pieceDeath(toKill, CoordX, CoordY);
-			 currentBoard = one.move(canMove, CoordX, CoordY, currentBoard);
+			currentBoard = one.move(canMove, CoordX, CoordY, currentBoard);
+			check = one.isCheck(one.K);
+			if (check){
+			    System.out.println("Still in check, invalid move.");
+			    repeat = true;
+			    currentBoard = copy;
+			    two.pieceRevive(toKill, CoordX, CoordY);
+			}
 		    }
 		    else{
 			System.out.println("Cannot move to a space occupied by your piece.");
