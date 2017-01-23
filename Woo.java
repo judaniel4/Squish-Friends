@@ -169,7 +169,6 @@ public class Woo{
 		coordX = Integer.parseInt(Destination.substring(0,1));
 		coordY = Integer.parseInt(Destination.substring(2,3));
 	    }
-	    currentBoard = newBoard;
 	    System.out.println("Board After Move:");
 	    printBoard(numSwitch);
 	    System.out.println(" ");
@@ -226,7 +225,6 @@ public class Woo{
 		coordX = Integer.parseInt(Destination.substring(0,1));
 		coordY = Integer.parseInt(Destination.substring(2,3));
 	    }
-	    currentBoard = newBoard;
 	    System.out.println("Board After Move:");
 	    printBoard(numSwitch);
 	    System.out.println(" ");
@@ -276,7 +274,6 @@ public class Woo{
 		coordX = Integer.parseInt(Destination.substring(0,1));
 		coordY = Integer.parseInt(Destination.substring(2,3));
 	    }
-	    currentBoard = newBoard;
 	    System.out.println("Board After Move:");
 	    printBoard(numSwitch);
 	    System.out.println(" ");
@@ -335,7 +332,6 @@ public class Woo{
 		    CoordX = Integer.parseInt(destination.substring(0,1));
 		    CoordY = Integer.parseInt(destination.substring(2,3));
 		}
-		currentBoard = newBoard;
 		System.out.println("Board After Move:");
 		printBoard(numSwitch);
 		System.out.println(" ");
@@ -385,7 +381,6 @@ public class Woo{
 		    CoordX = Integer.parseInt(destination.substring(0,1));
 		    CoordY = Integer.parseInt(destination.substring(2,3));
 		}
-		currentBoard = newBoard;
 		System.out.println("Board After Move:");
 		printBoard(numSwitch);
 		System.out.println(" ");
@@ -443,7 +438,6 @@ public class Woo{
 		    CoordX = Integer.parseInt(destination.substring(0,1));
 		    CoordY = Integer.parseInt(destination.substring(2,3));
 		}
-		currentBoard = newBoard;
 		System.out.println("Board After Move:");
 		printBoard(numSwitch);
 		System.out.println(" ");
@@ -493,7 +487,6 @@ public class Woo{
 		    CoordX = Integer.parseInt(destination.substring(0,1));
 		    CoordY = Integer.parseInt(destination.substring(2,3));
 		}
-		currentBoard = newBoard;
 		System.out.println("Board After Move:");
 		printBoard(numSwitch);
 		System.out.println(" ");

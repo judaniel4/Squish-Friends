@@ -329,10 +329,6 @@ public class Player{
 	    P4.yCoord = coordY;
 	}
 	else if (piece.equals("P5")){
-	    System.out.println(P5.xCoord);
-	    System.out.println(P5.yCoord);
-	    System.out.println(coordX);
-	    System.out.println(coordY);
 	    B.setBoard(P5.xCoord, P5.yCoord, coordX, coordY);
 	    P5.xCoord = coordX;
 	    P5.yCoord = coordY;
