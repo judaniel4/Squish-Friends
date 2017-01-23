@@ -449,8 +449,6 @@ public class Player{
     }
     public boolean dangerCheck(String colour, int x, int y){
 	boolean retBoo = false;
-	System.out.println(colour);
-	System.out.println(color);
 	for(String[] row: Woo.currentBoard.getBoard()){
 	    for(String piece: row){
 		if (!color.equals(colour)){
@@ -467,10 +465,7 @@ public class Player{
 				|| P6.canMove(P6.xCoord, P6.yCoord, x, y)
 				|| P7.canMove(P7.xCoord, P7.yCoord, x, y)
 				|| P8.canMove(P8.xCoord, P8.yCoord, x, y);
-			    System.out.println(P1.canMove(P1.xCoord, P1.yCoord, x, y));
-			    System.out.println(P2.canMove(P2.xCoord, P2.yCoord, x, y));
-			    System.out.println(P3.canMove(P3.xCoord, P3.yCoord, x, y));
-			    System.out.println(P4.canMove(P4.xCoord, P4.yCoord, x, y));
+			   
 			}
 			if(piece.equals("N")){
 			    retBoo = retBoo || N1.canMove(N1.xCoord, N1.yCoord, x, y)

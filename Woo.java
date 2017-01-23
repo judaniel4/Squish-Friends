@@ -267,6 +267,7 @@ public class Woo{
 	boolean check = false;
 	boolean mate = false;
 	Board copy = new Board();
+	boolean multiplePieces = false;
 	
 	while (one.checkmate == false && two.checkmate == false){
 	    if (playerNum == 1){
@@ -301,6 +302,9 @@ public class Woo{
 		    CoordX = Integer.parseInt(destination.substring(0,1));
 		    CoordY = Integer.parseInt(destination.substring(2,3));
 		    canMove = one.CanMove(MPiece, CoordX, CoordY, currentBoard);
+		}
+		if (canMove.length() > 2){
+		    multiplePieces = true;
 		}
 		if(spaceEmpty){
 		    copy = currentBoard;
@@ -348,8 +352,6 @@ public class Woo{
 		System.out.println("It is Player two's (black) turn to move now!");
 		check = two.isCheck(two.K);
 		mate = two.checkMate(two.K);
-		System.out.println(check);
-		System.out.println(mate);
 		if (check){
 		    if (mate){
 			System.out.println("You have been defeated.");
