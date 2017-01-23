@@ -287,6 +287,57 @@ public class Player{
 	    Q.isAlive = true;
 	}
     }
+    public Board manualMove(int startingX, int startingY, int destinationX, int destinationY, Board b){
+	String piece = b.getLocation(startingX, startingY);
+	if (P1.xCoord == startingX && P1.yCoord == startingY){
+	    b = move("P1", destinationX, destinationY, b);
+	}
+	if (P2.xCoord == startingX && P2.yCoord == startingY){
+	    b = move("P2", destinationX, destinationY,   b);
+	}
+	if (P3.xCoord == startingX && P3.yCoord == startingY){
+	    b = move("P3", destinationX, destinationY,   b);
+	}
+	if (P4.xCoord == startingX && P4.yCoord == startingY){
+	    b = move("P4", destinationX, destinationY,   b);
+	}
+	if (P5.xCoord == startingX && P5.yCoord == startingY){
+	    b = move("P5", destinationX, destinationY,   b);
+	}
+	if (P6.xCoord == startingX && P6.yCoord == startingY){
+	    b = move("P6", destinationX, destinationY,   b);
+	}
+	if (P7.xCoord == startingX && P7.yCoord == startingY){
+	    b = move("P7", destinationX, destinationY,   b);
+	}
+	if (P8.xCoord == startingX && P8.yCoord == startingY){
+	    b = move("P8", destinationX, destinationY,   b);
+	}
+
+	if (N1.xCoord == startingX && N1.yCoord == startingY){
+	    b = move("N1", destinationX, destinationY,   b);
+	}
+	if (N2.xCoord == startingX && N2.yCoord == startingY){
+	    b = move("N2", destinationX, destinationY,   b);
+	}
+
+	if (B1.xCoord == startingX && B1.yCoord == startingY){
+	    b = move("B1", destinationX, destinationY,   b);
+	}
+	if (B2.xCoord == startingX && B2.yCoord == startingY){
+	    b = move("B2", destinationX, destinationY,   b);
+	}
+	if (R1.xCoord == startingX && R1.yCoord == startingY){
+	    b = move("R1", destinationX, destinationY,   b);
+	}
+	if (R2.xCoord == startingX && R2.yCoord == startingY){
+	    b = move("R2", destinationX, destinationY,   b);
+	}
+	if (Q.xCoord == startingX && Q.yCoord == startingY){
+	    b = move("Q", destinationX, destinationY,   b);
+	}
+	return b;
+    }
     public String CanMove(String piece, int coordX, int coordY, Board B){
 	String ans = "";
 	if (piece.equals("p")){

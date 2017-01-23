@@ -52,7 +52,8 @@ public class King extends Squishies{
     }
     //Should return an Arraylist of which pieces are checking the King
     public ArrayList<String> checkKing(){
-	ArrayList<String> retArr = new ArrayList<String>(); 
+	ArrayList<String> retArr = new ArrayList<String>();
+	/*ArrayList<String> retArr = new ArrayList<String>(); 
 	for(String[] row: Woo.currentBoard.getBoard()){
 	    for(String piece: row){
 		if (this.color.equals("white")){
@@ -157,6 +158,7 @@ public class King extends Squishies{
 		}
 	    }
 	}
+	*/
 	return retArr;
     }
 }
