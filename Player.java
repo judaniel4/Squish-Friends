@@ -48,9 +48,8 @@ public class Player{
 	    R1 = new Rook(0,0,"white");
 	    R2 = new Rook(7,0,"white");
 	    Q = new Queen(3,0,"white");
-	    K = new King(4,0,"white");
 	}
-	else if(C.equals("black")){
+	else if (C.equals("black")){
 	    P1 = new Pawn(0,6,"black");
 	    P2 = new Pawn(1,6,"black");
 	    P3 = new Pawn(2,6,"black");
@@ -66,8 +65,11 @@ public class Player{
 	    R1 = new Rook(0,7,"black");
 	    R2 = new Rook(7,7,"black");
 	    Q = new Queen(3,7,"black");
-	    K = new King(4,7,"black");
 	}
+    }
+    public void makeKing(){
+	if (color.equals("white")) K = new King(4,0,"white");
+	else if (color.equals("black")) K = new King(4,7,"black");
     }
     public boolean noPieceThere(int x, int y, Board z){
 	//Returns true if the space moving to is empty

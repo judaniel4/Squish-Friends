@@ -46,6 +46,8 @@ public class Woo{
 	Player one = new Player("white");
 	playerNum = 1;
 	Player two = new Player("black");
+	one.makeKing();
+	two.makeKing();
         currentBoard = new Board();
 
 
