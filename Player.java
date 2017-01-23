@@ -405,6 +405,34 @@ public class Player{
 
 	return ans;
     }
+    public String canCapture(int Destx, int Desty, Board b){
+	String retr = "";
+	if (P1.canCapture(P1.xCoord, P1.yCoord, Destx, Desty)){
+	    retr += "P1";
+	}
+	if (P2.canCapture(P2.xCoord, P2.yCoord, Destx, Desty)){
+	    retr += "P2";
+	}
+	if (P3.canCapture(P3.xCoord, P3.yCoord, Destx, Desty)){
+	    retr += "P3";
+	}
+	if (P4.canCapture(P4.xCoord, P4.yCoord, Destx, Desty)){
+	    retr += "P4";
+	}
+	if (P5.canCapture(P5.xCoord, P5.yCoord, Destx, Desty)){
+	    retr += "P5";
+	}
+	if (P6.canCapture(P6.xCoord, P6.yCoord, Destx, Desty)){
+	    retr += "P6";
+	}
+	if (P7.canCapture(P7.xCoord, P7.yCoord, Destx, Desty)){
+	    retr += "P7";
+	}
+	if (P8.canCapture(P8.xCoord, P8.yCoord, Destx, Desty)){
+	    retr += "P8";
+	}
+	return retr;
+    }
     public Board move(String piece, int coordX, int coordY, Board B){
 	if (piece.equals("P1")){
 	    B.setBoard(P1.xCoord, P1.yCoord, coordX, coordY);
