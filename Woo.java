@@ -40,21 +40,340 @@ public class Woo{
     public static void main(String[] args){
 
 	Scanner scanner = new Scanner(System.in);
-	Woo currentGame = new Woo();
 	 
-	System.out.println("Hello, welcome to Squishy Chess! You will be player one and your opponent will be player 2. Please select a side, white or black. (White goes first).");
-	
-	String color = scanner.next();
+	System.out.println("Hello, welcome to Squishy Chess! You will be player one and your opponent will be player 2. Player 1 is always white, and goes first.");
 
-	if (color.toLowerCase().equals("white")){ //Initializing players' colors
-	    one = new Player("white");
-	    two = new Player("black");
-	}
-	else{
-	    one = new Player("black");
-	    two = new Player("white");
-	}
+	
+	Player one = new Player("white");
+	playerNum = 1;
+	Player two = new Player("black");
+
         currentBoard = new Board();
+
+
+	boolean check = false;
+	boolean mate = false;
+	Board copy = new Board();
+	boolean multiplePieces = false;
+	
+	while (one.checkmate == false && two.checkmate == false){
+	    System.out.println("It is Player one's turn now!");
+	    printBoard(numSwitch);
+	    System.out.println(" ");
+	    check = one.isCheck(one.K);
+	    mate = one.checkMate(one.K);
+	    if (check){
+		if (mate){
+		    System.out.println("You have been defeated.");
+		    break;
+		}
+		System.out.println("Your king is in check. You must either move him out of the way or block the check");
+	    }
+	    System.out.println("Please select the piece you would like to move. (Please use the first letter, use 'n' for knight)");
+	    String MPiece = scanner.next();
+	    System.out.println("Please select the destination. Please use the format: x,y");
+	    String destination = scanner.next();
+	    int CoordX = Integer.parseInt(destination.substring(0,1));
+	    int CoordY = Integer.parseInt(destination.substring(2,3));
+	    boolean spaceEmpty = one.noPieceThere(CoordX, CoordY, currentBoard);
+	    boolean repeat = false;
+	    String canMove = one.CanMove(MPiece, CoordX, CoordY, currentBoard);
+	    while (canMove.length() == 0){
+		System.out.println("Invalid move selected. Please select a piece to move.");
+		MPiece = scanner.next();
+		System.out.println("Please select the destination. Please use the format: x,y. Use the coordinate system on the side of the board.");
+		destination = scanner.next();
+		CoordX = Integer.parseInt(destination.substring(0,1));
+		CoordY = Integer.parseInt(destination.substring(2,3));
+		canMove = one.CanMove(MPiece, CoordX, CoordY, currentBoard);
+	    }
+	    if (canMove.length() > 2){
+		multiplePieces = true;
+	    }
+	    if(spaceEmpty){
+		copy = currentBoard;
+		currentBoard = one.move(canMove, CoordX, CoordY, currentBoard);
+		check = one.isCheck(one.K);
+		System.out.println(check);
+		if (check){
+		    System.out.println("Still in check, invalid move.");
+		    repeat = true;
+		    currentBoard = copy;
+		}
+	    }
+	    else{
+		boolean ownPiece = one.ownPieceThere(CoordX, CoordY, currentBoard);
+		System.out.println(ownPiece);
+		if (ownPiece){
+		    copy = currentBoard;
+		    currentBoard = one.killPiece(CoordX, CoordY, currentBoard);
+		    two.pieceDeath(CoordX, CoordY);
+		    currentBoard = one.move(canMove, CoordX, CoordY, currentBoard);
+		    check = one.isCheck(one.K);
+		    System.out.println(check);
+		    if (check){
+			System.out.println("Still in check, invalid move.");
+			repeat = true;
+			currentBoard = copy;
+			two.pieceRevive(toKill, CoordX, CoordY);
+		    }
+		}
+		else{
+		    System.out.println("Cannot move to a space occupied by your piece.");
+		    repeat = true;
+		}
+	    }
+	    while (repeat){
+		System.out.println("Invalid move selected. Please select a piece to move.");
+		MPiece = scanner.next();
+		System.out.println("Please select the destination. Please use the format: x,y. Use the coordinate system on the side of the board.");
+		destination = scanner.next();
+		CoordX = Integer.parseInt(destination.substring(0,1));
+		CoordY = Integer.parseInt(destination.substring(2,3));
+	    }
+	    System.out.println("Board After Move:");
+	    printBoard(numSwitch);
+	    System.out.println(" ");
+	    numSwitch = 1;
+	    playerNum = 1;
+	    System.out.println(two.N2.xCoord);
+	    System.out.println(two.N2.yCoord);
+	    System.out.println("It is Player two's (black) turn to move now!");
+	    check = two.isCheck(two.K);
+	    mate = two.checkMate(two.K);
+	    if (check){
+		if (mate){
+		    System.out.println("You have been defeated.");
+		    break;
+		}
+		System.out.println("Your king is in check. You must either move him out of the way or block the check");
+	    }
+	    printBoard(numSwitch);
+	    System.out.println(" ");
+	    System.out.println("Please select a piece to move.");
+	    MPiece = scanner.next();
+	    System.out.println("Please select the destination. Please use the format: x,y");
+	    destination = scanner.next();
+	    CoordX = Integer.parseInt(destination.substring(0,1));
+	    CoordY = Integer.parseInt(destination.substring(2,3));
+	    spaceEmpty = two.noPieceThere(CoordX, CoordY, currentBoard);
+	    repeat = false;
+	    canMove = two.CanMove(MPiece, CoordX, CoordY, currentBoard);
+	    System.out.println(canMove);
+	    while (canMove.length() == 0){
+		System.out.println("Invalid move selected. Please select a piece to move.");
+		MPiece = scanner.next();
+		System.out.println("Please select the destination. Please use the format: x,y. Use the coordinate system on the side of the board.");
+		destination = scanner.next();
+		CoordX = Integer.parseInt(destination.substring(0,1));
+		CoordY = Integer.parseInt(destination.substring(2,3));
+		canMove = two.CanMove(MPiece, CoordX, CoordY, currentBoard);
+	    }
+	    System.out.println("watch out");
+	    if(spaceEmpty){
+		copy = currentBoard;
+		currentBoard = two.move(canMove, CoordX, CoordY, currentBoard);
+		check = one.isCheck(one.K);
+		if (check){
+		    System.out.println("Still in check, invalid move.");
+		    repeat = true;
+		    currentBoard = copy;
+		}
+	    }
+	    else{
+		boolean ownPiece = one.ownPieceThere(CoordX, CoordY, currentBoard);
+		System.out.println(ownPiece);
+		    
+		if (ownPiece){
+		    copy = currentBoard;
+		    currentBoard = two.killPiece(CoordX, CoordY, currentBoard);
+		    one.pieceDeath(CoordX, CoordY);
+		    currentBoard = two.move(canMove, CoordX, CoordY, currentBoard);
+		    check = one.isCheck(one.K);
+		    if (check){
+			System.out.println("Still in check, invalid move.");
+			repeat = true;
+			currentBoard = copy;
+			two.pieceRevive(toKill, CoordX, CoordY);
+		    }
+		}
+		else{
+		    System.out.println("Cannot move to a space occupied by your piece.");
+		    repeat = true;
+		}
+	    }
+	    while (repeat){
+		System.out.println("Invalid move selected. Please select a piece to move.");
+		MPiece = scanner.next();
+		System.out.println("Please select the destination. Please use the format: x,y. Use the coordinate system on the side of the board.");
+		destination = scanner.next();
+		CoordX = Integer.parseInt(destination.substring(0,1));
+		CoordY = Integer.parseInt(destination.substring(2,3));
+	    }
+	    System.out.println("Board After Move:");
+	    printBoard(numSwitch);
+	    System.out.println(" ");
+	}
+    }
+}
+	 
+
+   /*    
+	    else{
+		System.out.println("It is Player two's turn now!");
+		numSwitch = 0;
+		playerNum = 1;
+		printBoard(numSwitch);
+		System.out.println(" ");
+		check = two.isCheck(two.K);
+		mate = two.checkMate(two.K);
+		if (check){
+		    if (mate){
+			System.out.println("You have been defeated.");
+			break;
+		    }
+		    System.out.println("Your king is in check. You must either move him out of the way or block the check");
+		}
+		System.out.println("Please select the piece you would like to move. (Please use the first letter, use 'n' for knight)");
+		String MPiece = scanner.next();
+		System.out.println("Please select the destination. Please use the format: x,y");
+		String destination = scanner.next();
+		int CoordX = Integer.parseInt(destination.substring(0,1));
+		int CoordY = Integer.parseInt(destination.substring(2,3));
+		boolean spaceEmpty = two.noPieceThere(CoordX, CoordY, currentBoard);
+		boolean repeat = false;
+		String canMove = two.CanMove(MPiece, CoordX, CoordY, currentBoard);
+		while (canMove.length() == 0){
+		    System.out.println("Invalid move selected. Please select a piece to move.");
+		    MPiece = scanner.next();
+		    System.out.println("Please select the destination. Please use the format: x,y. Use the coordinate system on the side of the board.");
+		    destination = scanner.next();
+		    CoordX = Integer.parseInt(destination.substring(0,1));
+		    CoordY = Integer.parseInt(destination.substring(2,3));
+		    canMove = two.CanMove(MPiece, CoordX, CoordY, currentBoard);
+		}
+		if(spaceEmpty){
+		    copy = currentBoard;
+		    currentBoard = one.move(canMove, CoordX, CoordY, currentBoard);
+		    check = one.isCheck(one.K);
+		    if (check){
+			System.out.println("Still in check, invalid move.");
+			repeat = true;
+			currentBoard = copy;
+		    }
+		}
+		else{
+		   boolean ownPiece = one.ownPieceThere(CoordX, CoordY, currentBoard);
+		   if (ownPiece){
+		       copy = currentBoard;
+		       String toKill = one.killPiece(CoordX, CoordY, currentBoard);
+		       two.pieceDeath(toKill, CoordX, CoordY);
+		       currentBoard = one.move(canMove, CoordX, CoordY, currentBoard);
+		       check = one.isCheck(one.K);
+		       if (check){
+			   System.out.println("Still in check, invalid move.");
+			   repeat = true;
+			   currentBoard = copy;
+			   two.pieceRevive(toKill, CoordX, CoordY);
+		       }
+		   }
+		    else{
+			System.out.println("Cannot move to a space occupied by your piece.");
+			repeat = true;
+		    }
+		}
+		while (repeat){
+		    System.out.println("Invalid move selected. Please select a piece to move.");
+		    MPiece = scanner.next();
+		    System.out.println("Please select the destination. Please use the format: x,y. Use the coordinate system on the side of the board.");
+		    destination = scanner.next();
+		    CoordX = Integer.parseInt(destination.substring(0,1));
+		    CoordY = Integer.parseInt(destination.substring(2,3));
+		}
+		System.out.println("Board After Move:");
+		printBoard(numSwitch);
+		System.out.println(" ");
+		numSwitch = 1;
+		playerNum = 0;
+		System.out.println("It is Player one's (black) turn to move now!");
+		printBoard(numSwitch);
+		System.out.println(" ");
+		check = one.isCheck(one.K);
+		mate = one.checkMate(one.K);
+		if (check){
+		    if (mate){
+			System.out.println("You have been defeated.");
+			break;
+		    }
+		    System.out.println("Your king is in check. You must either move him out of the way or block the check");
+		}
+		System.out.println("Please select a piece to move.");
+		MPiece = scanner.next();
+		System.out.println("Please select the destination. Please use the format: x,y");
+		destination = scanner.next();
+		CoordX = Integer.parseInt(destination.substring(0,1));
+		CoordY = Integer.parseInt(destination.substring(2,3));
+		spaceEmpty = one.noPieceThere(CoordX, CoordY, currentBoard);
+		repeat = false;
+		canMove = one.CanMove(MPiece, CoordX, CoordY, currentBoard);
+		while (canMove.length() == 0){
+		    System.out.println("Invalid move selected. Please select a piece to move.");
+		    MPiece = scanner.next();
+		    System.out.println("Please select the destination. Please use the format: x,y. Use the coordinate system on the side of the board.");
+		    destination = scanner.next();
+		    CoordX = Integer.parseInt(destination.substring(0,1));
+		    CoordY = Integer.parseInt(destination.substring(2,3));
+		    canMove = one.CanMove(MPiece, CoordX, CoordY, currentBoard);
+		}
+		if(spaceEmpty){
+		    copy = currentBoard;
+		    currentBoard = one.move(canMove, CoordX, CoordY, currentBoard);
+		    check = one.isCheck(one.K);
+		    if (check){
+			System.out.println("Still in check, invalid move.");
+			repeat = true;
+			currentBoard = copy;
+		    }
+		}
+		else{
+		    boolean ownPiece = one.ownPieceThere(CoordX, CoordY, currentBoard);
+		    if (ownPiece){
+			copy = currentBoard;
+			String toKill = one.killPiece(CoordX, CoordY, currentBoard);
+			two.pieceDeath(toKill, CoordX, CoordY);
+			currentBoard = one.move(canMove, CoordX, CoordY, currentBoard);
+			check = one.isCheck(one.K);
+			if (check){
+			    System.out.println("Still in check, invalid move.");
+			    repeat = true;
+			    currentBoard = copy;
+			    two.pieceRevive(toKill, CoordX, CoordY);
+			}
+		    }
+		    else{
+			System.out.println("Cannot move to a space occupied by your piece.");
+			repeat = true;
+		    }
+		}
+		while (repeat){
+		    System.out.println("Invalid move selected. Please select a piece to move.");
+		    MPiece = scanner.next();
+		    System.out.println("Please select the destination. Please use the format: x,y. Use the coordinate system on the side of the board.");
+		    destination = scanner.next();
+		    CoordX = Integer.parseInt(destination.substring(0,1));
+		    CoordY = Integer.parseInt(destination.substring(2,3));
+		}
+		System.out.println("Board After Move:");
+		printBoard(numSwitch);
+		System.out.println(" ");
+		}*/
+	 
+ /*  while(canMove.length() > 2){
+		System.out.println("Two different pieces of the chosen type can move to the desired destination. Please specify the x,y coordinate of the piece you desire to move.");
+		startLocation = scanner.next();
+		startX = Integer.parseInt(startLocation.substring(0,1));
+		startY = Integer.parseInt(startLocation.substring(2,3));
+	        one.forceMove(startX, startY, 
 	System.out.println("Here is the board:");
         printBoard(numSwitch);
 	System.out.println(" ");
@@ -263,332 +582,4 @@ public class Woo{
 	    System.out.println(" ");
 	}
 
-
-	boolean check = false;
-	boolean mate = false;
-	Board copy = new Board();
-	boolean multiplePieces = false;
-	
-	while (one.checkmate == false && two.checkmate == false){
-	    if (playerNum == 1){
-		numSwitch = 0;
-		playerNum = 0;
-		System.out.println("It is Player one's turn now!");
-		printBoard(numSwitch);
-		System.out.println(" ");
-		check = one.isCheck(one.K);
-		mate = one.checkMate(one.K);
-		System.out.println(check);
-		if (check){
-		    if (mate){
-			System.out.println("You have been defeated.");
-			break;
-		    }
-		    System.out.println("Your king is in check. You must either move him out of the way or block the check");
-		}
-		System.out.println("Please select the piece you would like to move. (Please use the first letter, use 'n' for knight)");
-		String MPiece = scanner.next();
-		System.out.println("Please select the destination. Please use the format: x,y");
-		String destination = scanner.next();
-		int CoordX = Integer.parseInt(destination.substring(0,1));
-		int CoordY = Integer.parseInt(destination.substring(2,3));
-		boolean spaceEmpty = one.noPieceThere(CoordX, CoordY, currentBoard);
-		boolean repeat = false;
-		String canMove = one.CanMove(MPiece, CoordX, CoordY, currentBoard);
-		while (canMove.length() == 0){
-		    System.out.println("Invalid move selected. Please select a piece to move.");
-		    MPiece = scanner.next();
-		    System.out.println("Please select the destination. Please use the format: x,y. Use the coordinate system on the side of the board.");
-		    destination = scanner.next();
-		    CoordX = Integer.parseInt(destination.substring(0,1));
-		    CoordY = Integer.parseInt(destination.substring(2,3));
-		    canMove = one.CanMove(MPiece, CoordX, CoordY, currentBoard);
-		}
-		if (canMove.length() > 2){
-		    multiplePieces = true;
-		}
-		if(spaceEmpty){
-		    copy = currentBoard;
-		    currentBoard = one.move(canMove, CoordX, CoordY, currentBoard);
-		    check = one.isCheck(one.K);
-		    System.out.println(check);
-		    if (check){
-			System.out.println("Still in check, invalid move.");
-			repeat = true;
-			currentBoard = copy;
-		    }
-		}
-		else{
-		    boolean ownPiece = one.ownPieceThere(CoordX, CoordY, currentBoard);
-		    System.out.println(ownPiece);
-		    if (ownPiece){
-			copy = currentBoard;
-			String toKill = one.killPiece(CoordX, CoordY, currentBoard);
-			two.pieceDeath(toKill, CoordX, CoordY);
-			currentBoard = one.move(canMove, CoordX, CoordY, currentBoard);
-			check = one.isCheck(one.K);
-			System.out.println(check);
-			if (check){
-			    System.out.println("Still in check, invalid move.");
-			    repeat = true;
-			    currentBoard = copy;
-			    two.pieceRevive(toKill, CoordX, CoordY);
-			}
-		    }
-		    else{
-			System.out.println("Cannot move to a space occupied by your piece.");
-			repeat = true;
-		    }
-		}
-		while (repeat){
-		    System.out.println("Invalid move selected. Please select a piece to move.");
-		    MPiece = scanner.next();
-		    System.out.println("Please select the destination. Please use the format: x,y. Use the coordinate system on the side of the board.");
-		    destination = scanner.next();
-		    CoordX = Integer.parseInt(destination.substring(0,1));
-		    CoordY = Integer.parseInt(destination.substring(2,3));
-		}
-		System.out.println("Board After Move:");
-		printBoard(numSwitch);
-		System.out.println(" ");
-		numSwitch = 1;
-		playerNum = 1;
-		System.out.println("It is Player two's (black) turn to move now!");
-		check = two.isCheck(two.K);
-		mate = two.checkMate(two.K);
-		if (check){
-		    if (mate){
-			System.out.println("You have been defeated.");
-			break;
-		    }
-		    System.out.println("Your king is in check. You must either move him out of the way or block the check");
-		}
-		printBoard(numSwitch);
-		System.out.println(" ");
-		System.out.println("Please select a piece to move.");
-		MPiece = scanner.next();
-		System.out.println("Please select the destination. Please use the format: x,y");
-		destination = scanner.next();
-		CoordX = Integer.parseInt(destination.substring(0,1));
-		CoordY = Integer.parseInt(destination.substring(2,3));
-		spaceEmpty = two.noPieceThere(CoordX, CoordY, currentBoard);
-		repeat = false;
-		canMove = two.CanMove(MPiece, CoordX, CoordY, currentBoard);
-		while (canMove.length() == 0){
-		    System.out.println("Invalid move selected. Please select a piece to move.");
-		    MPiece = scanner.next();
-		    System.out.println("Please select the destination. Please use the format: x,y. Use the coordinate system on the side of the board.");
-		    destination = scanner.next();
-		    CoordX = Integer.parseInt(destination.substring(0,1));
-		    CoordY = Integer.parseInt(destination.substring(2,3));
-		    canMove = two.CanMove(MPiece, CoordX, CoordY, currentBoard);
-		}
-		if(spaceEmpty){
-		    copy = currentBoard;
-		    currentBoard = one.move(canMove, CoordX, CoordY, currentBoard);
-		    check = one.isCheck(one.K);
-		    if (check){
-			System.out.println("Still in check, invalid move.");
-			repeat = true;
-			currentBoard = copy;
-		    }
-		}
-		else{
-		    boolean ownPiece = one.ownPieceThere(CoordX, CoordY, currentBoard);
-		    System.out.println(ownPiece);
-		    
-		    if (ownPiece){
-			copy = currentBoard;
-			String toKill = one.killPiece(CoordX, CoordY, currentBoard);
-			two.pieceDeath(toKill, CoordX, CoordY);
-			currentBoard = one.move(canMove, CoordX, CoordY, currentBoard);
-			check = one.isCheck(one.K);
-			if (check){
-			    System.out.println("Still in check, invalid move.");
-			    repeat = true;
-			    currentBoard = copy;
-			    two.pieceRevive(toKill, CoordX, CoordY);
-			}
-		    }
-		    else{
-			System.out.println("Cannot move to a space occupied by your piece.");
-			repeat = true;
-		    }
-		}
-		while (repeat){
-		    System.out.println("Invalid move selected. Please select a piece to move.");
-		    MPiece = scanner.next();
-		    System.out.println("Please select the destination. Please use the format: x,y. Use the coordinate system on the side of the board.");
-		    destination = scanner.next();
-		    CoordX = Integer.parseInt(destination.substring(0,1));
-		    CoordY = Integer.parseInt(destination.substring(2,3));
-		}
-		System.out.println("Board After Move:");
-		printBoard(numSwitch);
-		System.out.println(" ");
-	    }
-
-
-
-
-
-	    
-	    else{
-		System.out.println("It is Player two's turn now!");
-		numSwitch = 0;
-		playerNum = 1;
-		printBoard(numSwitch);
-		System.out.println(" ");
-		check = two.isCheck(two.K);
-		mate = two.checkMate(two.K);
-		if (check){
-		    if (mate){
-			System.out.println("You have been defeated.");
-			break;
-		    }
-		    System.out.println("Your king is in check. You must either move him out of the way or block the check");
-		}
-		System.out.println("Please select the piece you would like to move. (Please use the first letter, use 'n' for knight)");
-		String MPiece = scanner.next();
-		System.out.println("Please select the destination. Please use the format: x,y");
-		String destination = scanner.next();
-		int CoordX = Integer.parseInt(destination.substring(0,1));
-		int CoordY = Integer.parseInt(destination.substring(2,3));
-		boolean spaceEmpty = two.noPieceThere(CoordX, CoordY, currentBoard);
-		boolean repeat = false;
-		String canMove = two.CanMove(MPiece, CoordX, CoordY, currentBoard);
-		while (canMove.length() == 0){
-		    System.out.println("Invalid move selected. Please select a piece to move.");
-		    MPiece = scanner.next();
-		    System.out.println("Please select the destination. Please use the format: x,y. Use the coordinate system on the side of the board.");
-		    destination = scanner.next();
-		    CoordX = Integer.parseInt(destination.substring(0,1));
-		    CoordY = Integer.parseInt(destination.substring(2,3));
-		    canMove = two.CanMove(MPiece, CoordX, CoordY, currentBoard);
-		}
-		if(spaceEmpty){
-		    copy = currentBoard;
-		    currentBoard = one.move(canMove, CoordX, CoordY, currentBoard);
-		    check = one.isCheck(one.K);
-		    if (check){
-			System.out.println("Still in check, invalid move.");
-			repeat = true;
-			currentBoard = copy;
-		    }
-		}
-		else{
-		   boolean ownPiece = one.ownPieceThere(CoordX, CoordY, currentBoard);
-		   if (ownPiece){
-		       copy = currentBoard;
-		       String toKill = one.killPiece(CoordX, CoordY, currentBoard);
-		       two.pieceDeath(toKill, CoordX, CoordY);
-		       currentBoard = one.move(canMove, CoordX, CoordY, currentBoard);
-		       check = one.isCheck(one.K);
-		       if (check){
-			   System.out.println("Still in check, invalid move.");
-			   repeat = true;
-			   currentBoard = copy;
-			   two.pieceRevive(toKill, CoordX, CoordY);
-		       }
-		   }
-		    else{
-			System.out.println("Cannot move to a space occupied by your piece.");
-			repeat = true;
-		    }
-		}
-		while (repeat){
-		    System.out.println("Invalid move selected. Please select a piece to move.");
-		    MPiece = scanner.next();
-		    System.out.println("Please select the destination. Please use the format: x,y. Use the coordinate system on the side of the board.");
-		    destination = scanner.next();
-		    CoordX = Integer.parseInt(destination.substring(0,1));
-		    CoordY = Integer.parseInt(destination.substring(2,3));
-		}
-		System.out.println("Board After Move:");
-		printBoard(numSwitch);
-		System.out.println(" ");
-		numSwitch = 1;
-		playerNum = 0;
-		System.out.println("It is Player one's (black) turn to move now!");
-		printBoard(numSwitch);
-		System.out.println(" ");
-		check = one.isCheck(one.K);
-		mate = one.checkMate(one.K);
-		if (check){
-		    if (mate){
-			System.out.println("You have been defeated.");
-			break;
-		    }
-		    System.out.println("Your king is in check. You must either move him out of the way or block the check");
-		}
-		System.out.println("Please select a piece to move.");
-		MPiece = scanner.next();
-		System.out.println("Please select the destination. Please use the format: x,y");
-		destination = scanner.next();
-		CoordX = Integer.parseInt(destination.substring(0,1));
-		CoordY = Integer.parseInt(destination.substring(2,3));
-		spaceEmpty = one.noPieceThere(CoordX, CoordY, currentBoard);
-		repeat = false;
-		canMove = one.CanMove(MPiece, CoordX, CoordY, currentBoard);
-		while (canMove.length() == 0){
-		    System.out.println("Invalid move selected. Please select a piece to move.");
-		    MPiece = scanner.next();
-		    System.out.println("Please select the destination. Please use the format: x,y. Use the coordinate system on the side of the board.");
-		    destination = scanner.next();
-		    CoordX = Integer.parseInt(destination.substring(0,1));
-		    CoordY = Integer.parseInt(destination.substring(2,3));
-		    canMove = one.CanMove(MPiece, CoordX, CoordY, currentBoard);
-		}
-		if(spaceEmpty){
-		    copy = currentBoard;
-		    currentBoard = one.move(canMove, CoordX, CoordY, currentBoard);
-		    check = one.isCheck(one.K);
-		    if (check){
-			System.out.println("Still in check, invalid move.");
-			repeat = true;
-			currentBoard = copy;
-		    }
-		}
-		else{
-		    boolean ownPiece = one.ownPieceThere(CoordX, CoordY, currentBoard);
-		    if (ownPiece){
-			copy = currentBoard;
-			String toKill = one.killPiece(CoordX, CoordY, currentBoard);
-			two.pieceDeath(toKill, CoordX, CoordY);
-			currentBoard = one.move(canMove, CoordX, CoordY, currentBoard);
-			check = one.isCheck(one.K);
-			if (check){
-			    System.out.println("Still in check, invalid move.");
-			    repeat = true;
-			    currentBoard = copy;
-			    two.pieceRevive(toKill, CoordX, CoordY);
-			}
-		    }
-		    else{
-			System.out.println("Cannot move to a space occupied by your piece.");
-			repeat = true;
-		    }
-		}
-		while (repeat){
-		    System.out.println("Invalid move selected. Please select a piece to move.");
-		    MPiece = scanner.next();
-		    System.out.println("Please select the destination. Please use the format: x,y. Use the coordinate system on the side of the board.");
-		    destination = scanner.next();
-		    CoordX = Integer.parseInt(destination.substring(0,1));
-		    CoordY = Integer.parseInt(destination.substring(2,3));
-		}
-		System.out.println("Board After Move:");
-		printBoard(numSwitch);
-		System.out.println(" ");
-	    }
-	}	
-    }
-}
-
- /*  while(canMove.length() > 2){
-		System.out.println("Two different pieces of the chosen type can move to the desired destination. Please specify the x,y coordinate of the piece you desire to move.");
-		startLocation = scanner.next();
-		startX = Integer.parseInt(startLocation.substring(0,1));
-		startY = Integer.parseInt(startLocation.substring(2,3));
-	        one.forceMove(startX, startY, 
 		}*/

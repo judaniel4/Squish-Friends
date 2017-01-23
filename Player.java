@@ -181,46 +181,44 @@ public class Player{
 	
 	return retBol;
     }
-    public String killPiece(int coordX, int coordY, Board b){
-	String pieceToKill = b.getLocation(coordX, coordY);
+    public Board killPiece(int coordX, int coordY, Board b){
 	b.setPieceLocation("E", coordX, coordY);
-	return pieceToKill;
+	return b;
     }
-    public void pieceDeath(String p, int coordX, int coordY){
-	if (p.equals("P")){
-	    if (P1.xCoord == coordX && P1.yCoord == coordY){
-		P1.isAlive = false;
-	    }
-	    if (P2.xCoord == coordX && P2.yCoord == coordY){
-		P2.isAlive = false;
-	    }
-	    if (P3.xCoord == coordX && P3.yCoord == coordY){
-		P3.isAlive = false;
-	    }
-	    if (P4.xCoord == coordX && P4.yCoord == coordY){
-		P4.isAlive = false;
-	    }
-	    if (P5.xCoord == coordX && P5.yCoord == coordY){
-		P5.isAlive = false;
-	    }
-	    if (P6.xCoord == coordX && P6.yCoord == coordY){
-		P6.isAlive = false;
-	    }
-	    if (P7.xCoord == coordX && P7.yCoord == coordY){
-		P7.isAlive = false;
-	    }
-	    if (P8.xCoord == coordX && P8.yCoord == coordY){
-		P8.isAlive = false;
-	    }
+    public void pieceDeath(int coordX, int coordY){
+	if (P1.xCoord == coordX && P1.yCoord == coordY){
+	    P1.isAlive = false;
 	}
-	if (p.equals("N")){
-	    if (N1.xCoord == coordX && N1.yCoord == coordY){
-		N1.isAlive = false;
-	    }
-	    if (N2.xCoord == coordX && N2.yCoord == coordY){
-		N2.isAlive = false;
-	    }
+	if (P2.xCoord == coordX && P2.yCoord == coordY){
+	    P2.isAlive = false;
 	}
+	if (P3.xCoord == coordX && P3.yCoord == coordY){
+	    P3.isAlive = false;
+	}
+	if (P4.xCoord == coordX && P4.yCoord == coordY){
+	    P4.isAlive = false;
+	}
+	if (P5.xCoord == coordX && P5.yCoord == coordY){
+	    P5.isAlive = false;
+	}
+	if (P6.xCoord == coordX && P6.yCoord == coordY){
+	    P6.isAlive = false;
+	}
+	if (P7.xCoord == coordX && P7.yCoord == coordY){
+	    P7.isAlive = false;
+	}
+	if (P8.xCoord == coordX && P8.yCoord == coordY){
+	    P8.isAlive = false;
+	}
+	
+
+	if (N1.xCoord == coordX && N1.yCoord == coordY){
+	    N1.isAlive = false;
+	}
+	if (N2.xCoord == coordX && N2.yCoord == coordY){
+	    N2.isAlive = false;
+	}
+	
 	if (p.equals("B")){
 	    if (B1.xCoord == coordX && B1.yCoord == coordY){
 		B1.isAlive = false;
@@ -229,17 +227,17 @@ public class Player{
 		B2.isAlive = false;
 	    }
 	}
-	if (p.equals("R")){
-	    if (R1.xCoord == coordX && R1.yCoord == coordY){
-		R1.isAlive = false;
-	    }
-	    if (R2.xCoord == coordX && R2.yCoord == coordY){
-		R2.isAlive = false;
-	    }
+
+	if (R1.xCoord == coordX && R1.yCoord == coordY){
+	    R1.isAlive = false;
 	}
+	if (R2.xCoord == coordX && R2.yCoord == coordY){
+	    R2.isAlive = false;
+	}
+	
 	if (p.equals("Q")){
 	    Q.isAlive = false;
-	}
+	
     }
       public void pieceRevive(String p, int coordX, int coordY){
 	if (p.equals("P")){
@@ -298,7 +296,6 @@ public class Player{
     }
     public String CanMove(String piece, int coordX, int coordY, Board B){
 	String ans = "";
-
 	if (piece.equals("p")){
 	    if (P1.canMove(P1.xCoord, P1.yCoord, coordX, coordY)){
 		ans += "P1";
@@ -334,6 +331,8 @@ public class Player{
 	    }
 	}
 	else if (piece.equals("n")){
+	    System.out.println(N2.xCoord);
+	    System.out.println(N2.yCoord);
 	    if (N1.canMove(N1.xCoord, N1.yCoord, coordX, coordY)){
 		ans += "N1";
 	    }
@@ -419,9 +418,12 @@ public class Player{
 	    N1.yCoord = coordY;
 	}
 	else if (piece.equals("N2")){
+	    System.out.println("hmm");
 	    B.setBoard(N2.xCoord, N2.yCoord, coordX, coordY);
 	    N2.xCoord = coordX;
 	    N2.yCoord = coordY;
+	    System.out.println(N2.xCoord);
+	    System.out.println(N2.yCoord);
 	}
 	else if (piece.equals("B1")){
 	    B.setBoard(B1.xCoord, B1.yCoord, coordX, coordY);
