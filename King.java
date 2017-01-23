@@ -27,6 +27,7 @@ public class King extends Squishies{
 	yCoord = y;
 	color = C;
 	pieceType = "King";
+	isAlive = true;
     }
     public boolean canMove(int startX, int startY, int destinationX, int destinationY){
 	boolean retBoo = false;

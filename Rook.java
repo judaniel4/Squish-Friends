@@ -22,6 +22,7 @@ public class Rook extends Squishies
 	yCoord = y;
 	color = C;
 	pieceType = "Rook";
+	isAlive = true;
     }
     public boolean canMove(int startX, int startY, int destinationX, int destinationY){
 	//checks to see if the position entered is a possible move for a rook

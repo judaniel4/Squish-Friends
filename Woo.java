@@ -96,14 +96,14 @@ public class Woo{
 	        canMove = one.CanMove(firstMPiece, coordX, coordY, currentBoard);
 	    }
 	    if(spaceEmpty){
-	        one.move(canMove, coordX, coordY, currentBoard);
+	        currentBoard = one.move(canMove, coordX, coordY, currentBoard);
 	    }
 	    else{
 		boolean ownPiece = one.ownPieceThere(coordX, coordY, currentBoard);
 		if (ownPiece){
 		    String toKill = one.killPiece(coordX, coordY, currentBoard);
 		    two.pieceDeath(toKill, coordX, coordY);
-		    one.move(canMove, coordX, coordY, currentBoard);
+		    currentBoard = one.move(canMove, coordX, coordY, currentBoard);
 		}
 		else{
 		    System.out.println("Cannot move to a space occupied by your piece.");
@@ -118,7 +118,6 @@ public class Woo{
 		coordX = Integer.parseInt(Destination.substring(0,1));
 		coordY = Integer.parseInt(Destination.substring(2,3));
 	    }
-	    currentBoard = newBoard;
 	    System.out.println("Board After Move:");
 	    printBoard(numSwitch);
 	    System.out.println(" ");
@@ -134,8 +133,10 @@ public class Woo{
 	    coordX = Integer.parseInt(Destination.substring(0,1));
 	    coordY = Integer.parseInt(Destination.substring(2,3));
 	    spaceEmpty = two.noPieceThere(coordX, coordY, currentBoard);
+	    System.out.println(spaceEmpty);
 	    repeat = false;
 	    canMove = two.CanMove(firstMPiece, coordX, coordY, currentBoard);
+	    System.out.println(canMove);
 	    while (canMove.length() == 0){
 		System.out.println("Invalid move selected. Please select a piece to move.");
 		firstMPiece = scanner.next();
@@ -146,14 +147,14 @@ public class Woo{
 	        canMove = two.CanMove(firstMPiece, coordX, coordY, currentBoard);
 	    }
 	    if(spaceEmpty){
-	        two.move(canMove, coordX, coordY, currentBoard);
+	        currentBoard = two.move(canMove, coordX, coordY, currentBoard);
 	    }
 	    else{
 		boolean ownPiece = two.ownPieceThere(coordX, coordY, currentBoard);
 		if (ownPiece){
 		    String toKill = two.killPiece(coordX, coordY, currentBoard);
 		    one.pieceDeath(toKill, coordX, coordY);
-		    two.move(canMove, coordX, coordY, currentBoard);
+		     currentBoard = two.move(canMove, coordX, coordY, currentBoard);
 		}
 		else{
 		    System.out.println("Cannot move to a space occupied by your piece.");
@@ -203,14 +204,14 @@ public class Woo{
 	        canMove = two.CanMove(firstMPiece, coordX, coordY, currentBoard);
 	    }
 	    if(spaceEmpty){
-	        two.move(canMove, coordX, coordY, currentBoard);
+	         currentBoard = two.move(canMove, coordX, coordY, currentBoard);
 	    }
 	    else{
 		boolean ownPiece = two.ownPieceThere(coordX, coordY, currentBoard);
 		if (ownPiece){
 		    String toKill = two.killPiece(coordX, coordY, currentBoard);
 		    one.pieceDeath(toKill, coordX, coordY);
-		    two.move(canMove, coordX, coordY, currentBoard);
+		     currentBoard = two.move(canMove, coordX, coordY, currentBoard);
 		}
 		else{
 		    System.out.println("Cannot move to a space occupied by your piece.");
@@ -253,14 +254,14 @@ public class Woo{
 	        canMove = one.CanMove(firstMPiece, coordX, coordY, currentBoard);
 	    }
 	    if(spaceEmpty){
-	        one.move(canMove, coordX, coordY, currentBoard);
+	         currentBoard = one.move(canMove, coordX, coordY, currentBoard);
 	    }
 	    else{
 		boolean ownPiece = one.ownPieceThere(coordX, coordY, currentBoard);
 		if (ownPiece){
 		    String toKill = one.killPiece(coordX, coordY, currentBoard);
 		    two.pieceDeath(toKill, coordX, coordY);
-		    one.move(canMove, coordX, coordY, currentBoard);
+		     currentBoard = one.move(canMove, coordX, coordY, currentBoard);
 		}
 		else{
 		    System.out.println("Cannot move to a space occupied by your piece.");
@@ -312,14 +313,14 @@ public class Woo{
 		    canMove = one.CanMove(MPiece, CoordX, CoordY, currentBoard);
 		}
 		if(spaceEmpty){
-		    one.move(canMove, CoordX, CoordY, currentBoard);
+		     currentBoard = one.move(canMove, CoordX, CoordY, currentBoard);
 		}
 		else{
 		    boolean ownPiece = one.ownPieceThere(CoordX, CoordY, currentBoard);
 		    if (ownPiece){
 			String toKill = one.killPiece(CoordX, CoordY, currentBoard);
 			two.pieceDeath(toKill, CoordX, CoordY);
-			one.move(canMove, CoordX, CoordY, currentBoard);
+			 currentBoard = one.move(canMove, CoordX, CoordY, currentBoard);
 		    }
 		    else{
 			System.out.println("Cannot move to a space occupied by your piece.");
@@ -362,14 +363,14 @@ public class Woo{
 		    canMove = two.CanMove(MPiece, CoordX, CoordY, currentBoard);
 		}
 		if(spaceEmpty){
-		    two.move(canMove, CoordX, CoordY, currentBoard);
+		     currentBoard = two.move(canMove, CoordX, CoordY, currentBoard);
 		}
 		else{
 		    boolean ownPiece = two.ownPieceThere(CoordX, CoordY, currentBoard);
 		    if (ownPiece){
 			String toKill = two.killPiece(CoordX, CoordY, currentBoard);
 			one.pieceDeath(toKill, CoordX, CoordY);
-			two.move(canMove, CoordX, CoordY, currentBoard);
+			 currentBoard = two.move(canMove, CoordX, CoordY, currentBoard);
 		    }
 		    else{
 			System.out.println("Cannot move to a space occupied by your piece.");
@@ -420,14 +421,14 @@ public class Woo{
 		    canMove = two.CanMove(MPiece, CoordX, CoordY, currentBoard);
 		}
 		if(spaceEmpty){
-		    two.move(canMove, CoordX, CoordY, currentBoard);
+		     currentBoard = two.move(canMove, CoordX, CoordY, currentBoard);
 		}
 		else{
 		    boolean ownPiece = two.ownPieceThere(CoordX, CoordY, currentBoard);
 		    if (ownPiece){
 			String toKill = two.killPiece(CoordX, CoordY, currentBoard);
 			one.pieceDeath(toKill, CoordX, CoordY);
-			two.move(canMove, CoordX, CoordY, currentBoard);
+			 currentBoard = two.move(canMove, CoordX, CoordY, currentBoard);
 		    }
 		    else{
 			System.out.println("Cannot move to a space occupied by your piece.");
@@ -470,14 +471,14 @@ public class Woo{
 		    canMove = one.CanMove(MPiece, CoordX, CoordY, currentBoard);
 		}
 		if(spaceEmpty){
-		    one.move(canMove, CoordX, CoordY, currentBoard);
+		     currentBoard = one.move(canMove, CoordX, CoordY, currentBoard);
 		}
 		else{
 		    boolean ownPiece = one.ownPieceThere(CoordX, CoordY, currentBoard);
 		    if (ownPiece){
 			String toKill = one.killPiece(CoordX, CoordY, currentBoard);
 			two.pieceDeath(toKill, CoordX, CoordY);
-			one.move(canMove, CoordX, CoordY, currentBoard);
+			 currentBoard = one.move(canMove, CoordX, CoordY, currentBoard);
 		    }
 		    else{
 			System.out.println("Cannot move to a space occupied by your piece.");

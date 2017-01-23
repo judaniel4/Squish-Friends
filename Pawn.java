@@ -25,6 +25,7 @@ public class Pawn extends Squishies
 	yCoord = y;
 	color = C;
 	pieceType = "Pawn";
+	isAlive = true;
     }
     public boolean canMove(int startX, int startY, int destinationX, int destinationY)
     {
@@ -41,6 +42,7 @@ public class Pawn extends Squishies
 		retBoo = true;
 	    }
 	return retBoo && isAlive;
+
     }
 
 }

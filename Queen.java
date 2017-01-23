@@ -26,6 +26,7 @@ public class Queen extends Squishies
 	yCoord = y;
 	color = C;
 	pieceType = "Queen";
+	isAlive = true;
     }
     public boolean canMove(int startX, int startY, int destinationX, int destinationY)
     {

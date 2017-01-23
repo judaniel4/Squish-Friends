@@ -243,6 +243,7 @@ public class Player{
     }
     public String CanMove(String piece, int coordX, int coordY, Board B){
 	String ans = "";
+
 	if (piece.equals("p")){
 	    if (P1.canMove(P1.xCoord, P1.yCoord, coordX, coordY)){
 		ans += "P1";
@@ -303,9 +304,10 @@ public class Player{
 		ans += "K";
 	    }
 	}
+
 	return ans;
     }
-    public void move(String piece, int coordX, int coordY, Board B){
+    public Board move(String piece, int coordX, int coordY, Board B){
 	if (piece.equals("P1")){
 	    B.setBoard(P1.xCoord, P1.yCoord, coordX, coordY);
 	    P1.xCoord = coordX;
@@ -327,6 +329,10 @@ public class Player{
 	    P4.yCoord = coordY;
 	}
 	else if (piece.equals("P5")){
+	    System.out.println(P5.xCoord);
+	    System.out.println(P5.yCoord);
+	    System.out.println(coordX);
+	    System.out.println(coordY);
 	    B.setBoard(P5.xCoord, P5.yCoord, coordX, coordY);
 	    P5.xCoord = coordX;
 	    P5.yCoord = coordY;
@@ -352,9 +358,9 @@ public class Player{
 	    R1.yCoord = coordY;
 	}
 	if (piece.equals("R2")){
-		B.setBoard(R2.xCoord, R2.yCoord, coordX, coordY);
-		R2.xCoord = coordX;
-		R2.yCoord = coordY;
+	    B.setBoard(R2.xCoord, R2.yCoord, coordX, coordY);
+	    R2.xCoord = coordX;
+	    R2.yCoord = coordY;
 	}
 	else if (piece.equals("N1")){
 	    B.setBoard(N1.xCoord, N1.yCoord, coordX, coordY);
@@ -388,6 +394,7 @@ public class Player{
 	    K.xCoord = coordX;
 	    K.yCoord = coordY;
 	}
+	return B;
     }
 }
 

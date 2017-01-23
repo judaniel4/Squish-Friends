@@ -24,6 +24,7 @@ public class Bishop extends Squishies
 	yCoord = y;
 	color = C;
 	pieceType = "Bishop";
+	isAlive = true;`
     }
     public boolean canMove(int startX, int startY, int destinationX, int destinationY)
     {
