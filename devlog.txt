@@ -14,15 +14,17 @@ OBSTACLES OVERCOME
 
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-How to determine checkmate
+Checkmate doesn't work. It's extremely difficult to determine all the possibilities of a checkmate, which invovles checking if the king is directly being attacked, can a piece of his own move to save him, and can the king move to save himself. Further complicating things is that some pieces are blocking the king from being checked and that was another condition that we needed to consider when running Woo.java and that issue hasn't been fully resolved yet either. 
+
 
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 One can use the slopes of lines to determine algorithms of the movement of the different pieces!
+Going through the different pieces and seeing how different Java objects interacted with each other really helped us understand the language and its intricacies. 
 
 MID-DEVELOPMENT DESIGN CHANGES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+Origionally, we planned to 
 
 LESSONS LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -76,6 +78,6 @@ Pacy::
 2017-01-20-22-16 (weekend)
 --------------------------------------------------------------
 Maria:: 
-Daniel:: Finished algorithm for if a player makes an invalid move, they are forced to make a different choice of piece and where to move. 
+Daniel:: Attempted to integrate the checkmate algorithm Maria made with Woo.java, albeit only semi-successfully. 
 Pacy:: 
 ==============================================================
