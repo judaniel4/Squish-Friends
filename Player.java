@@ -483,8 +483,8 @@ public class Player{
 			    retBoo = retBoo || K.canMove(K.xCoord, K.yCoord, x, y);
 			}
 		    }
-		}
-		if (Woo.two.color.equals(colour)){
+		}/*
+		if (!Woo.two.color.equals(colour)){
 		    if (!piece.equals("E")){
 			if(piece.equals("Q")){
 			    retBoo = retBoo || Q.canMove( Q.xCoord,  Q.yCoord, x, y);
@@ -512,7 +512,7 @@ public class Player{
 				|| R2.canMove( R2.xCoord,  R2.yCoord, x, y);
 			}
 		    }
-		}
+		    }*/
 	    }
 	}
 	return retBoo;
