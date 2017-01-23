@@ -47,8 +47,8 @@ public class Player{
 	    B2 = new Bishop(5,0,"white");
 	    R1 = new Rook(0,0,"white");
 	    R2 = new Rook(7,0,"white");
-	    Q = new Queen(4,0,"white");
-	    K = new King(3,0,"white");
+	    Q = new Queen(3,0,"white");
+	    K = new King(4,0,"white");
 	}
 	else if(C.equals("black")){
 	    P1 = new Pawn(0,6,"black");
@@ -65,8 +65,8 @@ public class Player{
 	    B2 = new Bishop(5,7,"black");
 	    R1 = new Rook(0,7,"black");
 	    R2 = new Rook(7,7,"black");
-	    Q = new Queen(4,7,"black");
-	    K = new King(3,7,"black");
+	    Q = new Queen(3,7,"black");
+	    K = new King(4,7,"black");
 	}
     }
     public boolean noPieceThere(int x, int y, Board z){
@@ -449,6 +449,8 @@ public class Player{
     }
     public boolean dangerCheck(String colour, int x, int y){
 	boolean retBoo = false;
+	System.out.println(colour);
+	System.out.println(color);
 	for(String[] row: Woo.currentBoard.getBoard()){
 	    for(String piece: row){
 		if (!color.equals(colour)){
@@ -465,6 +467,10 @@ public class Player{
 				|| P6.canMove(P6.xCoord, P6.yCoord, x, y)
 				|| P7.canMove(P7.xCoord, P7.yCoord, x, y)
 				|| P8.canMove(P8.xCoord, P8.yCoord, x, y);
+			    System.out.println(P1.canMove(P1.xCoord, P1.yCoord, x, y));
+			    System.out.println(P2.canMove(P2.xCoord, P2.yCoord, x, y));
+			    System.out.println(P3.canMove(P3.xCoord, P3.yCoord, x, y));
+			    System.out.println(P4.canMove(P4.xCoord, P4.yCoord, x, y));
 			}
 			if(piece.equals("N")){
 			    retBoo = retBoo || N1.canMove(N1.xCoord, N1.yCoord, x, y)
@@ -1074,7 +1080,7 @@ public class Player{
 		}
 	    }
 	}
-	return inCheck || !canEated || !kingMove;
+	return inCheck && !canEated && !kingMove;
     }
 }
 
