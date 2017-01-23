@@ -42,7 +42,18 @@ public class Pawn extends Squishies
 		retBoo = true;
 	    }
 	return retBoo && isAlive;
-
     }
-
+    public boolean canEat(Squishies eater, Squishies food){
+	if(eater.xCoord-food.xCoord == 1 || eater.xCoord - food.xCoord == -1){
+	    if(eater.yCoord-food.yCoord == 1 || eater.yCoord - food.yCoord == -1){
+		return true && isAlive;
+	    }
+	    else{
+		return false;
+	    }
+	}
+	else{
+	    return false;
+	}
+    }
 }
