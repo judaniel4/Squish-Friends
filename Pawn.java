@@ -56,4 +56,19 @@ public class Pawn extends Squishies
 	    return false;
 	}
     }
+    public boolean canCapture(int startX, int startY, int destinationX, int destinationY){
+	boolean retBoo = false;
+	if(color.equals("white")){
+		if((destinationX - startX == 1 && destinationY - startY == 1) || (destinationX - startX == -1 && destinationY - startY == 1)){
+		    retBoo = true;
+		}
+	    }
+	else{
+	    if((destinationX - startX == 1 && destinationY - startY == -1) || (destinationX - startX == -1 && destinationY - startY == -1)){
+		    retBoo = true;
+	    }
+	}
+	return retBoo;
+    }
+
 }
