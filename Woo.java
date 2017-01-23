@@ -36,7 +36,6 @@ public class Woo{
 	    currentBoard.printBoard();
 	}
     }
- 
     public static void main(String[] args){
 	Woo currentGame = new Woo();
 	Scanner scanner = new Scanner(System.in);
@@ -74,6 +73,21 @@ public class Woo{
 	    String MPiece = scanner.next();
 	    System.out.println("Please select the destination. Please use the format: x,y");
 	    String destination = scanner.next();
+	    boolean success;
+	    while(true){
+		success = true;
+		try{
+		    int CoordX = Integer.parseInt(destination.substring(0,1));
+		    int CoordY = Integer.parseInt(destination.substring(2,3));
+		    
+		}
+		catch (NumberFormatException e){
+		    System.out.println("Invalid coordinates entered. Please re-enter.");
+		    destination = scanner.next();
+		    success = false;
+		}
+		if (success) break;
+	    }
 	    int CoordX = Integer.parseInt(destination.substring(0,1));
 	    int CoordY = Integer.parseInt(destination.substring(2,3));
 	    boolean spaceEmpty = one.noPieceThere(CoordX, CoordY, currentBoard);
@@ -140,7 +154,6 @@ public class Woo{
 		}
 		else{
 		    boolean ownPiece = one.ownPieceThere(CoordX, CoordY, currentBoard);
-		    System.out.println(ownPiece);
 		    if (ownPiece){
 			copy = currentBoard;
 			currentBoard = one.killPiece(CoordX, CoordY, currentBoard);
@@ -196,6 +209,20 @@ public class Woo{
 	    MPiece = scanner.next();
 	    System.out.println("Please select the destination. Please use the format: x,y");
 	    destination = scanner.next();
+	    while(true){
+		success = true;
+		try{
+		    CoordX = Integer.parseInt(destination.substring(0,1));
+		    CoordY = Integer.parseInt(destination.substring(2,3));
+		    
+		}
+		catch (NumberFormatException e){
+		    System.out.println("Invalid coordinates entered. Please re-enter.");
+		    destination = scanner.next();
+		    success = false;
+		}
+		if (success) break;
+	    }
 	    CoordX = Integer.parseInt(destination.substring(0,1));
 	    CoordY = Integer.parseInt(destination.substring(2,3));
 	    spaceEmpty = two.noPieceThere(CoordX, CoordY, currentBoard);
