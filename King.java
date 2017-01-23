@@ -55,7 +55,7 @@ public class King extends Squishies{
 	ArrayList<String> retArr = new ArrayList<String>(); 
 	for(String[] row: Woo.currentBoard.getBoard()){
 	    for(String piece: row){
-		if (Woo.one.color.equals(this.color)){
+		if (this.color.equals("white")){
 		    if (!piece.equals("E")){
 			if(piece.equals("Q"))
 			    {
@@ -92,8 +92,8 @@ public class King extends Squishies{
 				}
 			}
 			if(piece.equals("R")){
-			    if(canMove(Woo.one.R1.xCoord, Woo.one.R1.yCoord, this.xCoord, this.yCoord)
-			       || canMove(Woo.one.R2.xCoord, Woo.one.R2.yCoord, this.xCoord, this.yCoord))
+			    if(Woo.one.R1.canMove(Woo.one.R1.xCoord, Woo.one.R1.yCoord, this.xCoord, this.yCoord)
+			       || Woo.one.R1.canMove(Woo.one.R2.xCoord, Woo.one.R2.yCoord, this.xCoord, this.yCoord))
 				{
 				    retArr.add("R");
 				}

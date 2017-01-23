@@ -219,14 +219,13 @@ public class Player{
 	    N2.isAlive = false;
 	}
 	
-	if (p.equals("B")){
-	    if (B1.xCoord == coordX && B1.yCoord == coordY){
-		B1.isAlive = false;
-	    }
-	    if (B2.xCoord == coordX && B2.yCoord == coordY){
-		B2.isAlive = false;
-	    }
+	if (B1.xCoord == coordX && B1.yCoord == coordY){
+	    B1.isAlive = false;
 	}
+	if (B2.xCoord == coordX && B2.yCoord == coordY){
+	    B2.isAlive = false;
+	}
+	
 
 	if (R1.xCoord == coordX && R1.yCoord == coordY){
 	    R1.isAlive = false;
@@ -235,62 +234,56 @@ public class Player{
 	    R2.isAlive = false;
 	}
 	
-	if (p.equals("Q")){
+	if (Q.xCoord == coordX && Q.yCoord == coordY){
 	    Q.isAlive = false;
-	
+	}
     }
-      public void pieceRevive(String p, int coordX, int coordY){
-	if (p.equals("P")){
-	    if (P1.xCoord == coordX && P1.yCoord == coordY){
-		P1.isAlive = true;
-	    }
-	    if (P2.xCoord == coordX && P2.yCoord == coordY){
-		P2.isAlive = true;
-	    }
-	    if (P3.xCoord == coordX && P3.yCoord == coordY){
-		P3.isAlive = true;
-	    }
-	    if (P4.xCoord == coordX && P4.yCoord == coordY){
-		P4.isAlive = true;
-	    }
-	    if (P5.xCoord == coordX && P5.yCoord == coordY){
-		P5.isAlive = true;
-	    }
-	    if (P6.xCoord == coordX && P6.yCoord == coordY){
-		P6.isAlive = true;
-	    }
-	    if (P7.xCoord == coordX && P7.yCoord == coordY){
-		P7.isAlive = true;
-	    }
-	    if (P8.xCoord == coordX && P8.yCoord == coordY){
-		P8.isAlive = true;
-	    }
+    public void pieceRevive(int coordX, int coordY){
+	if (P1.xCoord == coordX && P1.yCoord == coordY){
+	    P1.isAlive = true;
 	}
-	if (p.equals("N")){
-	    if (N1.xCoord == coordX && N1.yCoord == coordY){
-		N1.isAlive = true;
-	    }
-	    if (N2.xCoord == coordX && N2.yCoord == coordY){
-		N2.isAlive = true;
-	    }
+	if (P2.xCoord == coordX && P2.yCoord == coordY){
+	    P2.isAlive = true;
 	}
-	if (p.equals("B")){
-	    if (B1.xCoord == coordX && B1.yCoord == coordY){
-		B1.isAlive = true;
-	    }
-	    if (B2.xCoord == coordX && B2.yCoord == coordY){
-		B2.isAlive = true;
-	    }
+	if (P3.xCoord == coordX && P3.yCoord == coordY){
+	    P3.isAlive = true;
 	}
-	if (p.equals("R")){
-	    if (R1.xCoord == coordX && R1.yCoord == coordY){
-		R1.isAlive = true;
-	    }
-	    if (R2.xCoord == coordX && R2.yCoord == coordY){
-		R2.isAlive = true;
-	    }
+	if (P4.xCoord == coordX && P4.yCoord == coordY){
+	    P4.isAlive = true;
 	}
-	if (p.equals("Q")){
+	if (P5.xCoord == coordX && P5.yCoord == coordY){
+	    P5.isAlive = true;
+	}
+	if (P6.xCoord == coordX && P6.yCoord == coordY){
+	    P6.isAlive = true;
+	}
+	if (P7.xCoord == coordX && P7.yCoord == coordY){
+	    P7.isAlive = true;
+	}
+	if (P8.xCoord == coordX && P8.yCoord == coordY){
+	    P8.isAlive = true;
+	}
+
+	if (N1.xCoord == coordX && N1.yCoord == coordY){
+	    N1.isAlive = true;
+	}
+	if (N2.xCoord == coordX && N2.yCoord == coordY){
+	    N2.isAlive = true;
+	}
+
+	if (B1.xCoord == coordX && B1.yCoord == coordY){
+	    B1.isAlive = true;
+	}
+	if (B2.xCoord == coordX && B2.yCoord == coordY){
+	    B2.isAlive = true;
+	}
+	if (R1.xCoord == coordX && R1.yCoord == coordY){
+	    R1.isAlive = true;
+	}
+	if (R2.xCoord == coordX && R2.yCoord == coordY){
+	    R2.isAlive = true;
+	}
+	if (Q.xCoord == coordX && Q.yCoord == coordY){
 	    Q.isAlive = true;
 	}
     }
