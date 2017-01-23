@@ -48,7 +48,7 @@ public class King extends Squishies{
 	     }
 	}
 	//checks to see if the king will be in check if it moves to the position entered
-	return retBoo && dangerCheck(this.color, destinationX, destinationY);
+	return retBoo;
     }
     //Should return an Arraylist of which pieces are checking the King
     public ArrayList<String> checkKing(){

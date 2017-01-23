@@ -451,7 +451,7 @@ public class Player{
 	boolean retBoo = false;
 	for(String[] row: Woo.currentBoard.getBoard()){
 	    for(String piece: row){
-		if (color.equals(colour)){
+		if (!color.equals(colour)){
 		    if (!piece.equals("E")){
 			if(piece.equals("Q")){
 			    retBoo = retBoo || Q.canMove(Q.xCoord, Q.yCoord, x, y);

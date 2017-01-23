@@ -277,6 +277,8 @@ public class Woo{
 		System.out.println(" ");
 		check = one.isCheck(one.K);
 		mate = one.checkMate(one.K);
+		System.out.println(check);
+		System.out.println(mate);
 		if (check){
 		    if (mate){
 			System.out.println("You have been defeated.");
