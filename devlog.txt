@@ -10,12 +10,12 @@ Squishy Chess
 ------------------------------------------
 OBSTACLES OVERCOME
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+It was really really hard to debug a program that was 1. long and 2. had many different subclasses that could also produce bugs. Eventhough our final version is fairly bug prone, we did overcome some of the challenges with debugging such a large program.
 
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Checkmate doesn't work. It's extremely difficult to determine all the possibilities of a checkmate, which invovles checking if the king is directly being attacked, can a piece of his own move to save him, and can the king move to save himself. Further complicating things is that some pieces are blocking the king from being checked and that was another condition that we needed to consider when running Woo.java and that issue hasn't been fully resolved yet either. 
-
+A lot of the methods have loopholes that we were not able to catch. For example, capturing pieces doesn't function 100%.
 
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -24,11 +24,12 @@ Going through the different pieces and seeing how different Java objects interac
 
 MID-DEVELOPMENT DESIGN CHANGES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Origionally, we planned to 
+Every time we wrote an algorithm to check for checkmate, or a if a piece occupied the destination coordinates, the driver class of Woo had to be updated as well to reflect the changes and that forced us to find more efficient methods for functions like moving a piece, or capturing a piece.
 
 LESSONS LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+Always use lots of SOP statements to debug!
+Utiliza flowcharts to plan out our methods before we start writing it. Getting an idea of the bigger picture earlier would have saved us a lot of time from re writing methods that were inefficient.
  ______   ______   __   __   __       ______   _______     
 /_____/\ /_____/\ /_/\ /_/\ /_/\     /_____/\ /______/\    
 \:::_ \ \\::::_\/_\:\ \\ \ \\:\ \    \:::_ \ \\::::__\/__  

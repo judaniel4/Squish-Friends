@@ -320,12 +320,14 @@ public class Woo{
 		}
 		else{
 		    boolean ownPiece = one.ownPieceThere(CoordX, CoordY, currentBoard);
+		    System.out.println(ownPiece);
 		    if (ownPiece){
 			copy = currentBoard;
 			String toKill = one.killPiece(CoordX, CoordY, currentBoard);
 			two.pieceDeath(toKill, CoordX, CoordY);
 			currentBoard = one.move(canMove, CoordX, CoordY, currentBoard);
 			check = one.isCheck(one.K);
+			System.out.println(check);
 			if (check){
 			    System.out.println("Still in check, invalid move.");
 			    repeat = true;
