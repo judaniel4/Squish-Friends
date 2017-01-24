@@ -102,7 +102,7 @@ public class Woo{
 		boolean ownPiece = one.ownPieceThere(CoordX, CoordY, currentBoard);
 		if (ownPiece){
 		    if (pawnCapture.length() > 2){
-			System.out.println("There are two pawns that can capture the opposing piece. Please input the coordinates of the pawn you prefer to move.");
+			System.out.println("Please input the starting coordinates of the piece you would like to move.");
 			String startPos = scanner.next();
 			int startingX = Integer.parseInt(startPos.substring(0,1));
 			int startingY = Integer.parseInt(startPos.substring(2,3));
