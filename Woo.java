@@ -149,7 +149,7 @@ public class Woo{
 		    canMove = one.CanMove(MPiece, CoordX, CoordY, currentBoard);
 		}
 		if (canMove.length() > 2){
-		    System.out.println("There are two pieces of the type you inputted that can move to the destination you provided. Please input the coordinates of the piece you prefer to move.");
+		    System.out.println("There are two pieces of the type you input that can move to the destination you provided. Please input the coordinates of the piece you prefer to move.");
 		    String startPos = scanner.next();
 		    int startingX = Integer.parseInt(startPos.substring(0,1));
 		    int startingY = Integer.parseInt(startPos.substring(2,3));

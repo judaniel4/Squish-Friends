@@ -30,25 +30,23 @@ public class King extends Squishies{
 	isAlive = true;
     }
     public boolean canMove(int startX, int startY, int destinationX, int destinationY){
-	boolean retBoo = false;
 	//checks to see if position entered is a valid move for a king
 	if (startY==destinationY){
 	    if (startX-destinationX == 1 || destinationX-startX==1){
-		retBoo = true;
+		return true;
 	    }
 	}
 	if(startX==destinationX){
 	    if(startY-destinationY == 1 || destinationY-startY==1){
-		retBoo = true;
+		return true;
 	    }
 	}
 	if(startX-destinationX == 1 || destinationX-startX == 1){
 	    if(startY-destinationY == 1 || destinationY-startY==1){
-		retBoo = true;
+		return true;
 	    }
 	}
-	//checks to see if the king will be in check if it moves to the position entered
-	return retBoo;
+	return false;
     }
     //Should return an Arraylist of which pieces are checking the King
     public ArrayList<String> checkKing(){
