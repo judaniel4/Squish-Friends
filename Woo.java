@@ -86,6 +86,7 @@ public class Woo{
 		pawnCapture = one.canCapture(CoordX, CoordY, currentBoard);
 	    }
 	    if (pawnCapture.length() > 0){
+		System.out.println("LOOK HERE");
 		boolean ownPiece = one.ownPieceThere(CoordX, CoordY, currentBoard);
 		if (currentBoard.getLocation(CoordX, CoordY).equals("E")){
 		    while (canMove.length() == 0){
@@ -188,6 +189,7 @@ public class Woo{
 		}
 	    }
 	    else{
+		System.out.println("LOOK HERE");
 		while (canMove.length() == 0){
 		    System.out.println("Invalid move selected. Please select a piece to move.");
 		    MPiece = scanner.next();
@@ -249,6 +251,7 @@ public class Woo{
 		    }
 		    else{
 			boolean ownPiece = one.ownPieceThere(CoordX, CoordY, currentBoard);
+			System.out.println(ownPiece);
 			if (ownPiece){
 			    copy = currentBoard;
 			    currentBoard = one.killPiece(CoordX, CoordY, currentBoard);
