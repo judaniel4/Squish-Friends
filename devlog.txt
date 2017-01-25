@@ -16,11 +16,12 @@ UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Checkmate doesn't work. It's extremely difficult to determine all the possibilities of a checkmate, which invovles checking if the king is directly being attacked, can a piece of his own move to save him, and can the king move to save himself. Further complicating things is that some pieces are blocking the king from being checked and that was another condition that we needed to consider when running Woo.java and that issue hasn't been fully resolved yet either. 
 A lot of the methods have loopholes that we were not able to catch. For example, capturing pieces doesn't function 100%.
-
+During the game, it is quite difficult to distinguish pieces of your color with that of your opponent's. That's very unfortunate. 
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 One can use the slopes of lines to determine algorithms of the movement of the different pieces!
 Going through the different pieces and seeing how different Java objects interacted with each other really helped us understand the language and its intricacies. 
+Our biggest regret was not thinking through the design of the board class before we wrote the rest of the code, so when we realized our foolishness it was too late to change it. Rather than making the board a 2D String array, we should have made it a 2D array of Squishies (pieces) with its own toString method to print out the board. Or, we ould have a 2D array of "square" objects. That would have made checkmate much easier, since we could have just have each square object return if it's bieng attacked or not. But alas, c'est la vie, and we had to work around it. So the lesson there is: communicate early and act decisively to come up with a mechanism that we can forsee how to move forward with, instead of crossing bridges as we approach them.
 
 MID-DEVELOPMENT DESIGN CHANGES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -30,6 +31,8 @@ LESSONS LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Always use lots of SOP statements to debug!
 Utiliza flowcharts to plan out our methods before we start writing it. Getting an idea of the bigger picture earlier would have saved us a lot of time from re writing methods that were inefficient.
+== does not work for strings! Use .equals() instead! 
+
  ______   ______   __   __   __       ______   _______     
 /_____/\ /_____/\ /_/\ /_/\ /_/\     /_____/\ /______/\    
 \:::_ \ \\::::_\/_\:\ \\ \ \\:\ \    \:::_ \ \\::::__\/__  

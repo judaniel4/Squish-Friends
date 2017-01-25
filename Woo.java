@@ -10,23 +10,11 @@ Methods:
 import java.util.Scanner;
 
 public class Woo{
-    public String currentPlayer;
-    public static int numSwitch;
-    public static Board currentBoard;
-    public static int playerNum;
-    public static Player one;
+    public static int numSwitch; 
+    public static Board currentBoard; //The current version of the chess board.
+    public static int playerNum; //Tells printBoard which player it is, 0 denotes white, 1 denotes black
+    public static Player one; //Initializes the 2 players of the game
     public static Player two;
-    public void afterFirst(Player a, Player b){
-	
-	if(numSwitch == 1){
-	    //a.move();
-	    numSwitch --;
-	}
-	else{
-	    //b.move();
-	    numSwitch ++;
-	}
-    }
 
     public static void printBoard(int p){ //Depending on which color the current player is, the board needs to be flipped to their perspective without actually changing the board. 
 	if (p == 0){
@@ -37,7 +25,6 @@ public class Woo{
 	}
     }
     public static void main(String[] args){
-	Woo currentGame = new Woo();
 	Scanner scanner = new Scanner(System.in);
 	 
 	System.out.println("Hello, welcome to Squishy Chess! You will be player one and your opponent will be player 2. Player 1 is always white, and goes first.");
@@ -48,7 +35,7 @@ public class Woo{
 	Player two = new Player("black");
 	one.makeKing();
 	two.makeKing();
-        currentBoard = new Board();
+        currentBoard = new Board(); //Creates the board for the duration of the game.
 
 
 	boolean check = false;
@@ -100,7 +87,69 @@ public class Woo{
 	    }
 	    if (pawnCapture.length() > 0){
 		boolean ownPiece = one.ownPieceThere(CoordX, CoordY, currentBoard);
-		if (ownPiece){
+		if (currentBoard.getLocation(CoordX, CoordY).equals("E")){
+		    while (canMove.length() == 0){
+			System.out.println("Invalid move selected. Please select a piece to move.");
+			MPiece = scanner.next();
+			System.out.println("Please select the destination. Please use the format: x,y. Use the coordinate system on the side of the board.");
+			destination = scanner.next();
+			CoordX = Integer.parseInt(destination.substring(0,1));
+			CoordY = Integer.parseInt(destination.substring(2,3));
+			canMove = one.CanMove(MPiece, CoordX, CoordY, currentBoard);
+		    }
+		    if (canMove.length() > 2){
+			System.out.println("There are two pieces of the type you input that can move to the destination you provided. Please input the coordinates of the piece you prefer to move.");
+			String startPos = scanner.next();
+			int startingX = Integer.parseInt(startPos.substring(0,1));
+			int startingY = Integer.parseInt(startPos.substring(2,3));
+			if(spaceEmpty){
+			    copy = currentBoard;
+			    currentBoard = one.manualMove(startingX, startingY, CoordX, CoordY, currentBoard);
+			    check = one.isCheck(one.K);
+			    System.out.println(check);
+			    if (check){
+				System.out.println("Still in check, invalid move.");
+				repeat = true;
+				currentBoard = copy;
+			    }
+			}
+		    }
+		    else{
+			if(spaceEmpty){
+			    copy = currentBoard;
+			    currentBoard = one.move(canMove, CoordX, CoordY, currentBoard);
+			    check = one.isCheck(one.K);
+			    System.out.println(check);
+			    if (check){
+				System.out.println("Still in check, invalid move.");
+				repeat = true;
+				currentBoard = copy;
+			    }
+			}
+			else{
+			    ownPiece = one.ownPieceThere(CoordX, CoordY, currentBoard);
+			    if (ownPiece){
+				copy = currentBoard;
+				currentBoard = one.killPiece(CoordX, CoordY, currentBoard);
+				two.pieceDeath(CoordX, CoordY);
+				currentBoard = one.move(canMove, CoordX, CoordY, currentBoard);
+				check = one.isCheck(one.K);
+				System.out.println(check);
+				if (check){
+				    System.out.println("Still in check, invalid move.");
+				    repeat = true;
+				    currentBoard = copy;
+				    two.pieceRevive(CoordX, CoordY);
+				}
+			    }
+			    else{
+				System.out.println("Cannot move to a space occupied by your piece.");
+				repeat = true;
+			    }
+			}
+		    }
+		}
+		else if (ownPiece){
 		    if (pawnCapture.length() > 2){
 			System.out.println("Please input the starting coordinates of the piece you would like to move.");
 			String startPos = scanner.next();
@@ -284,7 +333,69 @@ public class Woo{
 	    }
 	    if (pawnCapture.length() > 0){
 		boolean ownPiece = two.ownPieceThere(CoordX, CoordY, currentBoard);
-		if (ownPiece){
+		if (currentBoard.getLocation(CoordX, CoordY).equals("E")){
+		    while (canMove.length() == 0){
+			System.out.println("Invalid move selected. Please select a piece to move.");
+			MPiece = scanner.next();
+			System.out.println("Please select the destination. Please use the format: x,y. Use the coordinate system on the side of the board.");
+			destination = scanner.next();
+			CoordX = Integer.parseInt(destination.substring(0,1));
+			CoordY = Integer.parseInt(destination.substring(2,3));
+			canMove = two.CanMove(MPiece, CoordX, CoordY, currentBoard);
+		    }
+		    if (canMove.length() > 2){
+			System.out.println("There are two pieces of the type you input that can move to the destination you provided. Please input the coordinates of the piece you prefer to move.");
+			String startPos = scanner.next();
+			int startingX = Integer.parseInt(startPos.substring(0,1));
+			int startingY = Integer.parseInt(startPos.substring(2,3));
+			if(spaceEmpty){
+			    copy = currentBoard;
+			    currentBoard = two.manualMove(startingX, startingY, CoordX, CoordY, currentBoard);
+			    check = two.isCheck(two.K);
+			    System.out.println(check);
+			    if (check){
+				System.out.println("Still in check, invalid move.");
+				repeat = true;
+				currentBoard = copy;
+			    }
+			}
+		    }
+		    else{
+			if(spaceEmpty){
+			    copy = currentBoard;
+			    currentBoard = two.move(canMove, CoordX, CoordY, currentBoard);
+			    check = two.isCheck(two.K);
+			    System.out.println(check);
+			    if (check){
+				System.out.println("Still in check, invalid move.");
+				repeat = true;
+				currentBoard = copy;
+			    }
+			}
+			else{
+			    ownPiece = two.ownPieceThere(CoordX, CoordY, currentBoard);
+			    if (ownPiece){
+				copy = currentBoard;
+				currentBoard = two.killPiece(CoordX, CoordY, currentBoard);
+				one.pieceDeath(CoordX, CoordY);
+				currentBoard = two.move(canMove, CoordX, CoordY, currentBoard);
+				check = two.isCheck(two.K);
+				System.out.println(check);
+				if (check){
+				    System.out.println("Still in check, invalid move.");
+				    repeat = true;
+				    currentBoard = copy;
+				    two.pieceRevive(CoordX, CoordY);
+				}
+			    }
+			    else{
+				System.out.println("Cannot move to a space occupied by your piece.");
+				repeat = true;
+			    }
+			}
+		    }
+		}
+		else if (ownPiece){
 		    if (pawnCapture.length() > 2){
 			System.out.println("There are two pawns that can capture the opposing piece. Please input the coordinates of the pawn you prefer to move.");
 			String startPos = scanner.next();
