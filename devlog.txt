@@ -15,7 +15,7 @@ It was really really hard to debug a program that was 1. long and 2. had many di
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Checkmate doesn't work. It's extremely difficult to determine all the possibilities of a checkmate, which invovles checking if the king is directly being attacked, can a piece of his own move to save him, and can the king move to save himself. Further complicating things is that some pieces are blocking the king from being checked and that was another condition that we needed to consider when running Woo.java and that issue hasn't been fully resolved yet either. 
-A lot of the methods have loopholes that we were not able to catch. For example, capturing pieces doesn't function 100%.
+Pieces can move through pieces of their own color. All of these issues arise from the improperly thought through Board in the very beginning. 
 During the game, it is quite difficult to distinguish pieces of your color with that of your opponent's. That's very unfortunate. 
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
